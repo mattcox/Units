@@ -11,7 +11,7 @@
 public protocol Unit: CaseIterable {
 /// The value type associated with the unit.
 ///
-	associatedtype Value: Numeric
+	associatedtype Value
 
 /// The base unit type.
 ///
