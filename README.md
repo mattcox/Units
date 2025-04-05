@@ -19,7 +19,7 @@ let package = Package(
 
 If you’d like to use Units within an iOS, macOS, watchOS or tvOS app, then use Xcode’s `File > Add Packages...` menu command to add it to your project.
 
-Import MathKit wherever you’d like to use it:
+Import Units wherever you’d like to use it:
 ```swift
 import Units
 ```
