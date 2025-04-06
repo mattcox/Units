@@ -15,36 +15,37 @@ public struct Area<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
 		
-	/// An acre is equal to 43,560 square feet or about 0.405 hectares.
+	/// One acre contains 43,560 square feet or about 4,047 square meters.
 	///
 		case acres
 		
-	/// A hectare is 2.471 acres or 10,000 square meters.
+	/// One hectare contains 2.471 acres or 10,000 square meters.
 	///
 		case hectares
 	
-	/// There are 100 square centimeters in a square decimeter and 10,000
-	/// in a square meter.
+	/// One square centimeter contains 100 square millimeters and 100 of
+	/// them fit in a square decimeter.
 	///
 		case squareCentimeters
 		
-	/// There are 9 square feet in a square yard and 43,560 in an acre.
+	/// One square foot contains 144 square inches and 9 fit in a square yard.
 	///
 		case squareFeet
 		
-	/// There are 144 square inches in a square foot.
+	/// One square inch is 1⁄144 of a square foot.
 	///
 		case squareInches
 		
-	/// One square kilometer is 100 hectares or 0.386 square miles.
+	/// One square kilometer contains 100 hectares or 0.386 square miles.
 	///
 		case squareKilometers
 		
-	/// One square megameter is 1,000,000 square kilometers.
+	/// One square megameter contains 1,000,000 square kilometers.
 	///
 		case squareMegameters
 		
-	/// One square meter is 10,000 square centimeters or 1.196 square yards.
+	/// One square meter contains 10,000 square centimeters or 1.196 square
+	/// yards.
 	///
 		case squareMeters
 
@@ -56,8 +57,8 @@ public struct Area<T: BinaryFloatingPoint> {
 	///
 		case squareMiles
 		
-	/// There are 100 square millimeters in a square centimeter and
-	/// 1,000,000 in a square meter.
+	/// One square millimeter contains 1,000,000 square nanometers and 100
+	/// fit in a square centimeter.
 	///
 		case squareMillimeters
 	
@@ -356,7 +357,7 @@ extension Area {
 
 /// The area measured in acres.
 ///
-/// An acre is equal to 43,560 square feet or about 0.405 hectares.
+/// One acre contains 43,560 square feet or about 4,047 square meters.
 ///
 	public var acres: Value {
 		get {
@@ -369,7 +370,7 @@ extension Area {
 
 /// The area measured in hectares.
 ///
-/// A hectare is 2.471 acres or 10,000 square meters.
+/// One hectare contains 2.471 acres or 10,000 square meters.
 ///
 	public var hectares: Value {
 		get {
@@ -382,8 +383,8 @@ extension Area {
 
 /// The area measured in square centimeters.
 ///
-/// There are 100 square centimeters in a square decimeter and 10,000 in a
-/// square meter.
+/// One square centimeter contains 100 square millimeters and 100 of them
+/// fit in a square decimeter.
 ///
 	public var squareCentimeters: Value {
 		get {
@@ -396,7 +397,7 @@ extension Area {
 
 /// The area measured in square feet.
 ///
-/// There are 9 square feet in a square yard and 43,560 in an acre.
+/// One square foot contains 144 square inches and 9 fit in a square yard.
 ///
 	public var squareFeet: Value {
 		get {
@@ -409,7 +410,7 @@ extension Area {
 
 /// The area measured in square inches.
 ///
-/// There are 144 square inches in a square foot.
+/// One square inch is 1⁄144 of a square foot.
 ///
 	public var squareInches: Value {
 		get {
@@ -422,7 +423,7 @@ extension Area {
 
 /// The area measured in square kilometers.
 ///
-/// One square kilometer is 100 hectares or 0.386 square miles.
+/// One square kilometer contains 100 hectares or 0.386 square miles.
 ///
 	public var squareKilometers: Value {
 		get {
@@ -435,7 +436,7 @@ extension Area {
 
 /// The area measured in square megameters.
 ///
-/// One square megameter is 1,000,000 square kilometers.
+/// One square megameter contains 1,000,000 square kilometers.
 ///
 	public var squareMegameters: Value {
 		get {
@@ -448,7 +449,8 @@ extension Area {
 
 /// The area measured in square meters.
 ///
-/// One square meter is 10,000 square centimeters or 1.196 square yards.
+/// One square meter contains 10,000 square centimeters or 1.196 square
+/// yards.
 ///
 	public var squareMeters: Value {
 		get {
@@ -487,8 +489,8 @@ extension Area {
 
 /// The area measured in square millimeters.
 ///
-/// There are 100 square millimeters in a square centimeter and 1,000,000
-/// in a square meter.
+/// One square millimeter contains 1,000,000 square nanometers and 100 fit
+/// in a square centimeter.
 ///
 	public var squareMillimeters: Value {
 		get {
@@ -527,7 +529,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in acres.
 ///
-/// An acre is equal to 43,560 square feet or about 0.405 hectares.
+/// One acre contains 43,560 square feet or about 4,047 square meters.
 ///
 /// - Parameters:
 ///   - value: The area measured in acres.
@@ -538,7 +540,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in hectares.
 ///
-/// A hectare is 2.471 acres or 10,000 square meters.
+/// One hectare contains 2.471 acres or 10,000 square meters.
 ///
 /// - Parameters:
 ///   - value: The area measured in hectares.
@@ -549,8 +551,8 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square centimeters.
 ///
-/// There are 100 square centimeters in a square decimeter and 10,000 in a
-/// square meter.
+/// One square centimeter contains 100 square millimeters and 100 of them
+/// fit in a square decimeter.
 ///
 /// - Parameters:
 ///   - value: The area measured in square centimeters.
@@ -561,7 +563,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square feet.
 ///
-/// There are 9 square feet in a square yard and 43,560 in an acre.
+/// One square foot contains 144 square inches and 9 fit in a square yard.
 ///
 /// - Parameters:
 ///   - value: The area measured in square feet.
@@ -572,7 +574,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square inches.
 ///
-/// There are 144 square inches in a square foot.
+/// One square inch is 1⁄144 of a square foot.
 ///
 /// - Parameters:
 ///   - value: The area measured in square inches.
@@ -583,7 +585,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square kilometers.
 ///
-/// One square kilometer is 100 hectares or 0.386 square miles.
+/// One square kilometer contains 100 hectares or 0.386 square miles.
 ///
 /// - Parameters:
 ///   - value: The area measured in square kilometers.
@@ -594,7 +596,7 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square megameters.
 ///
-/// One square megameter is 1,000,000 square kilometers.
+/// One square megameter contains 1,000,000 square kilometers.
 ///
 /// - Parameters:
 ///   - value: The area measured in square megameters.
@@ -605,7 +607,8 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square meters.
 ///
-/// One square meter is 10,000 square centimeters or 1.196 square yards.
+/// One square meter contains 10,000 square centimeters or 1.196 square
+/// yards.
 ///
 /// - Parameters:
 ///   - value: The area measured in square meters.
@@ -638,8 +641,8 @@ extension Area {
 
 /// Initialize the measurement from an area measured in square millimeters.
 ///
-/// There are 100 square millimeters in a square centimeter and 1,000,000
-/// in a square meter.
+/// One square millimeter contains 1,000,000 square nanometers and 100 fit
+/// in a square centimeter.
 ///
 /// - Parameters:
 ///   - value: The area measured in square millimeters.
