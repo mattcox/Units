@@ -6,20 +6,38 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// An measurement representing the angle between two intersecting lines.
+/// A measurement representing the angle between two intersecting lines.
 ///
 /// Angles are stored as radians, however they can be read and written in
-/// various units representing an angle.
+/// various units.
 ///
 public struct Angle<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
 
+	/// An arc minute is 1/60th of one degree.
+	///
 		case arcMinutes
+	
+	/// An arc second is 1/60th of one arc minute or 1/3600 of one degree.
+	///
 		case arcSeconds
+		
+	/// There are 360 degrees in one revolution.
+	///
 		case degrees
+		
+	/// There are 400 gradians in one revolution.
+	///
 		case gradians
+		
+	/// A radian is an angle which intersects the arc of a circle, equal to
+	/// the radius of the circle.
+	///
 		case radians
+	
+	/// A full revolution rotates 360 degrees.
+	///
 		case revolutions
 		
 		public static var base: Self {
@@ -110,7 +128,7 @@ public struct Angle<T: BinaryFloatingPoint> {
 }
 
 extension Angle {
-/// The Angle representing Pi.
+/// The Angle representing Pi or π.
 ///
 /// Pi is equivalent to approximately 3.142 radians.
 ///
@@ -118,73 +136,75 @@ extension Angle {
 		Angle(.pi, unit: .radians)
 	}
 	
-/// The Angle representing Pi.
+/// The Angle representing Pi or π.
+///
+/// Pi is equivalent to approximately 3.142 radians.
 ///
 	public static var π: Angle {
 		Angle(.pi, unit: .radians)
 	}
 	
-/// Initialize the measurement from an angle in arc minutes.
+/// Initialize the angle using a value in arc minutes.
 ///
 /// - Parameters:
 ///   - value: The angle in arc minutes.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func arcMinutes(_ value: T) -> Self {
 		Self(value, unit: .arcMinutes)
 	}
 	
-/// Initialize the measurement from an angle in arc seconds.
+/// Initialize the angle using a value in arc seconds.
 ///
 /// - Parameters:
 ///   - value: The angle in arc seconds.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func arcSeconds(_ value: T) -> Self {
 		Self(value, unit: .arcSeconds)
 	}
 	
-/// Initialize the measurement from an angle in degrees.
+/// Initialize the angle using a value in degrees.
 ///
 /// - Parameters:
 ///   - value: The angle in degrees.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func degrees(_ value: T) -> Self {
 		Self(value, unit: .degrees)
 	}
 
-/// Initialize the measurement from an angle in gradians.
+/// Initialize the angle using a value in gradians.
 ///
 /// - Parameters:
 ///   - value: The angle in gradians.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func gradians(_ value: T) -> Self {
 		Self(value, unit: .gradians)
 	}
 	
-/// Initialize the measurement from an angle in radians.
+/// Initialize the angle using a value in radians.
 ///
 /// - Parameters:
 ///   - value: The angle in radians.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func radians(_ value: T) -> Self {
 		Self(value, unit: .radians)
 	}
 	
-/// Initialize the measurement from an angle in revolutions.
+/// Initialize the angle using a value in revolutions.
 ///
 /// - Parameters:
 ///   - value: The angle in revolutions.
 ///
-/// - Returns: The measurement of the provided angle.
+/// - Returns: The measurement representing the provided angle.
 ///
 	public static func revolutions(_ value: T) -> Self {
 		Self(value, unit: .revolutions)
@@ -214,20 +234,27 @@ extension Angle {
 		return .reflex
 	}
 
-/// Get a normalized version of the angle, in the range 0..<360.
+/// Get a normalized version of the angle where the angle is between 0 and
+/// 2π, or 0 and 360 degrees.
 ///
-	public var normalized: Angle {
-		var degrees = self.degrees
-		while degrees >= 360.0 {
-			degrees -= 360.0
-		}
-		while degrees < 0.0 {
-			degrees += 360.0
-		}
-		return Angle(degrees, unit: .degrees)
+	public mutating func normalize() {
+		let twoPi = 2 * T.pi
+		let normalized = self.value.truncatingRemainder(dividingBy: twoPi)
+		self.value = normalized >= 0 ? normalized : normalized + twoPi
 	}
 	
-/// The angle in arc minutes.
+/// Get a normalized version of the angle where the angle is between 0 and
+/// 2π, or 0 and 360 degrees.
+///
+	public var normalized: Angle {
+		let twoPi = 2 * T.pi
+		let normalized = self.value.truncatingRemainder(dividingBy: twoPi)
+		return Angle(normalized >= 0 ? normalized : normalized + twoPi, unit: .radians)
+	}
+	
+/// The angle measured in arc minutes.
+///
+/// An arc minute is 1/60th of one degree.
 ///
 	public var arcMinutes: Value {
 		get {
@@ -238,7 +265,9 @@ extension Angle {
 		}
 	}
 	
-/// The angle in arc seconds.
+/// The angle measured in arc seconds.
+///
+/// An arc second is 1/60th of one arc minute or 1/3600 of one degree.
 ///
 	public var arcSeconds: Value {
 		get {
@@ -249,7 +278,9 @@ extension Angle {
 		}
 	}
 	
-/// The angle in arc seconds.
+/// The angle measured in degrees.
+///
+/// There are 360 degrees in one revolution.
 ///
 	public var degrees: Value {
 		get {
@@ -260,7 +291,9 @@ extension Angle {
 		}
 	}
 	
-/// The angle in gradians.
+/// The angle measured in gradians.
+///
+/// There are 400 gradians in one revolution.
 ///
 	public var gradians: Value {
 		get {
@@ -271,7 +304,10 @@ extension Angle {
 		}
 	}
 	
-/// The angle in radians.
+/// The angle measured in radians.
+///
+///  A radian is an angle which intersects the arc of a circle, equal to
+/// the radius of the circle.
 ///
 	public var radians: Value {
 		get {
@@ -282,7 +318,9 @@ extension Angle {
 		}
 	}
 	
-/// The angle in revolutions.
+/// The angle measured in number of revolutions.
+///
+/// A full revolution rotates 360 degrees.
 ///
 	public var revolutions: Value {
 		get {
@@ -293,30 +331,36 @@ extension Angle {
 		}
 	}
 	
-/// Initialize the measurement from arc minutes.
+/// Initialize the measurement from an angle measured in arc minutes.
+///
+/// An arc minute is 1/60th of one degree.
 ///
 /// - Parameters:
-///   - value: The angle in arc minutes.
+///   - value: The angle measured in arc minutes.
 ///
 	public init(arcMinutes value: Value) {
 		self = Angle(value, unit: .arcMinutes)
 	}
 	
-/// Initialize the measurement from arc seconds.
+/// Initialize the measurement from an angle measured in arc seconds.
+///
+/// An arc second is 1/60th of one arc minute or 1/3600 of one degree.
 ///
 /// - Parameters:
-///   - value: The angle in arc seconds.
+///   - value: The angle measured in arc seconds.
 ///
 	public init(arcSeconds value: Value) {
 		self = Angle(value, unit: .arcSeconds)
 	}
 	
-/// Initialize the measurement from degrees.
+/// Initialize the measurement from an angle measured in degrees.
+///
+/// There are 360 degrees in one revolution.
 ///
 /// The value can optionally be normalized to a range of 0..<360.
 ///
 /// - Parameters:
-///   - value: The angle in degrees.
+///   - value: The angle measured in degrees.
 ///   - normalize: Normalize the angle to a range of 0..<360.
 ///
 	public init(degrees value: Value, normalize: Bool = false) {
@@ -328,10 +372,12 @@ extension Angle {
 		}
 	}
 	
-/// Initialize the measurement from gradians.
+/// Initialize the measurement from an angle measured in gradians.
+///
+/// There are 400 gradians in one revolution.
 ///
 /// - Parameters:
-///   - value: The angle in gradians.
+///   - value: The angle measured in gradians.
 ///
 	public init(gradians value: Value) {
 		self = Angle(value, unit: .gradians)
@@ -339,17 +385,22 @@ extension Angle {
 	
 /// Initialize the measurement from radians.
 ///
+/// A radian is an angle which intersects the arc of a circle, equal to the
+/// radius of the circle.
+///
 /// - Parameters:
-///   - value: The angle in radians.
+///   - value: The angle measured in radians.
 ///
 	public init(radians value: Value) {
 		self = Angle(value, unit: .radians)
 	}
 	
-/// Initialize the measurement from revolutions.
+/// Initialize the measurement from an angle measured in revolutions.
+///
+/// A full revolution rotates 360 degrees.
 ///
 /// - Parameters:
-///   - value: The angle in revolutions.
+///   - value: The angle measured in revolutions.
 ///
 	public init(revolutions value: Value) {
 		self = Angle(value, unit: .revolutions)
