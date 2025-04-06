@@ -14,31 +14,12 @@
 public struct Angle<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
-		
-	/// An arc minute is 1/60th of one degree.
-	///
+
 		case arcMinutes
-		
-	/// An arc second is 1/60th of one arc minute or 1/3600 of one
-	/// degree.
-	///
 		case arcSeconds
-		
-	/// There are 360 degrees in one revolution.
-	///
 		case degrees
-		
-	/// There are 400 gradians in one revolution.
-	///
 		case gradians
-		
-	/// A radian is an angle which intersects the arc of a circle, equal to
-	/// the radius of the circle.
-	///
 		case radians
-	
-	/// A full revolution rotates 360 degree.
-	///
 		case revolutions
 		
 		public static var base: Self {
@@ -66,10 +47,8 @@ public struct Angle<T: BinaryFloatingPoint> {
 			guard from != to else {
 				return value
 			}
-			
-			// Convert the value to the base unit - radians.
-			//
-			let radians: T = {
+
+			let base: T = {
 				switch from {
 					case .arcMinutes:
 						value * (.pi / 10800)
@@ -80,27 +59,25 @@ public struct Angle<T: BinaryFloatingPoint> {
 					case .gradians:
 						value * (.pi / 200)
 					case .radians:
-						value
+						value * 1.0
 					case .revolutions:
 						value * (2 * .pi)
 				}
 			}()
-			
-			// Convert the value from the base unit to the target unit.
-			//
+
 			switch to {
 				case .arcMinutes:
-					return radians * (10800 / .pi)
+					return base * (10800 / .pi)
 				case .arcSeconds:
-					return radians * (648000 / .pi)
+					return base * (648000 / .pi)
 				case .degrees:
-					return radians * (180 / .pi)
+					return base * (180 / .pi)
 				case .gradians:
-					return radians * (200 / .pi)
+					return base * (200 / .pi)
 				case .radians:
-					return radians
+					return base * 1.0
 				case .revolutions:
-					return radians / (2 * .pi)
+					return base / (2 * .pi)
 			}
 		}
 	}
