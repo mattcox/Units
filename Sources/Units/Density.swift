@@ -6,7 +6,7 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// An measurement representing the density or compactness of a surface.
+/// A measurement representing the density or compactness of a surface.
 ///
 /// Density is stored as kilograms per cubic meter.
 ///
@@ -14,6 +14,12 @@ public struct Density<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
 
+	/// One kilogram per cubic meter represents the mass of one kilogram
+	/// evenly distributed throughout one cubic meter of volume.
+	///
+	/// Water has a density of approximately 1,000 kilograms per cubic
+	/// meter.
+	///
 		case kilogramsPerCubicMeter
 		
 		public static var base: Self {
@@ -50,18 +56,23 @@ public struct Density<T: BinaryFloatingPoint> {
 }
 
 extension Density {
-/// Initialize the measurement from density in kilograms per cubic meter.
+/// Initialize the density using a value in kilograms per cubic meter.
 ///
 /// - Parameters:
 ///   - value: The density in kilograms per cubic meter.
 ///
-/// - Returns: The measurement of the provided density.
+/// - Returns: The measurement representing the provided density.
 ///
 	public static func kilogramsPerCubicMeter(_ value: Value) -> Self {
 		Self(value, unit: .kilogramsPerCubicMeter)
 	}
 
-/// The angle in kilograms per cubic meter.
+/// The density measured in kilograms per cubic meter.
+///
+/// One kilogram per cubic meter represents the mass of one kilogram evenly
+/// distributed throughout one cubic meter of volume.
+///
+/// Water has a density of approximately 1,000 kilograms per cubic meter.
 ///
 	public var kilogramsPerCubicMeter: Value {
 		get {
@@ -72,10 +83,16 @@ extension Density {
 		}
 	}
 
-/// Initialize the measurement from kilograms per cubic meter.
+/// Initialize the measurement from an density measured in kilograms per
+/// cubic meter.
+///
+/// One kilogram per cubic meter represents the mass of one kilogram evenly
+/// distributed throughout one cubic meter of volume.
+///
+/// Water has a density of approximately 1,000 kilograms per cubic meter.
 ///
 /// - Parameters:
-///   - value: The density in kilograms per cubic meter.
+///   - value: The density measured in kilograms per cubic meter.
 ///
 	public init(kilogramsPerCubicMeter value: Value) {
 		self = Density(value, unit: .kilogramsPerCubicMeter)
