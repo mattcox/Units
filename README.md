@@ -4,7 +4,7 @@ Welcome to **Units**, a Swift package for working with physical units in a clear
 Units provides a lightweight alternative to Foundation’s Measurement and Dimension APIs, with a cleaner syntax and built-in support for unit conversion across categories like distance, angle, speed, temperature, and more.
 
 ## Usage
-Units provide two protocols; `Measurement` and `Unit`. The `Measurement` protocol describes a type of measurement such as Duration, whereas the `Unit` protocol describes a unit of the measurement, for example Seconds, Minutes, Hours.
+Units provides two protocols; `Measurement` and `Unit`. The `Measurement` protocol describes a type of measurement such as Duration, whereas the `Unit` protocol describes a unit of the measurement, for example Seconds, Minutes, Hours.
 
 Measurements are stored as a suitable base unit, for example the base for Distance is meters, and the base for Duration is seconds. When initializing a measurement from another unit, it is converted into the base, and when reading it as another unit it converted from this base. This can lead to slight changes in value due to the loss of precision during the conversion.
 
