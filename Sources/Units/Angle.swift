@@ -146,6 +146,8 @@ extension Angle {
 	
 /// Initialize the angle using a value in arc minutes.
 ///
+/// An arc minute is 1/60th of one degree.
+///
 /// - Parameters:
 ///   - value: The angle in arc minutes.
 ///
@@ -156,6 +158,8 @@ extension Angle {
 	}
 	
 /// Initialize the angle using a value in arc seconds.
+///
+/// An arc second is 1/60th of one arc minute or 1/3600 of one degree.
 ///
 /// - Parameters:
 ///   - value: The angle in arc seconds.
@@ -168,6 +172,8 @@ extension Angle {
 	
 /// Initialize the angle using a value in degrees.
 ///
+/// There are 360 degrees in one revolution.
+///
 /// - Parameters:
 ///   - value: The angle in degrees.
 ///
@@ -178,6 +184,8 @@ extension Angle {
 	}
 
 /// Initialize the angle using a value in gradians.
+///
+/// There are 400 gradians in one revolution.
 ///
 /// - Parameters:
 ///   - value: The angle in gradians.
@@ -190,6 +198,9 @@ extension Angle {
 	
 /// Initialize the angle using a value in radians.
 ///
+/// A radian is an angle which intersects the arc of a circle, equal to
+/// the radius of the circle.
+///
 /// - Parameters:
 ///   - value: The angle in radians.
 ///
@@ -200,6 +211,8 @@ extension Angle {
 	}
 	
 /// Initialize the angle using a value in revolutions.
+///
+/// A full revolution rotates 360 degrees.
 ///
 /// - Parameters:
 ///   - value: The angle in revolutions.
@@ -306,7 +319,7 @@ extension Angle {
 	
 /// The angle measured in radians.
 ///
-///  A radian is an angle which intersects the arc of a circle, equal to
+/// A radian is an angle which intersects the arc of a circle, equal to
 /// the radius of the circle.
 ///
 	public var radians: Value {
