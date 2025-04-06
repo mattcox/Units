@@ -6,7 +6,7 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// An measurement representing the the luminous flux per unit area incident
+/// A measurement representing the the luminous flux per unit area incident
 /// on a surface.
 ///
 /// Illuminance is stored as lux.
@@ -15,6 +15,11 @@ public struct Illuminance<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
 		
+	/// One lux is equal to one lumen per square meter.
+	///
+	/// Typical daylight is around 10,000–100,000 lux, and a well-lit office
+	/// is around 300–500 lux.
+	///
 		case lux
 		
 		public static var base: Self {
@@ -51,18 +56,23 @@ public struct Illuminance<T: BinaryFloatingPoint> {
 }
 
 extension Illuminance {
-/// Initialize the measurement from illuminance in lux.
+/// Initialize the illuminance using a value in lux.
 ///
 /// - Parameters:
 ///   - value: The illuminance in lux.
 ///
-/// - Returns: The measurement of the provided illuminance.
+/// - Returns: The measurement representing the provided illuminance.
 ///
 	public static func lux(_ value: Value) -> Self {
 		Self(value, unit: .lux)
 	}
 
-/// The illuminance in lux.
+/// The illuminance measured in lux.
+///
+/// One lux is equal to one lumen per square meter.
+///
+/// Typical daylight is around 10,000–100,000 lux, and a well-lit office is
+/// around 300–500 lux.
 ///
 	public var lux: Value {
 		get {
@@ -73,10 +83,15 @@ extension Illuminance {
 		}
 	}
 
-/// Initialize the measurement from lux.
+/// Initialize the measurement from an illuminance measured in lux.
+///
+/// One lux is equal to one lumen per square meter.
+///
+/// Typical daylight is around 10,000–100,000 lux, and a well-lit office is
+/// around 300–500 lux.
 ///
 /// - Parameters:
-///   - value: The illuminance in lux.
+///   - value: The illuminance measured in lux.
 ///
 	public init(lux value: Value) {
 		self = Illuminance(value, unit: .lux)
