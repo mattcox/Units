@@ -6,27 +6,67 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// An measurement representing the flat space occupied by a surface.
+/// A measurement representing the flat space occupied by a surface.
 ///
 /// Areas are stored as square meters, however they can be read and written in
-/// various units representing an area.
+/// various units.
 ///
 public struct Area<T: BinaryFloatingPoint> {
 	public enum MeasurementUnit: Unit {
 		public typealias Value = T
 		
+	/// An acre is equal to 43,560 square feet or about 0.405 hectares.
+	///
 		case acres
+		
+	/// A hectare is 2.471 acres or 10,000 square meters.
+	///
 		case hectares
+	
+	/// There are 100 square centimeters in a square decimeter and 10,000
+	/// in a square meter.
+	///
 		case squareCentimeters
+		
+	/// There are 9 square feet in a square yard and 43,560 in an acre.
+	///
 		case squareFeet
+		
+	/// There are 144 square inches in a square foot.
+	///
 		case squareInches
+		
+	/// One square kilometer is 100 hectares or 0.386 square miles.
+	///
 		case squareKilometers
+		
+	/// One square megameter is 1,000,000 square kilometers.
+	///
 		case squareMegameters
+		
+	/// One square meter is 10,000 square centimeters or 1.196 square yards.
+	///
 		case squareMeters
+
+	/// One square micrometer is one millionth of a square millimeter.
+	///
 		case squareMicrometers
+		
+	/// One square mile is 640 acres or 2.59 square kilometers.
+	///
 		case squareMiles
+		
+	/// There are 100 square millimeters in a square centimeter and
+	/// 1,000,000 in a square meter.
+	///
 		case squareMillimeters
+	
+	/// One square millimeter contains one trillion square nanometers.
+	///
 		case squareNanometers
+		
+	/// One square yard is 9 square feet or 0.836 square meters.
+	///
 		case squareYards
 		
 		public static var base: Self {
@@ -171,150 +211,152 @@ public struct Area<T: BinaryFloatingPoint> {
 }
 
 extension Area {
-/// Initialize the measurement from an area in acres.
+/// Initialize the area using a value in acres.
 ///
 /// - Parameters:
 ///   - value: The area in acres.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func acres(_ value: Value) -> Self {
 		Self(value, unit: .acres)
 	}
 
-/// Initialize the measurement from an area in hectares.
+/// Initialize the area using a value in hectares.
 ///
 /// - Parameters:
 ///   - value: The area in hectares.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func hectares(_ value: Value) -> Self {
 		Self(value, unit: .hectares)
 	}
 
-/// Initialize the measurement from an area in square centimeters.
+/// Initialize the area using a value in square centimeters.
 ///
 /// - Parameters:
 ///   - value: The area in square centimeters.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareCentimeters(_ value: Value) -> Self {
 		Self(value, unit: .squareCentimeters)
 	}
 
-/// Initialize the measurement from an area in square feet.
+/// Initialize the area using a value in square feet.
 ///
 /// - Parameters:
 ///   - value: The area in square feet.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareFeet(_ value: Value) -> Self {
 		Self(value, unit: .squareFeet)
 	}
 
-/// Initialize the measurement from an area in square inches.
+/// Initialize the area using a value in square inches.
 ///
 /// - Parameters:
 ///   - value: The area in square inches.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareInches(_ value: Value) -> Self {
 		Self(value, unit: .squareInches)
 	}
 
-/// Initialize the measurement from an area in square kilometers.
+/// Initialize the area using a value in square kilometers.
 ///
 /// - Parameters:
 ///   - value: The area in square kilometers.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareKilometers(_ value: Value) -> Self {
 		Self(value, unit: .squareKilometers)
 	}
 
-/// Initialize the measurement from an area in square megameters.
+/// Initialize the area using a value in square megameters.
 ///
 /// - Parameters:
 ///   - value: The area in square megameters.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareMegameters(_ value: Value) -> Self {
 		Self(value, unit: .squareMegameters)
 	}
 
-/// Initialize the measurement from an area in square meters.
+/// Initialize the area using a value in square meters.
 ///
 /// - Parameters:
 ///   - value: The area in square meters.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareMeters(_ value: Value) -> Self {
 		Self(value, unit: .squareMeters)
 	}
 
-/// Initialize the measurement from an area in square micrometers.
+/// Initialize the area using a value in square micrometers.
 ///
 /// - Parameters:
 ///   - value: The area in square micrometers.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareMicrometers(_ value: Value) -> Self {
 		Self(value, unit: .squareMicrometers)
 	}
 
-/// Initialize the measurement from an area in square miles.
+/// Initialize the area using a value in square miles.
 ///
 /// - Parameters:
 ///   - value: The area in square miles.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareMiles(_ value: Value) -> Self {
 		Self(value, unit: .squareMiles)
 	}
 
-/// Initialize the measurement from an area in square millimeters.
+/// Initialize the area using a value in square millimeters.
 ///
 /// - Parameters:
 ///   - value: The area in square millimeters.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareMillimeters(_ value: Value) -> Self {
 		Self(value, unit: .squareMillimeters)
 	}
 
-/// Initialize the measurement from an area in square nanometers.
+/// Initialize the area using a value in square nanometers.
 ///
 /// - Parameters:
 ///   - value: The area in square nanometers.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareNanometers(_ value: Value) -> Self {
 		Self(value, unit: .squareNanometers)
 	}
 
-/// Initialize the measurement from an area in square yards.
+/// Initialize the area using a value in square yards.
 ///
 /// - Parameters:
 ///   - value: The area in square yards.
 ///
-/// - Returns: The measurement of the provided area.
+/// - Returns: The measurement representing the provided area.
 ///
 	public static func squareYards(_ value: Value) -> Self {
 		Self(value, unit: .squareYards)
 	}
 
-/// The measurement in acres.
+/// The area measured in acres.
+///
+/// An acre is equal to 43,560 square feet or about 0.405 hectares.
 ///
 	public var acres: Value {
 		get {
@@ -325,7 +367,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in hectares.
+/// The area measured in hectares.
+///
+/// A hectare is 2.471 acres or 10,000 square meters.
 ///
 	public var hectares: Value {
 		get {
@@ -336,7 +380,10 @@ extension Area {
 		}
 	}
 
-/// The measurement in square centimeters.
+/// The area measured in square centimeters.
+///
+/// There are 100 square centimeters in a square decimeter and 10,000 in a
+/// square meter.
 ///
 	public var squareCentimeters: Value {
 		get {
@@ -347,7 +394,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square feet.
+/// The area measured in square feet.
+///
+/// There are 9 square feet in a square yard and 43,560 in an acre.
 ///
 	public var squareFeet: Value {
 		get {
@@ -358,7 +407,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square inches.
+/// The area measured in square inches.
+///
+/// There are 144 square inches in a square foot.
 ///
 	public var squareInches: Value {
 		get {
@@ -369,7 +420,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square kilometers.
+/// The area measured in square kilometers.
+///
+/// One square kilometer is 100 hectares or 0.386 square miles.
 ///
 	public var squareKilometers: Value {
 		get {
@@ -380,7 +433,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square megameters.
+/// The area measured in square megameters.
+///
+/// One square megameter is 1,000,000 square kilometers.
 ///
 	public var squareMegameters: Value {
 		get {
@@ -391,7 +446,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square meters.
+/// The area measured in square meters.
+///
+/// One square meter is 10,000 square centimeters or 1.196 square yards.
 ///
 	public var squareMeters: Value {
 		get {
@@ -402,7 +459,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square micrometers.
+/// The area measured in square micrometers.
+///
+/// One square micrometer is one millionth of a square millimeter.
 ///
 	public var squareMicrometers: Value {
 		get {
@@ -413,7 +472,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square miles.
+/// The area measured in square miles.
+///
+/// One square mile is 640 acres or 2.59 square kilometers.
 ///
 	public var squareMiles: Value {
 		get {
@@ -424,7 +485,10 @@ extension Area {
 		}
 	}
 
-/// The measurement in square millimeters.
+/// The area measured in square millimeters.
+///
+/// There are 100 square millimeters in a square centimeter and 1,000,000
+/// in a square meter.
 ///
 	public var squareMillimeters: Value {
 		get {
@@ -435,7 +499,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square nanometers.
+/// The area measured in square nanometers.
+///
+/// One square millimeter contains one trillion square nanometers.
 ///
 	public var squareNanometers: Value {
 		get {
@@ -446,7 +512,9 @@ extension Area {
 		}
 	}
 
-/// The measurement in square yards.
+/// The area measured in square yards.
+///
+/// One square yard is 9 square feet or 0.836 square meters.
 ///
 	public var squareYards: Value {
 		get {
@@ -457,118 +525,146 @@ extension Area {
 		}
 	}
 
-/// Initialize the measurement from acres.
+/// Initialize the measurement from an area measured in acres.
+///
+/// An acre is equal to 43,560 square feet or about 0.405 hectares.
 ///
 /// - Parameters:
-///   - value: The area in acres.
+///   - value: The area measured in acres.
 ///
 	public init(acres value: Value) {
 		self = Area(value, unit: .acres)
 	}
 
-/// Initialize the measurement from hectares.
+/// Initialize the measurement from an area measured in hectares.
+///
+/// A hectare is 2.471 acres or 10,000 square meters.
 ///
 /// - Parameters:
-///   - value: The area in hectares.
+///   - value: The area measured in hectares.
 ///
 	public init(hectares value: Value) {
 		self = Area(value, unit: .hectares)
 	}
 
-/// Initialize the measurement from square centimeters.
+/// Initialize the measurement from an area measured in square centimeters.
+///
+/// There are 100 square centimeters in a square decimeter and 10,000 in a
+/// square meter.
 ///
 /// - Parameters:
-///   - value: The area in square centimeters.
+///   - value: The area measured in square centimeters.
 ///
 	public init(squareCentimeters value: Value) {
 		self = Area(value, unit: .squareCentimeters)
 	}
 
-/// Initialize the measurement from square feet.
+/// Initialize the measurement from an area measured in square feet.
+///
+/// There are 9 square feet in a square yard and 43,560 in an acre.
 ///
 /// - Parameters:
-///   - value: The area in square feet.
+///   - value: The area measured in square feet.
 ///
 	public init(squareFeet value: Value) {
 		self = Area(value, unit: .squareFeet)
 	}
 
-/// Initialize the measurement from square inches.
+/// Initialize the measurement from an area measured in square inches.
+///
+/// There are 144 square inches in a square foot.
 ///
 /// - Parameters:
-///   - value: The area in square inches.
+///   - value: The area measured in square inches.
 ///
 	public init(squareInches value: Value) {
 		self = Area(value, unit: .squareInches)
 	}
 
-/// Initialize the measurement from square kilometers.
+/// Initialize the measurement from an area measured in square kilometers.
+///
+/// One square kilometer is 100 hectares or 0.386 square miles.
 ///
 /// - Parameters:
-///   - value: The area in square kilometers.
+///   - value: The area measured in square kilometers.
 ///
 	public init(squareKilometers value: Value) {
 		self = Area(value, unit: .squareKilometers)
 	}
 
-/// Initialize the measurement from square megameters.
+/// Initialize the measurement from an area measured in square megameters.
+///
+/// One square megameter is 1,000,000 square kilometers.
 ///
 /// - Parameters:
-///   - value: The area in square megameters.
+///   - value: The area measured in square megameters.
 ///
 	public init(squareMegameters value: Value) {
 		self = Area(value, unit: .squareMegameters)
 	}
 
-/// Initialize the measurement from square meters.
+/// Initialize the measurement from an area measured in square meters.
+///
+/// One square meter is 10,000 square centimeters or 1.196 square yards.
 ///
 /// - Parameters:
-///   - value: The area in square meters.
+///   - value: The area measured in square meters.
 ///
 	public init(squareMeters value: Value) {
 		self = Area(value, unit: .squareMeters)
 	}
 
-/// Initialize the measurement from square micrometers.
+/// Initialize the measurement from an area measured in square micrometers.
+///
+/// One square micrometer is one millionth of a square millimeter.
 ///
 /// - Parameters:
-///   - value: The area in square micrometers.
+///   - value: The area measured in square micrometers.
 ///
 	public init(squareMicrometers value: Value) {
 		self = Area(value, unit: .squareMicrometers)
 	}
 
-/// Initialize the measurement from square miles.
+/// Initialize the measurement from an area measured in square miles.
+///
+/// One square mile is 640 acres or 2.59 square kilometers.
 ///
 /// - Parameters:
-///   - value: The area in square miles.
+///   - value: The area measured in square miles.
 ///
 	public init(squareMiles value: Value) {
 		self = Area(value, unit: .squareMiles)
 	}
 
-/// Initialize the measurement from square millimeters.
+/// Initialize the measurement from an area measured in square millimeters.
+///
+/// There are 100 square millimeters in a square centimeter and 1,000,000
+/// in a square meter.
 ///
 /// - Parameters:
-///   - value: The area in square millimeters.
+///   - value: The area measured in square millimeters.
 ///
 	public init(squareMillimeters value: Value) {
 		self = Area(value, unit: .squareMillimeters)
 	}
 
-/// Initialize the measurement from square nanometers.
+/// Initialize the measurement from an area measured in square nanometers.
+///
+/// One square millimeter contains one trillion square nanometers.
 ///
 /// - Parameters:
-///   - value: The area in square nanometers.
+///   - value: The area measured in square nanometers.
 ///
 	public init(squareNanometers value: Value) {
 		self = Area(value, unit: .squareNanometers)
 	}
 
-/// Initialize the measurement from square yards.
+/// Initialize the measurement from an area measured in square yards.
+///
+/// One square yard is 9 square feet or 0.836 square meters.
 ///
 /// - Parameters:
-///   - value: The area in square yards.
+///   - value: The area measured in square yards.
 ///
 	public init(squareYards value: Value) {
 		self = Area(value, unit: .squareYards)
