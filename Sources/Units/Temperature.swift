@@ -73,6 +73,18 @@ public struct Temperature<Value: BinaryFloatingPoint> {
 }
 
 extension Temperature {
+/// The freezing point of water at sea level.
+///
+	public var freezingPoint: Self {
+		.celsius(0.0)
+	}
+
+/// The boiling point of water at sea level.
+///
+	public var boiling: Self {
+		.celsius(100.0)
+	}
+
 /// Initialize the temperature using a value in celsius.
 ///
 /// One degree Celsius represents a temperature scale where 0 °C is the
