@@ -38,13 +38,13 @@ let hours = duration.hours  // 2.5
 ### Unit Composition
 Some measurements can be composed from different unit types. For example, two distances can be composed to create an area:
 ```swift
-let area = Area(x: Distance<Double>(2.0, unit: .meters), x: Distance<Double>(3.0, unit: .meters))
+let area = Area(x: Distance<Double>(2.0, unit: .meters), y: Distance<Double>(3.0, unit: .meters))
 let squareMeters = area.squareMeters  // 6.0
 ```
 
 Or for example to calculate speed:
 ```swift
-let speed = Speed(distance: Distance<Double>(10.0, unit: .meters), time: Duration<Double>(30.0, unit: seconds))
+let speed = Speed(distance: Distance<Double>(10.0, unit: .meters), duration: Duration<Double>(30.0, unit: seconds))
 let metersPerSecond = speed.metersPerSecond  // 0.33333333333
 ```
 
