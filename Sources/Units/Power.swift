@@ -10,22 +10,58 @@
 /// converted over time.
 ///
 /// Power is stored as watts, however it can be read and written in various
-/// units representing power.
+/// units.
 ///
-public struct Power<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Power<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
+	/// One femtowatt is 1⁄1,000,000,000,000,000 of a watt (10⁻¹⁵ watts).
+	///
 		case femtowatts
+
+	/// One gigawatt is 1,000,000,000 watts, commonly used for the output
+	/// of large power plants.
+	///
 		case gigawatts
+
+	/// One horsepower is approximately 745.7 watts, originally defined to
+	/// compare engine output to draft horses.
+	///
 		case horsepower
+
+	/// One kilowatt is 1,000 watts, often used for household appliances and
+	/// electric vehicle motors.
+	///
 		case kilowatts
+
+	/// One megawatt is 1,000,000 watts or 1,000 kilowatts, typically used
+	/// to measure the output of large generators.
+	///
 		case megawatts
+
+	/// One microwatt is 1⁄1,000,000 of a watt (10⁻⁶ watts).
+	///
 		case microwatts
+
+	/// One milliwatt is 1⁄1,000 of a watt (10⁻³ watts).
+	///
 		case milliwatts
+
+	/// One nanowatt is 1⁄1,000,000,000 of a watt (10⁻⁹ watts).
+	///
 		case nanowatts
+
+	/// One picowatt is 1⁄1,000,000,000,000 of a watt (10⁻¹² watts).
+	///
 		case picowatts
+
+	/// One terawatt is 1,000,000,000,000 watts, used to measure the scale
+	/// of national or global energy production.
+	///
 		case terawatts
+
+	/// One watt is the base SI unit of power, defined as one joule per
+	/// second.
+	///
 		case watts
 		
 		public static var base: Self {
@@ -35,121 +71,79 @@ public struct Power<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .femtowatts:
-					return "fW"
+					"fW"
 
 				case .gigawatts:
-					return "GW"
+					"GW"
 
 				case .horsepower:
-					return "hp"
+					"hp"
 
 				case .kilowatts:
-					return "kW"
+					"kW"
 
 				case .megawatts:
-					return "MW"
+					"MW"
 
 				case .microwatts:
-					return "µW"
+					"µW"
 
 				case .milliwatts:
-					return "mW"
+					"mW"
 
 				case .nanowatts:
-					return "nW"
+					"nW"
 
 				case .picowatts:
-					return "pW"
+					"pW"
 
 				case .terawatts:
-					return "TW"
+					"TW"
 
 				case .watts:
-					return "W"
+					"W"
 			}
 		}
 		
-		public static func convert(value: Value, from: Power<Value>.MeasurementUnit, to: Power<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .femtowatts:
-						value * 1e-15
-
-					case .gigawatts:
-						value * 1000000000.0
-
-					case .horsepower:
-						value * 745.7
-
-					case .kilowatts:
-						value * 1000.0
-
-					case .megawatts:
-						value * 1000000.0
-
-					case .microwatts:
-						value * 1e-06
-
-					case .milliwatts:
-						value * 0.001
-
-					case .nanowatts:
-						value * 1e-09
-
-					case .picowatts:
-						value * 1e-12
-
-					case .terawatts:
-						value * 1000000000000.0
-
-					case .watts:
-						value * 1.0
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .femtowatts:
-					return base * 999999999999999.9
+					1e-15
 
 				case .gigawatts:
-					return base * 1e-09
+					1000000000.0
 
 				case .horsepower:
-					return base * 0.001341021858656296
+					745.7
 
 				case .kilowatts:
-					return base * 0.001
+					1000.0
 
 				case .megawatts:
-					return base * 1e-06
+					1000000.0
 
 				case .microwatts:
-					return base * 1000000.0
+					1e-06
 
 				case .milliwatts:
-					return base * 1000.0
+					0.001
 
 				case .nanowatts:
-					return base * 999999999.9999999
+					1e-09
 
 				case .picowatts:
-					return base * 1000000000000.0
+					1e-12
 
 				case .terawatts:
-					return base * 1e-12
+					1000000000000.0
 
 				case .watts:
-					return base * 1.0
+					1.0
 			}
-	
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Power {
@@ -159,128 +153,157 @@ extension Power {
 		Power(1.21, unit: .gigawatts)
 	}
 
-/// Initialize the measurement from a power in femtowatts.
+/// Initialize the power using a value in femtowatts.
+///
+/// One femtowatt is 1⁄1,000,000,000,000,000 of a watt (10⁻¹⁵ watts).
 ///
 /// - Parameters:
 ///   - value: The power in femtowatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func femtowatts(_ value: Value) -> Self {
 		Self(value, unit: .femtowatts)
 	}
 
-/// Initialize the measurement from a power in gigawatts.
+/// Initialize the power using a value in gigawatts.
+///
+/// One gigawatt is 1,000,000,000 watts, commonly used for the output of
+/// large power plants.
 ///
 /// - Parameters:
 ///   - value: The power in gigawatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func gigawatts(_ value: Value) -> Self {
 		Self(value, unit: .gigawatts)
 	}
 
-/// Initialize the measurement from a power in horsepower.
+/// Initialize the power using a value in horsepower.
+///
+/// One horsepower is approximately 745.7 watts, originally defined to
+/// compare engine output to draft horses.
 ///
 /// - Parameters:
 ///   - value: The power in horsepower.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func horsepower(_ value: Value) -> Self {
 		Self(value, unit: .horsepower)
 	}
 
-/// Initialize the measurement from a power in kilowatts.
+/// Initialize the power using a value in kilowatts.
+///
+/// One kilowatt is 1,000 watts, often used for household appliances and
+/// electric vehicle motors.
 ///
 /// - Parameters:
 ///   - value: The power in kilowatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func kilowatts(_ value: Value) -> Self {
 		Self(value, unit: .kilowatts)
 	}
 
-/// Initialize the measurement from a power in megawatts.
+/// Initialize the power using a value in megawatts.
+///
+/// One megawatt is 1,000,000 watts or 1,000 kilowatts, typically used to
+/// measure the output of large generators.
 ///
 /// - Parameters:
 ///   - value: The power in megawatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func megawatts(_ value: Value) -> Self {
 		Self(value, unit: .megawatts)
 	}
 
-/// Initialize the measurement from a power in microwatts.
+/// Initialize the power using a value in microwatts.
+///
+/// One microwatt is 1⁄1,000,000 of a watt (10⁻⁶ watts).
 ///
 /// - Parameters:
 ///   - value: The power in microwatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func microwatts(_ value: Value) -> Self {
 		Self(value, unit: .microwatts)
 	}
 
-/// Initialize the measurement from a power in milliwatts.
+/// Initialize the power using a value in milliwatts.
+///
+/// One milliwatt is 1⁄1,000 of a watt (10⁻³ watts).
 ///
 /// - Parameters:
 ///   - value: The power in milliwatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func milliwatts(_ value: Value) -> Self {
 		Self(value, unit: .milliwatts)
 	}
 
-/// Initialize the measurement from a power in nanowatts.
+/// Initialize the power using a value in nanowatts.
+///
+/// One nanowatt is 1⁄1,000,000,000 of a watt (10⁻⁹ watts).
 ///
 /// - Parameters:
 ///   - value: The power in nanowatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func nanowatts(_ value: Value) -> Self {
 		Self(value, unit: .nanowatts)
 	}
 
-/// Initialize the measurement from a power in picowatts.
+/// Initialize the power using a value in picowatts.
+///
+/// One picowatt is 1⁄1,000,000,000,000 of a watt (10⁻¹² watts).
 ///
 /// - Parameters:
 ///   - value: The power in picowatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func picowatts(_ value: Value) -> Self {
 		Self(value, unit: .picowatts)
 	}
 
-/// Initialize the measurement from a power in terawatts.
+/// Initialize the power using a value in terawatts.
+///
+/// One terawatt is 1,000,000,000,000 watts, used to measure the scale of
+/// national or global energy production.
 ///
 /// - Parameters:
 ///   - value: The power in terawatts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func terawatts(_ value: Value) -> Self {
 		Self(value, unit: .terawatts)
 	}
 
-/// Initialize the measurement from a power in watts.
+/// Initialize the power using a value in watts.
+///
+/// One watt is the base SI unit of power, defined as one joule per second.
 ///
 /// - Parameters:
 ///   - value: The power in watts.
 ///
-/// - Returns: The measurement of the provided power.
+/// - Returns: The measurement representing the provided power.
 ///
 	public static func watts(_ value: Value) -> Self {
 		Self(value, unit: .watts)
 	}
 
-/// The measurement in femtowatts.
+/// The power measured in femtowatts.
+///
+/// One femtowatt is 1⁄1,000,000,000,000,000 of a watt (10⁻¹⁵ watts).
 ///
 	public var femtowatts: Value {
 		get {
@@ -291,7 +314,10 @@ extension Power {
 		}
 	}
 
-/// The measurement in gigawatts.
+/// The power measured in gigawatts.
+///
+/// One gigawatt is 1,000,000,000 watts, commonly used for the output of
+/// large power plants.
 ///
 	public var gigawatts: Value {
 		get {
@@ -302,7 +328,10 @@ extension Power {
 		}
 	}
 
-/// The measurement in horsepower.
+/// The power measured in horsepower.
+///
+/// One horsepower is approximately 745.7 watts, originally defined to
+/// compare engine output to draft horses.
 ///
 	public var horsepower: Value {
 		get {
@@ -313,7 +342,10 @@ extension Power {
 		}
 	}
 
-/// The measurement in kilowatts.
+/// The power measured in kilowatts.
+///
+/// One kilowatt is 1,000 watts, often used for household appliances and
+/// electric vehicle motors.
 ///
 	public var kilowatts: Value {
 		get {
@@ -324,7 +356,10 @@ extension Power {
 		}
 	}
 
-/// The measurement in megawatts.
+/// The power measured in megawatts.
+///
+/// One megawatt is 1,000,000 watts or 1,000 kilowatts, typically used to
+/// measure the output of large generators.
 ///
 	public var megawatts: Value {
 		get {
@@ -335,7 +370,9 @@ extension Power {
 		}
 	}
 
-/// The measurement in microwatts.
+/// The power measured in microwatts.
+///
+/// One microwatt is 1⁄1,000,000 of a watt (10⁻⁶ watts).
 ///
 	public var microwatts: Value {
 		get {
@@ -346,7 +383,9 @@ extension Power {
 		}
 	}
 
-/// The measurement in milliwatts.
+/// The power measured in milliwatts.
+///
+/// One milliwatt is 1⁄1,000 of a watt (10⁻³ watts).
 ///
 	public var milliwatts: Value {
 		get {
@@ -357,7 +396,9 @@ extension Power {
 		}
 	}
 
-/// The measurement in nanowatts.
+/// The power measured in nanowatts.
+///
+/// One nanowatt is 1⁄1,000,000,000 of a watt (10⁻⁹ watts).
 ///
 	public var nanowatts: Value {
 		get {
@@ -368,7 +409,9 @@ extension Power {
 		}
 	}
 
-/// The measurement in picowatts.
+/// The power measured in picowatts.
+///
+/// One picowatt is 1⁄1,000,000,000,000 of a watt (10⁻¹² watts).
 ///
 	public var picowatts: Value {
 		get {
@@ -379,7 +422,10 @@ extension Power {
 		}
 	}
 
-/// The measurement in terawatts.
+/// The power measured in terawatts.
+///
+/// One terawatt is 1,000,000,000,000 watts, used to measure the scale of
+/// national or global energy production.
 ///
 	public var terawatts: Value {
 		get {
@@ -390,7 +436,9 @@ extension Power {
 		}
 	}
 
-/// The measurement in watts.
+/// The power measured in watts.
+///
+/// One watt is the base SI unit of power, defined as one joule per second.
 ///
 	public var watts: Value {
 		get {
@@ -401,100 +449,127 @@ extension Power {
 		}
 	}
 
-/// Initialize the measurement from femtowatts.
+/// Initialize the measurement from a power measured in femtowatts.
+///
+/// One femtowatt is 1⁄1,000,000,000,000,000 of a watt (10⁻¹⁵ watts).
 ///
 /// - Parameters:
-///   - value: The Power in femtowatts.
+///   - value: The power measured in femtowatts.
 ///
 	public init(femtowatts value: Value) {
 		self = Power(value, unit: .femtowatts)
 	}
 
-/// Initialize the measurement from gigawatts.
+/// Initialize the measurement from a power measured in gigawatts.
+///
+/// One gigawatt is 1,000,000,000 watts, commonly used for the output of
+/// large power plants.
 ///
 /// - Parameters:
-///   - value: The Power in gigawatts.
+///   - value: The power measured in gigawatts.
 ///
 	public init(gigawatts value: Value) {
 		self = Power(value, unit: .gigawatts)
 	}
 
-/// Initialize the measurement from horsepower.
+/// Initialize the measurement from a power measured in horsepower.
+///
+/// One horsepower is approximately 745.7 watts, originally defined to
+/// compare engine output to draft horses.
 ///
 /// - Parameters:
-///   - value: The Power in horsepower.
+///   - value: The power measured in horsepower.
 ///
 	public init(horsepower value: Value) {
 		self = Power(value, unit: .horsepower)
 	}
 
-/// Initialize the measurement from kilowatts.
+/// Initialize the measurement from a power measured in kilowatts.
+///
+/// One kilowatt is 1,000 watts, often used for household appliances and
+/// electric vehicle motors.
 ///
 /// - Parameters:
-///   - value: The Power in kilowatts.
+///   - value: The power measured in kilowatts.
 ///
 	public init(kilowatts value: Value) {
 		self = Power(value, unit: .kilowatts)
 	}
 
-/// Initialize the measurement from megawatts.
+/// Initialize the measurement from a power measured in megawatts.
+///
+/// One megawatt is 1,000,000 watts or 1,000 kilowatts, typically used to
+/// measure the output of large generators.
 ///
 /// - Parameters:
-///   - value: The Power in megawatts.
+///   - value: The power measured in megawatts.
 ///
 	public init(megawatts value: Value) {
 		self = Power(value, unit: .megawatts)
 	}
 
-/// Initialize the measurement from microwatts.
+/// Initialize the measurement from a power measured in microwatts.
+///
+/// One microwatt is 1⁄1,000,000 of a watt (10⁻⁶ watts).
 ///
 /// - Parameters:
-///   - value: The Power in microwatts.
+///   - value: The power measured in microwatts.
 ///
 	public init(microwatts value: Value) {
 		self = Power(value, unit: .microwatts)
 	}
 
-/// Initialize the measurement from milliwatts.
+/// Initialize the measurement from a power measured in milliwatts.
+///
+/// One milliwatt is 1⁄1,000 of a watt (10⁻³ watts).
 ///
 /// - Parameters:
-///   - value: The Power in milliwatts.
+///   - value: The power measured in milliwatts.
 ///
 	public init(milliwatts value: Value) {
 		self = Power(value, unit: .milliwatts)
 	}
 
-/// Initialize the measurement from nanowatts.
+/// Initialize the measurement from a power measured in nanowatts.
+///
+/// One nanowatt is 1⁄1,000,000,000 of a watt (10⁻⁹ watts).
 ///
 /// - Parameters:
-///   - value: The Power in nanowatts.
+///   - value: The power measured in nanowatts.
 ///
 	public init(nanowatts value: Value) {
 		self = Power(value, unit: .nanowatts)
 	}
 
-/// Initialize the measurement from picowatts.
+/// Initialize the measurement from a power measured in picowatts.
+///
+/// One picowatt is 1⁄1,000,000,000,000 of a watt (10⁻¹² watts).
 ///
 /// - Parameters:
-///   - value: The Power in picowatts.
+///   - value: The power measured in picowatts.
 ///
 	public init(picowatts value: Value) {
 		self = Power(value, unit: .picowatts)
 	}
 
-/// Initialize the measurement from terawatts.
+/// Initialize the measurement from a power measured in terawatts.
+///
+/// One terawatt is 1,000,000,000,000 watts, used to measure the scale of
+/// national or global energy production.
 ///
 /// - Parameters:
-///   - value: The Power in terawatts.
+///   - value: The power measured in terawatts.
 ///
 	public init(terawatts value: Value) {
 		self = Power(value, unit: .terawatts)
 	}
 
-/// Initialize the measurement from watts.
+/// Initialize the measurement from a power measured in watts.
+///
+/// One watt is the base SI unit of power, defined as one joule per second.
 ///
 /// - Parameters:
-///   - value: The Power in watts.
+///   - value: The power measured in watts.
 ///
 	public init(watts value: Value) {
 		self = Power(value, unit: .watts)
@@ -506,7 +581,7 @@ extension Power: Codable where Value: Codable {
 }
 
 extension Power: Comparable where Value: Comparable {
-	public static func < (lhs: Power<T>, rhs: Power<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

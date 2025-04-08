@@ -11,10 +11,8 @@
 /// Distances are stored as meters, however they can be read and written in
 /// various units.
 ///
-public struct Distance<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Distance<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
 	/// One astronomical unit is about 149.6 million kilometers, the average
 	/// distance from the Earth to the Sun.
 	///
@@ -117,224 +115,152 @@ public struct Distance<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .astronomicalUnits:
-					return "ua"
+					"ua"
 
 				case .centimeters:
-					return "cm"
+					"cm"
 
 				case .decameters:
-					return "dam"
+					"dam"
 
 				case .decimeters:
-					return "dm"
+					"dm"
 
 				case .fathoms:
-					return "ftm"
+					"ftm"
 
 				case .feet:
-					return "ft"
+					"ft"
 
 				case .furlongs:
-					return "fur"
+					"fur"
 
 				case .hectometers:
-					return "hm"
+					"hm"
 
 				case .inches:
-					return "in"
+					"in"
 
 				case .kilometers:
-					return "km"
+					"km"
 
 				case .lightyears:
-					return "ly"
+					"ly"
 
 				case .megameters:
-					return "Mm"
+					"Mm"
 
 				case .meters:
-					return "m"
+					"m"
 
 				case .micrometers:
-					return "µm"
+					"µm"
 
 				case .miles:
-					return "mi"
+					"mi"
 
 				case .millimeters:
-					return "mm"
+					"mm"
 
 				case .nanometers:
-					return "nm"
+					"nm"
 
 				case .nauticalMiles:
-					return "NM"
+					"NM"
 
 				case .parsecs:
-					return "pc"
+					"pc"
 
 				case .picometers:
-					return "pm"
+					"pm"
 
 				case .scandinavianMiles:
-					return "smi"
+					"smi"
 
 				case .yards:
-					return "yd"
+					"yd"
 			}
 		}
 		
-		public static func convert(value: Value, from: Distance<Value>.MeasurementUnit, to: Distance<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .astronomicalUnits:
-						value * 149597870700.0
-
-					case .centimeters:
-						value * 0.01
-
-					case .decameters:
-						value * 10.0
-
-					case .decimeters:
-						value * 0.1
-
-					case .fathoms:
-						value * 1.8288
-
-					case .feet:
-						value * 0.3048
-
-					case .furlongs:
-						value * 201.168
-
-					case .hectometers:
-						value * 100.0
-
-					case .inches:
-						value * 0.0254
-
-					case .kilometers:
-						value * 1000.0
-
-					case .lightyears:
-						value * 9.4607304725808e+15
-
-					case .megameters:
-						value * 1000000.0
-
-					case .meters:
-						value * 1.0
-
-					case .micrometers:
-						value * 1e-06
-
-					case .miles:
-						value * 1609.344
-
-					case .millimeters:
-						value * 0.001
-
-					case .nanometers:
-						value * 1e-09
-
-					case .nauticalMiles:
-						value * 1852.0
-
-					case .parsecs:
-						value * 3.085677581491367e+16
-
-					case .picometers:
-						value * 1e-12
-
-					case .scandinavianMiles:
-						value * 10000.0
-
-					case .yards:
-						value * 0.9144
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .astronomicalUnits:
-					return base * 6.684587122268445e-12
+					149597870700.0
 
 				case .centimeters:
-					return base * 100.0
+					0.01
 
 				case .decameters:
-					return base * 0.1
+					10.0
 
 				case .decimeters:
-					return base * 10.0
+					0.1
 
 				case .fathoms:
-					return base * 0.5468066491688539
+					1.8288
 
 				case .feet:
-					return base * 3.280839895013123
+					0.3048
 
 				case .furlongs:
-					return base * 0.004970969537898671
+					201.168
 
 				case .hectometers:
-					return base * 0.01
+					100.0
 
 				case .inches:
-					return base * 39.37007874015748
+					0.0254
 
 				case .kilometers:
-					return base * 0.001
+					1000.0
 
 				case .lightyears:
-					return base * 1.0570008340246154e-16
+					9.4607304725808e+15
 
 				case .megameters:
-					return base * 1e-06
+					1000000.0
 
 				case .meters:
-					return base * 1.0
+					1.0
 
 				case .micrometers:
-					return base * 1000000.0
+					1e-06
 
 				case .miles:
-					return base * 0.0006213711922373339
+					1609.344
 
 				case .millimeters:
-					return base * 1000.0
+					0.001
 
 				case .nanometers:
-					return base * 999999999.9999999
+					1e-09
 
 				case .nauticalMiles:
-					return base * 0.0005399568034557236
+					1852.0
 
 				case .parsecs:
-					return base * 3.240779289444365e-17
+					3.085677581491367e+16
 
 				case .picometers:
-					return base * 1000000000000.0
+					1e-12
 
 				case .scandinavianMiles:
-					return base * 0.0001
+					10000.0
 
 				case .yards:
-					return base * 1.0936132983377078
+					0.9144
 			}
-	
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Distance {
 /// Initialize the distance from a value in astronomical units.
+///
+/// One astronomical unit is about 149.6 million kilometers, the average
+/// distance from the Earth to the Sun.
 ///
 /// - Parameters:
 ///   - value: The distance in astronomical units.
@@ -347,6 +273,8 @@ extension Distance {
 
 /// Initialize the distance from a value in centimeters.
 ///
+/// One centimeter is 10 millimeters or 1⁄100 of a meter.
+///
 /// - Parameters:
 ///   - value: The distance in centimeters.
 ///
@@ -357,6 +285,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in decameters.
+///
+/// One decameter is 10 meters or 1⁄100 of a kilometer.
 ///
 /// - Parameters:
 ///   - value: The distance in decameters.
@@ -369,6 +299,8 @@ extension Distance {
 
 /// Initialize the distance from a value in decimeters.
 ///
+/// One decimeter is 10 centimeters or 1⁄10 of a meter.
+///
 /// - Parameters:
 ///   - value: The distance in decimeters.
 ///
@@ -379,6 +311,9 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in fathoms.
+///
+/// One fathom is 6 feet or 1.8288 meters and is traditionally used to
+/// measure water depth.
 ///
 /// - Parameters:
 ///   - value: The distance in fathoms.
@@ -391,6 +326,8 @@ extension Distance {
 
 /// Initialize the distance from a value in feet.
 ///
+/// One foot is 12 inches or 0.3048 meters.
+///
 /// - Parameters:
 ///   - value: The distance in feet.
 ///
@@ -401,6 +338,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in furlongs.
+///
+/// One furlong is 660 feet or 201.168 meters.
 ///
 /// - Parameters:
 ///   - value: The distance in furlongs.
@@ -413,6 +352,8 @@ extension Distance {
 
 /// Initialize the distance from a value in hectometers.
 ///
+/// One hectometer is 100 meters or 1⁄10 of a kilometer.
+///
 /// - Parameters:
 ///   - value: The distance in hectometers.
 ///
@@ -423,6 +364,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in inches.
+///
+/// One inch is 2.54 centimeters or 1⁄12 of a foot.
 ///
 /// - Parameters:
 ///   - value: The distance in inches.
@@ -435,6 +378,8 @@ extension Distance {
 
 /// Initialize the distance from a value in kilometers.
 ///
+/// One kilometer is 1,000 meters or about 0.621 miles.
+///
 /// - Parameters:
 ///   - value: The distance in kilometers.
 ///
@@ -445,6 +390,9 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in lightyears.
+///
+/// One lightyear is about 9.46 trillion kilometers or 63,241 astronomical
+/// units.
 ///
 /// - Parameters:
 ///   - value: The distance in lightyears.
@@ -457,6 +405,8 @@ extension Distance {
 
 /// Initialize the distance from a value in megameters.
 ///
+/// One megameter is 1,000 kilometers or 1 million meters.
+///
 /// - Parameters:
 ///   - value: The distance in megameters.
 ///
@@ -467,6 +417,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in meters.
+///
+/// One meter is equal to 100 centimeters or about 3.28 feet.
 ///
 /// - Parameters:
 ///   - value: The distance in meters.
@@ -479,6 +431,8 @@ extension Distance {
 
 /// Initialize the distance from a value in micrometers.
 ///
+/// One micrometer is 1⁄1,000,000 of a meter or 1,000 nanometers.
+///
 /// - Parameters:
 ///   - value: The distance in micrometers.
 ///
@@ -489,6 +443,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in miles.
+///
+/// One mile is 5,280 feet or about 1.609 kilometers.
 ///
 /// - Parameters:
 ///   - value: The distance in miles.
@@ -501,6 +457,8 @@ extension Distance {
 
 /// Initialize the distance from a value in millimeters.
 ///
+/// One millimeter is 1⁄1,000 of a meter or 1⁄10 of a centimeter.
+///
 /// - Parameters:
 ///   - value: The distance in millimeters.
 ///
@@ -511,6 +469,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in nanometers.
+///
+/// One nanometer is 1⁄1,000,000,000 of a meter or 1⁄1,000 of a micrometer.
 ///
 /// - Parameters:
 ///   - value: The distance in nanometers.
@@ -523,6 +483,9 @@ extension Distance {
 
 /// Initialize the distance from a value in nautical miles.
 ///
+/// One nautical mile is 1,852 meters or about 1.151 miles and is used in
+/// maritime and air navigation.
+///
 /// - Parameters:
 ///   - value: The distance in nautical miles.
 ///
@@ -533,6 +496,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in parsecs.
+///
+/// One parsec is about 3.26 lightyears or 206,265 astronomical units.
 ///
 /// - Parameters:
 ///   - value: The distance in parsecs.
@@ -545,6 +510,9 @@ extension Distance {
 
 /// Initialize the distance from a value in picometers.
 ///
+/// One picometer is 1⁄1,000,000,000,000 of a meter or 1⁄1,000 of a
+/// nanometer.
+///
 /// - Parameters:
 ///   - value: The distance in picometers.
 ///
@@ -556,6 +524,9 @@ extension Distance {
 
 /// Initialize the distance from a value in scandinavian miles.
 ///
+/// One Scandinavian mile is exactly 10 kilometers and used mainly in Sweden
+/// and Norway.
+///
 /// - Parameters:
 ///   - value: The distance in scandinavian miles.
 ///
@@ -566,6 +537,8 @@ extension Distance {
 	}
 
 /// Initialize the distance from a value in yards.
+///
+/// One yard is 3 feet or 0.9144 meters.
 ///
 /// - Parameters:
 ///   - value: The distance in yards.
@@ -867,7 +840,7 @@ extension Distance {
 		}
 	}
 
-/// Initialize the measurement from an distance measured in astronomical
+/// Initialize the measurement from a distance measured in astronomical
 /// units.
 ///
 /// One astronomical unit is about 149.6 million kilometers, the average
@@ -880,7 +853,7 @@ extension Distance {
 		self = Distance(value, unit: .astronomicalUnits)
 	}
 
-/// Initialize the measurement from an distance measured in centimeters.
+/// Initialize the measurement from a distance measured in centimeters.
 ///
 /// One centimeter is 10 millimeters or 1⁄100 of a meter.
 ///
@@ -891,7 +864,7 @@ extension Distance {
 		self = Distance(value, unit: .centimeters)
 	}
 
-/// Initialize the measurement from an distance measured in decameters.
+/// Initialize the measurement from a distance measured in decameters.
 ///
 /// One decameter is 10 meters or 1⁄100 of a kilometer.
 ///
@@ -902,7 +875,7 @@ extension Distance {
 		self = Distance(value, unit: .decameters)
 	}
 
-/// Initialize the measurement from an distance measured in decimeters.
+/// Initialize the measurement from a distance measured in decimeters.
 ///
 /// One decimeter is 10 centimeters or 1⁄10 of a meter.
 ///
@@ -913,7 +886,7 @@ extension Distance {
 		self = Distance(value, unit: .decimeters)
 	}
 
-/// Initialize the measurement from an distance measured in fathoms.
+/// Initialize the measurement from a distance measured in fathoms.
 ///
 /// One fathom is 6 feet or 1.8288 meters and is traditionally used to
 /// measure water depth.
@@ -925,7 +898,7 @@ extension Distance {
 		self = Distance(value, unit: .fathoms)
 	}
 
-/// Initialize the measurement from an distance measured in feet.
+/// Initialize the measurement from a distance measured in feet.
 ///
 /// One foot is 12 inches or 0.3048 meters.
 ///
@@ -936,7 +909,7 @@ extension Distance {
 		self = Distance(value, unit: .feet)
 	}
 
-/// Initialize the measurement from an distance measured in furlongs.
+/// Initialize the measurement from a distance measured in furlongs.
 ///
 /// One furlong is 660 feet or 201.168 meters.
 ///
@@ -947,7 +920,7 @@ extension Distance {
 		self = Distance(value, unit: .furlongs)
 	}
 
-/// Initialize the measurement from an distance measured in hectometers.
+/// Initialize the measurement from a distance measured in hectometers.
 ///
 /// One hectometer is 100 meters or 1⁄10 of a kilometer.
 ///
@@ -958,7 +931,7 @@ extension Distance {
 		self = Distance(value, unit: .hectometers)
 	}
 
-/// Initialize the measurement from an distance measured in inches.
+/// Initialize the measurement from a distance measured in inches.
 ///
 /// One inch is 2.54 centimeters or 1⁄12 of a foot.
 ///
@@ -969,7 +942,7 @@ extension Distance {
 		self = Distance(value, unit: .inches)
 	}
 
-/// Initialize the measurement from an distance measured in kilometers.
+/// Initialize the measurement from a distance measured in kilometers.
 ///
 /// One kilometer is 1,000 meters or about 0.621 miles.
 ///
@@ -980,7 +953,7 @@ extension Distance {
 		self = Distance(value, unit: .kilometers)
 	}
 
-/// Initialize the measurement from an distance measured in lightyears.
+/// Initialize the measurement from a distance measured in lightyears.
 ///
 /// One lightyear is about 9.46 trillion kilometers or 63,241 astronomical
 /// units.
@@ -992,7 +965,7 @@ extension Distance {
 		self = Distance(value, unit: .lightyears)
 	}
 
-/// Initialize the measurement from an distance measured in megameters.
+/// Initialize the measurement from a distance measured in megameters.
 ///
 /// One megameter is 1,000 kilometers or 1 million meters.
 ///
@@ -1003,7 +976,7 @@ extension Distance {
 		self = Distance(value, unit: .megameters)
 	}
 
-/// Initialize the measurement from an distance measured in meters.
+/// Initialize the measurement from a distance measured in meters.
 ///
 /// One meter is equal to 100 centimeters or about 3.28 feet.
 ///
@@ -1014,7 +987,7 @@ extension Distance {
 		self = Distance(value, unit: .meters)
 	}
 
-/// Initialize the measurement from an distance measured in micrometers.
+/// Initialize the measurement from a distance measured in micrometers.
 ///
 /// One micrometer is 1⁄1,000,000 of a meter or 1,000 nanometers.
 ///
@@ -1025,7 +998,7 @@ extension Distance {
 		self = Distance(value, unit: .micrometers)
 	}
 
-/// Initialize the measurement from an distance measured in miles.
+/// Initialize the measurement from a distance measured in miles.
 ///
 /// One mile is 5,280 feet or about 1.609 kilometers.
 ///
@@ -1036,7 +1009,7 @@ extension Distance {
 		self = Distance(value, unit: .miles)
 	}
 
-/// Initialize the measurement from an distance measured in millimeters.
+/// Initialize the measurement from a distance measured in millimeters.
 ///
 /// One millimeter is 1⁄1,000 of a meter or 1⁄10 of a centimeter.
 ///
@@ -1047,7 +1020,7 @@ extension Distance {
 		self = Distance(value, unit: .millimeters)
 	}
 
-/// Initialize the measurement from an distance measured in nanometers.
+/// Initialize the measurement from a distance measured in nanometers.
 ///
 /// One nanometer is 1⁄1,000,000,000 of a meter or 1⁄1,000 of a micrometer.
 ///
@@ -1058,7 +1031,7 @@ extension Distance {
 		self = Distance(value, unit: .nanometers)
 	}
 
-/// Initialize the measurement from an distance measured in nautical miles.
+/// Initialize the measurement from a distance measured in nautical miles.
 ///
 /// One nautical mile is 1,852 meters or about 1.151 miles and is used in
 /// maritime and air navigation.
@@ -1070,7 +1043,7 @@ extension Distance {
 		self = Distance(value, unit: .nauticalMiles)
 	}
 
-/// Initialize the measurement from an distance measured in parsecs.
+/// Initialize the measurement from a distance measured in parsecs.
 ///
 /// One parsec is about 3.26 lightyears or 206,265 astronomical units.
 ///
@@ -1081,7 +1054,7 @@ extension Distance {
 		self = Distance(value, unit: .parsecs)
 	}
 
-/// Initialize the measurement from an distance measured in picometers.
+/// Initialize the measurement from a distance measured in picometers.
 ///
 /// One picometer is 1⁄1,000,000,000,000 of a meter or 1⁄1,000 of a
 /// nanometer.
@@ -1093,7 +1066,7 @@ extension Distance {
 		self = Distance(value, unit: .picometers)
 	}
 
-/// Initialize the measurement from an distance measured in scandinavian
+/// Initialize the measurement from a distance measured in scandinavian
 /// miles.
 ///
 /// One Scandinavian mile is exactly 10 kilometers and used mainly in Sweden
@@ -1106,7 +1079,7 @@ extension Distance {
 		self = Distance(value, unit: .scandinavianMiles)
 	}
 
-/// Initialize the measurement from an distance measured in yards.
+/// Initialize the measurement from a distance measured in yards.
 ///
 /// One yard is 3 feet or 0.9144 meters.
 ///
@@ -1123,7 +1096,7 @@ extension Distance: Codable where Value: Codable {
 }
 
 extension Distance: Comparable where Value: Comparable {
-	public static func < (lhs: Distance<T>, rhs: Distance<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }
@@ -1147,4 +1120,3 @@ extension Distance: Measurement {
 extension Distance: Sendable where Value: Sendable {
 
 }
-

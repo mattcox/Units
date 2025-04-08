@@ -6,17 +6,27 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// An measurement representing the intensity of heat.
+/// A measurement representing the intensity of heat.
 ///
 /// Temperature is stored as kelvin, however it can be read and written in
-/// various units representing a temperature.
+/// various units.
 ///
-public struct Temperature<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Temperature<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
+	/// One degree Celsius represents a temperature scale where 0 °C is the
+	/// freezing point and 100 °C is the boiling point of water at standard
+	/// pressure.
+	///
 		case celsius
+		
+	/// One degree Fahrenheit is 5⁄9 the size of a Celsius degree, with
+	/// water freezing at 32 °F and boiling at 212 °F.
+	///
 		case fahrenheit
+	
+	/// One kelvin is equal in size to one degree Celsius, but starts at
+	/// absolute zero (0 K = −273.15 °C), with water freezing at 273.15 K.
+	///
 		case kelvin
 		
 		public static var base: Self {
@@ -26,85 +36,91 @@ public struct Temperature<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .celsius:
-					return "°C"
+					"°C"
 
 				case .fahrenheit:
-					return "°F"
+					"°F"
 
 				case .kelvin:
-					return "K"
+					"K"
 			}
 		}
 		
-		public static func convert(value: Value, from: Temperature<Value>.MeasurementUnit, to: Temperature<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .celsius:
-						value * 274.15
-
-					case .fahrenheit:
-						value * 255.92777777777985
-
-					case .kelvin:
-						value * 1.0
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .celsius:
-					return base * -272.15
-
+					1.0
 				case .fahrenheit:
-					return base * -457.87
-
+					0.55555555555556
 				case .kelvin:
-					return base * 1.0
+					1.0
+			}
+		}
+		
+		public var constant: Value {
+			switch self {
+				case .celsius:
+					273.15
+				case .fahrenheit:
+					255.37222222222428
+				case .kelvin:
+					1.0
 			}
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Temperature {
-/// Initialize the measurement from a temperature in celsius.
+/// Initialize the temperature using a value in celsius.
+///
+/// One degree Celsius represents a temperature scale where 0 °C is the
+/// freezing point and 100 °C is the boiling point of water at standard
+/// pressure.
 ///
 /// - Parameters:
 ///   - value: The temperature in celsius.
 ///
-/// - Returns: The measurement of the provided temperature.
+/// - Returns: The measurement representing the provided temperature.
 ///
 	public static func celsius(_ value: Value) -> Self {
 		Self(value, unit: .celsius)
 	}
 
-/// Initialize the measurement from a temperature in fahrenheit.
+/// Initialize the temperature using a value in fahrenheit.
+///
+/// One degree Fahrenheit is 5⁄9 the size of a Celsius degree, with water
+/// freezing at 32 °F and boiling at 212 °F.
 ///
 /// - Parameters:
 ///   - value: The temperature in fahrenheit.
 ///
-/// - Returns: The measurement of the provided temperature.
+/// - Returns: The measurement representing the provided temperature.
 ///
 	public static func fahrenheit(_ value: Value) -> Self {
 		Self(value, unit: .fahrenheit)
 	}
 
-/// Initialize the measurement from a temperature in kelvin.
+/// Initialize the temperature using a value in kelvin.
+///
+/// One kelvin is equal in size to one degree Celsius, but starts at
+/// absolute zero (0 K = −273.15 °C), with water freezing at 273.15 K.
 ///
 /// - Parameters:
 ///   - value: The temperature in kelvin.
 ///
-/// - Returns: The measurement of the provided temperature.
+/// - Returns: The measurement representing the provided temperature.
 ///
 	public static func kelvin(_ value: Value) -> Self {
 		Self(value, unit: .kelvin)
 	}
 
-/// The measurement in celsius.
+/// The temperature measured in celsius.
+///
+/// One degree Celsius represents a temperature scale where 0 °C is the
+/// freezing point and 100 °C is the boiling point of water at standard
+/// pressure.
 ///
 	public var celsius: Value {
 		get {
@@ -115,7 +131,10 @@ extension Temperature {
 		}
 	}
 
-/// The measurement in fahrenheit.
+/// The temperature measured in fahrenheit.
+///
+/// One degree Fahrenheit is 5⁄9 the size of a Celsius degree, with water
+/// freezing at 32 °F and boiling at 212 °F.
 ///
 	public var fahrenheit: Value {
 		get {
@@ -126,7 +145,10 @@ extension Temperature {
 		}
 	}
 
-/// The measurement in kelvin.
+/// The temperature measured in kelvin.
+///
+/// One kelvin is equal in size to one degree Celsius, but starts at
+/// absolute zero (0 K = −273.15 °C), with water freezing at 273.15 K.
 ///
 	public var kelvin: Value {
 		get {
@@ -137,28 +159,38 @@ extension Temperature {
 		}
 	}
 
-/// Initialize the measurement from celsius.
+/// Initialize the measurement from a temperature measured in celsius.
+///
+/// One degree Celsius represents a temperature scale where 0 °C is the
+/// freezing point and 100 °C is the boiling point of water at standard
+/// pressure.
 ///
 /// - Parameters:
-///   - value: The temperature in celsius.
+///   - value: The temperature measured in celsius.
 ///
 	public init(celsius value: Value) {
 		self = Temperature(value, unit: .celsius)
 	}
 
-/// Initialize the measurement from fahrenheit.
+/// Initialize the measurement from a temperature measured in fahrenheit.
+///
+/// One degree Fahrenheit is 5⁄9 the size of a Celsius degree, with water
+/// freezing at 32 °F and boiling at 212 °F.
 ///
 /// - Parameters:
-///   - value: The temperature in fahrenheit.
+///   - value: The temperature measured in fahrenheit.
 ///
 	public init(fahrenheit value: Value) {
 		self = Temperature(value, unit: .fahrenheit)
 	}
 
-/// Initialize the measurement from kelvin.
+/// Initialize the measurement from a temperature measured in kelvin.
+///
+/// One kelvin is equal in size to one degree Celsius, but starts at
+/// absolute zero (0 K = −273.15 °C), with water freezing at 273.15 K.
 ///
 /// - Parameters:
-///   - value: The temperature in kelvin.
+///   - value: The temperature measured in kelvin.
 ///
 	public init(kelvin value: Value) {
 		self = Temperature(value, unit: .kelvin)
@@ -170,7 +202,7 @@ extension Temperature: Codable where Value: Codable {
 }
 
 extension Temperature: Comparable where Value: Comparable {
-	public static func < (lhs: Temperature<T>, rhs: Temperature<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

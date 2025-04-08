@@ -10,27 +10,78 @@
 /// applied.
 ///
 /// Mass is stored as kilograms, however it can be read and written in various
-/// units representing mass.
+/// units.
 ///
-public struct Mass<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Mass<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
+	/// One carat is 0.2 grams, commonly used to measure gemstones.
+	///
 		case carats
+
+	/// One centigram is 1⁄100 of a gram or 10 milligrams.
+	///
 		case centigrams
+
+	/// One decigram is 1⁄10 of a gram or 100 milligrams.
+	///
 		case decigrams
+
+	/// One gram is the base metric unit of mass, equal to 1,000 milligrams
+	/// or 0.001 kilograms.
+	///
 		case grams
+
+	/// One kilogram is 1,000 grams or approximately 2.205 pounds.
+	///
 		case kilograms
+
+	/// One metric ton (or tonne) is 1,000 kilograms or about 2,204.6
+	/// pounds.
+	///
 		case metricTons
+
+	/// One microgram is 1⁄1,000,000 of a gram or 1,000 nanograms.
+	///
 		case micrograms
+
+	/// One milligram is 1⁄1,000 of a gram or 1,000 micrograms.
+	///
 		case milligrams
+
+	/// One nanogram is 1⁄1,000,000,000 of a gram or 1⁄1,000 of a
+	/// microgram.
+	///
 		case nanograms
+
+	/// One ounce is about 28.35 grams or 1⁄16 of a pound.
+	///
 		case ounces
+
+	/// One troy ounce is about 31.103 grams, used for precious metals.
+	///
 		case ouncesTroy
+
+	/// One picogram is 1⁄1,000,000,000,000 of a gram or 1⁄1,000 of a
+	/// nanogram.
+	///
 		case picograms
+
+	/// One pound is 16 ounces or about 453.592 grams.
+	///
 		case pounds
+
+	/// One short ton (US ton) is 2,000 pounds or about 907.18 kilograms.
+	///
 		case shortTons
+
+	/// One slug is about 14.5939 kilograms, used in physics to relate mass
+	/// to force under Earth’s gravity.
+	///
 		case slugs
+
+	/// One stone is 14 pounds or about 6.35 kilograms, commonly used in the
+	/// UK for body weight.
+	///
 		case stones
 		
 		public static var base: Self {
@@ -40,346 +91,326 @@ public struct Mass<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .carats:
-					return "ct"
+					"ct"
 
 				case .centigrams:
-					return "cg"
+					"cg"
 
 				case .decigrams:
-					return "dg"
+					"dg"
 
 				case .grams:
-					return "g"
+					"g"
 
 				case .kilograms:
-					return "kg"
+					"kg"
 
 				case .metricTons:
-					return "t"
+					"t"
 
 				case .micrograms:
-					return "µg"
+					"µg"
 
 				case .milligrams:
-					return "mg"
+					"mg"
 
 				case .nanograms:
-					return "ng"
+					"ng"
 
 				case .ounces:
-					return "oz"
+					"oz"
 
 				case .ouncesTroy:
-					return "oz t"
+					"oz t"
 
 				case .picograms:
-					return "pg"
+					"pg"
 
 				case .pounds:
-					return "lb"
+					"lb"
 
 				case .shortTons:
-					return "ton"
+					"ton"
 
 				case .slugs:
-					return "slug"
+					"slug"
 
 				case .stones:
-					return "st"
+					"st"
 			}
 		}
 		
-		public static func convert(value: Value, from: Mass<Value>.MeasurementUnit, to: Mass<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .carats:
-						value * 0.0002
-
-					case .centigrams:
-						value * 1e-05
-
-					case .decigrams:
-						value * 0.0001
-
-					case .grams:
-						value * 0.001
-
-					case .kilograms:
-						value * 1.0
-
-					case .metricTons:
-						value * 1000.0
-
-					case .micrograms:
-						value * 1e-09
-
-					case .milligrams:
-						value * 1e-06
-
-					case .nanograms:
-						value * 1e-12
-
-					case .ounces:
-						value * 0.0283495
-
-					case .ouncesTroy:
-						value * 0.03110348
-
-					case .picograms:
-						value * 1e-15
-
-					case .pounds:
-						value * 0.453592
-
-					case .shortTons:
-						value * 907.185
-
-					case .slugs:
-						value * 14.5939
-
-					case .stones:
-						value * 6.35029
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .carats:
-					return base * 5000.0
+					0.0002
 
 				case .centigrams:
-					return base * 99999.99999999999
+					1e-05
 
 				case .decigrams:
-					return base * 10000.0
+					0.0001
 
 				case .grams:
-					return base * 1000.0
+					0.001
 
 				case .kilograms:
-					return base * 1.0
+					1.0
 
 				case .metricTons:
-					return base * 0.001
+					1000.0
 
 				case .micrograms:
-					return base * 999999999.9999999
+					1e-09
 
 				case .milligrams:
-					return base * 1000000.0
+					1e-06
 
 				case .nanograms:
-					return base * 1000000000000.0
+					1e-12
 
 				case .ounces:
-					return base * 35.27399072294044
+					0.0283495
 
 				case .ouncesTroy:
-					return base * 32.150743260882706
+					0.03110348
 
 				case .picograms:
-					return base * 999999999999999.9
+					1e-15
 
 				case .pounds:
-					return base * 2.2046244201837775
+					0.453592
 
 				case .shortTons:
-					return base * 0.0011023109950010197
+					907.185
 
 				case .slugs:
-					return base * 0.06852177964766101
+					14.5939
 
 				case .stones:
-					return base * 0.1574731232746851
+					6.35029
 			}
-	
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Mass {
-/// Initialize the measurement from a mass in carats.
+/// Initialize the mass using a value in carats.
+///
+/// One carat is 0.2 grams, commonly used to measure gemstones.
 ///
 /// - Parameters:
 ///   - value: The mass in carats.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func carats(_ value: Value) -> Self {
 		Self(value, unit: .carats)
 	}
 
-/// Initialize the measurement from a mass in centigrams.
+/// Initialize the mass using a value in centigrams.
+///
+/// One centigram is 1⁄100 of a gram or 10 milligrams.
 ///
 /// - Parameters:
 ///   - value: The mass in centigrams.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func centigrams(_ value: Value) -> Self {
 		Self(value, unit: .centigrams)
 	}
 
-/// Initialize the measurement from a mass in decigrams.
+/// Initialize the mass using a value in decigrams.
+///
+/// One decigram is 1⁄10 of a gram or 100 milligrams.
 ///
 /// - Parameters:
 ///   - value: The mass in decigrams.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func decigrams(_ value: Value) -> Self {
 		Self(value, unit: .decigrams)
 	}
 
-/// Initialize the measurement from a mass in grams.
+/// Initialize the mass using a value in grams.
+///
+/// One gram is the base metric unit of mass, equal to 1,000 milligrams or
+/// 0.001 kilograms.
 ///
 /// - Parameters:
 ///   - value: The mass in grams.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func grams(_ value: Value) -> Self {
 		Self(value, unit: .grams)
 	}
 
-/// Initialize the measurement from a mass in kilograms.
+/// Initialize the mass using a value in kilograms.
+///
+/// One kilogram is 1,000 grams or approximately 2.205 pounds.
 ///
 /// - Parameters:
 ///   - value: The mass in kilograms.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func kilograms(_ value: Value) -> Self {
 		Self(value, unit: .kilograms)
 	}
 
-/// Initialize the measurement from a mass in metric tons.
+/// Initialize the mass using a value in metric tons.
+///
+/// One metric ton (or tonne) is 1,000 kilograms or about 2,204.6 pounds.
 ///
 /// - Parameters:
 ///   - value: The mass in metric tons.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func metricTons(_ value: Value) -> Self {
 		Self(value, unit: .metricTons)
 	}
 
-/// Initialize the measurement from a mass in micrograms.
+/// Initialize the mass using a value in micrograms.
+///
+/// One microgram is 1⁄1,000,000 of a gram or 1,000 nanograms.
 ///
 /// - Parameters:
 ///   - value: The mass in micrograms.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func micrograms(_ value: Value) -> Self {
 		Self(value, unit: .micrograms)
 	}
 
-/// Initialize the measurement from a mass in milligrams.
+/// Initialize the mass using a value in milligrams.
+///
+/// One milligram is 1⁄1,000 of a gram or 1,000 micrograms.
 ///
 /// - Parameters:
 ///   - value: The mass in milligrams.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func milligrams(_ value: Value) -> Self {
 		Self(value, unit: .milligrams)
 	}
 
-/// Initialize the measurement from a mass in nanograms.
+/// Initialize the mass using a value in nanograms.
+///
+/// One nanogram is 1⁄1,000,000,000 of a gram or 1⁄1,000 of a microgram.
 ///
 /// - Parameters:
 ///   - value: The mass in nanograms.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func nanograms(_ value: Value) -> Self {
 		Self(value, unit: .nanograms)
 	}
 
-/// Initialize the measurement from a mass in ounces.
+/// Initialize the mass using a value in ounces.
+///
+/// One ounce is about 28.35 grams or 1⁄16 of a pound.
 ///
 /// - Parameters:
 ///   - value: The mass in ounces.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func ounces(_ value: Value) -> Self {
 		Self(value, unit: .ounces)
 	}
 
-/// Initialize the measurement from a mass in ounces troy.
+/// Initialize the mass using a value in troy ounces.
+///
+/// One troy ounce is about 31.103 grams, used for precious metals.
 ///
 /// - Parameters:
-///   - value: The mass in ounces troy.
+///   - value: The mass in troy ounces.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func ouncesTroy(_ value: Value) -> Self {
 		Self(value, unit: .ouncesTroy)
 	}
 
-/// Initialize the measurement from a mass in picograms.
+/// Initialize the mass using a value in picograms.
+///
+/// One picogram is 1⁄1,000,000,000,000 of a gram or 1⁄1,000 of a nanogram.
 ///
 /// - Parameters:
 ///   - value: The mass in picograms.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func picograms(_ value: Value) -> Self {
 		Self(value, unit: .picograms)
 	}
 
-/// Initialize the measurement from a mass in pounds.
+/// Initialize the mass using a value in pounds.
+///
+/// One pound is 16 ounces or about 453.592 grams.
 ///
 /// - Parameters:
 ///   - value: The mass in pounds.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func pounds(_ value: Value) -> Self {
 		Self(value, unit: .pounds)
 	}
 
-/// Initialize the measurement from a mass in short tons.
+/// Initialize the mass using a value in short tons.
+///
+/// One short ton (US ton) is 2,000 pounds or about 907.18 kilograms.
 ///
 /// - Parameters:
 ///   - value: The mass in short tons.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func shortTons(_ value: Value) -> Self {
 		Self(value, unit: .shortTons)
 	}
 
-/// Initialize the measurement from a mass in slugs.
+/// Initialize the mass using a value in slugs.
+///
+/// One slug is about 14.5939 kilograms, used in physics to relate mass to
+/// force under Earth’s gravity.
 ///
 /// - Parameters:
 ///   - value: The mass in slugs.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func slugs(_ value: Value) -> Self {
 		Self(value, unit: .slugs)
 	}
 
-/// Initialize the measurement from a mass in stones.
+/// Initialize the mass using a value in stones.
+///
+/// One stone is 14 pounds or about 6.35 kilograms, commonly used in the UK
+/// for body weight.
 ///
 /// - Parameters:
 ///   - value: The mass in stones.
 ///
-/// - Returns: The measurement of the provided mass.
+/// - Returns: The measurement representing the provided mass.
 ///
 	public static func stones(_ value: Value) -> Self {
 		Self(value, unit: .stones)
 	}
 
-/// The measurement in carats.
+/// The mass measured in carats.
+///
+/// One carat is 0.2 grams, commonly used to measure gemstones.
 ///
 	public var carats: Value {
 		get {
@@ -390,7 +421,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in centigrams.
+/// The mass measured in centigrams.
+///
+/// One centigram is 1⁄100 of a gram or 10 milligrams.
 ///
 	public var centigrams: Value {
 		get {
@@ -401,7 +434,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in decigrams.
+/// The mass measured in decigrams.
+///
+/// One decigram is 1⁄10 of a gram or 100 milligrams.
 ///
 	public var decigrams: Value {
 		get {
@@ -412,7 +447,10 @@ extension Mass {
 		}
 	}
 
-/// The measurement in grams.
+/// The mass measured in grams.
+///
+/// One gram is the base metric unit of mass, equal to 1,000 milligrams or
+/// 0.001 kilograms.
 ///
 	public var grams: Value {
 		get {
@@ -423,7 +461,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in kilograms.
+/// The mass measured in kilograms.
+///
+/// One kilogram is 1,000 grams or approximately 2.205 pounds.
 ///
 	public var kilograms: Value {
 		get {
@@ -434,7 +474,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in metric tons.
+/// The mass measured in metric tons.
+///
+/// One metric ton (or tonne) is 1,000 kilograms or about 2,204.6 pounds.
 ///
 	public var metricTons: Value {
 		get {
@@ -445,7 +487,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in micrograms.
+/// The mass measured in micrograms.
+///
+/// One microgram is 1⁄1,000,000 of a gram or 1,000 nanograms.
 ///
 	public var micrograms: Value {
 		get {
@@ -456,7 +500,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in milligrams.
+/// The mass measured in milligrams.
+///
+/// One milligram is 1⁄1,000 of a gram or 1,000 micrograms.
 ///
 	public var milligrams: Value {
 		get {
@@ -467,7 +513,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in nanograms.
+/// The mass measured in nanograms.
+///
+/// One nanogram is 1⁄1,000,000,000 of a gram or 1⁄1,000 of a microgram.
 ///
 	public var nanograms: Value {
 		get {
@@ -478,7 +526,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in ounces.
+/// The mass measured in ounces.
+///
+/// One ounce is about 28.35 grams or 1⁄16 of a pound.
 ///
 	public var ounces: Value {
 		get {
@@ -489,7 +539,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in ounces troy.
+/// The mass measured in troy ounces.
+///
+/// One troy ounce is about 31.103 grams, used for precious metals.
 ///
 	public var ouncesTroy: Value {
 		get {
@@ -500,7 +552,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in picograms.
+/// The mass measured in picograms.
+///
+/// One picogram is 1⁄1,000,000,000,000 of a gram or 1⁄1,000 of a nanogram.
 ///
 	public var picograms: Value {
 		get {
@@ -511,7 +565,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in pounds.
+/// The mass measured in pounds.
+///
+/// One pound is 16 ounces or about 453.592 grams.
 ///
 	public var pounds: Value {
 		get {
@@ -522,7 +578,9 @@ extension Mass {
 		}
 	}
 
-/// The measurement in short tons.
+/// The mass measured in short tons.
+///
+/// One short ton (US ton) is 2,000 pounds or about 907.18 kilograms.
 ///
 	public var shortTons: Value {
 		get {
@@ -533,7 +591,10 @@ extension Mass {
 		}
 	}
 
-/// The measurement in slugs.
+/// The mass measured in slugs.
+///
+/// One slug is about 14.5939 kilograms, used in physics to relate mass to
+/// force under Earth’s gravity.
 ///
 	public var slugs: Value {
 		get {
@@ -544,7 +605,10 @@ extension Mass {
 		}
 	}
 
-/// The measurement in stones.
+/// The mass measured in stones.
+///
+/// One stone is 14 pounds or about 6.35 kilograms, commonly used in the UK
+/// for body weight.
 ///
 	public var stones: Value {
 		get {
@@ -555,145 +619,180 @@ extension Mass {
 		}
 	}
 
-/// Initialize the measurement from carats.
+/// Initialize the measurement from a mass measured in carats.
+///
+/// One carat is 0.2 grams, commonly used to measure gemstones.
 ///
 /// - Parameters:
-///   - value: The Mass in carats.
+///   - value: The mass measured in carats.
 ///
 	public init(carats value: Value) {
 		self = Mass(value, unit: .carats)
 	}
 
-/// Initialize the measurement from centigrams.
+/// Initialize the measurement from a mass measured in centigrams.
+///
+/// One centigram is 1⁄100 of a gram or 10 milligrams.
 ///
 /// - Parameters:
-///   - value: The Mass in centigrams.
+///   - value: The mass measured in centigrams.
 ///
 	public init(centigrams value: Value) {
 		self = Mass(value, unit: .centigrams)
 	}
 
-/// Initialize the measurement from decigrams.
+/// Initialize the measurement from a mass measured in decigrams.
+///
+/// One decigram is 1⁄10 of a gram or 100 milligrams.
 ///
 /// - Parameters:
-///   - value: The Mass in decigrams.
+///   - value: The mass measured in decigrams.
 ///
 	public init(decigrams value: Value) {
 		self = Mass(value, unit: .decigrams)
 	}
 
-/// Initialize the measurement from grams.
+/// Initialize the measurement from a mass measured in grams.
+///
+/// One gram is the base metric unit of mass, equal to 1,000 milligrams or
+/// 0.001 kilograms.
 ///
 /// - Parameters:
-///   - value: The Mass in grams.
+///   - value: The mass measured in grams.
 ///
 	public init(grams value: Value) {
 		self = Mass(value, unit: .grams)
 	}
 
-/// Initialize the measurement from kilograms.
+/// Initialize the measurement from a mass measured in kilograms.
+///
+/// One kilogram is 1,000 grams or approximately 2.205 pounds.
 ///
 /// - Parameters:
-///   - value: The Mass in kilograms.
+///   - value: The mass measured in kilograms.
 ///
 	public init(kilograms value: Value) {
 		self = Mass(value, unit: .kilograms)
 	}
 
-/// Initialize the measurement from metric tons.
+/// Initialize the measurement from a mass measured in metric tons.
+///
+/// One metric ton (or tonne) is 1,000 kilograms or about 2,204.6 pounds.
 ///
 /// - Parameters:
-///   - value: The Mass in metric tons.
+///   - value: The mass measured in metric tons.
 ///
 	public init(metricTons value: Value) {
 		self = Mass(value, unit: .metricTons)
 	}
 
-/// Initialize the measurement from micrograms.
+/// Initialize the measurement from a mass measured in micrograms.
+///
+/// One microgram is 1⁄1,000,000 of a gram or 1,000 nanograms.
 ///
 /// - Parameters:
-///   - value: The Mass in micrograms.
+///   - value: The mass measured in micrograms.
 ///
 	public init(micrograms value: Value) {
 		self = Mass(value, unit: .micrograms)
 	}
 
-/// Initialize the measurement from milligrams.
+/// Initialize the measurement from a mass measured in milligrams.
+///
+/// One milligram is 1⁄1,000 of a gram or 1,000 micrograms.
 ///
 /// - Parameters:
-///   - value: The Mass in milligrams.
+///   - value: The mass measured in milligrams.
 ///
 	public init(milligrams value: Value) {
 		self = Mass(value, unit: .milligrams)
 	}
 
-/// Initialize the measurement from nanograms.
+/// Initialize the measurement from a mass measured in nanograms.
+///
+/// One nanogram is 1⁄1,000,000,000 of a gram or 1⁄1,000 of a microgram.
 ///
 /// - Parameters:
-///   - value: The Mass in nanograms.
+///   - value: The mass measured in nanograms.
 ///
 	public init(nanograms value: Value) {
 		self = Mass(value, unit: .nanograms)
 	}
 
-/// Initialize the measurement from ounces.
+/// Initialize the measurement from a mass measured in ounces.
+///
+/// One ounce is about 28.35 grams or 1⁄16 of a pound.
 ///
 /// - Parameters:
-///   - value: The Mass in ounces.
+///   - value: The mass measured in ounces.
 ///
 	public init(ounces value: Value) {
 		self = Mass(value, unit: .ounces)
 	}
 
-/// Initialize the measurement from ounces troy.
+/// Initialize the measurement from a mass measured in troy ounces.
+///
+/// One troy ounce is about 31.103 grams, used for precious metals.
 ///
 /// - Parameters:
-///   - value: The Mass in ounces troy.
+///   - value: The mass measured in troy ounces.
 ///
 	public init(ouncesTroy value: Value) {
 		self = Mass(value, unit: .ouncesTroy)
 	}
 
-/// Initialize the measurement from picograms.
+/// Initialize the measurement from a mass measured in picograms.
+///
+/// One picogram is 1⁄1,000,000,000,000 of a gram or 1⁄1,000 of a nanogram.
 ///
 /// - Parameters:
-///   - value: The Mass in picograms.
+///   - value: The mass measured in picograms.
 ///
 	public init(picograms value: Value) {
 		self = Mass(value, unit: .picograms)
 	}
 
-/// Initialize the measurement from pounds.
+/// Initialize the measurement from a mass measured in pounds.
+///
+/// One pound is 16 ounces or about 453.592 grams.
 ///
 /// - Parameters:
-///   - value: The Mass in pounds.
+///   - value: The mass measured in pounds.
 ///
 	public init(pounds value: Value) {
 		self = Mass(value, unit: .pounds)
 	}
 
-/// Initialize the measurement from short tons.
+/// Initialize the measurement from a mass measured in short tons.
+///
+/// One short ton (US ton) is 2,000 pounds or about 907.18 kilograms.
 ///
 /// - Parameters:
-///   - value: The Mass in short tons.
+///   - value: The mass measured in short tons.
 ///
 	public init(shortTons value: Value) {
 		self = Mass(value, unit: .shortTons)
 	}
 
-/// Initialize the measurement from slugs.
+/// Initialize the measurement from a mass measured in slugs.
+///
+/// One slug is about 14.5939 kilograms, used in physics to relate mass to
+/// force under Earth’s gravity.
 ///
 /// - Parameters:
-///   - value: The Mass in slugs.
+///   - value: The mass measured in slugs.
 ///
 	public init(slugs value: Value) {
 		self = Mass(value, unit: .slugs)
 	}
 
-/// Initialize the measurement from stones.
+/// Initialize the measurement from a mass measured in stones.
+///
+/// One stone is 14 pounds or about 6.35 kilograms, commonly used in the UK
+/// for body weight.
 ///
 /// - Parameters:
-///   - value: The Mass in stones.
+///   - value: The mass measured in stones.
 ///
 	public init(stones value: Value) {
 		self = Mass(value, unit: .stones)
@@ -705,7 +804,7 @@ extension Mass: Codable where Value: Codable {
 }
 
 extension Mass: Comparable where Value: Comparable {
-	public static func < (lhs: Mass<T>, rhs: Mass<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }
@@ -729,4 +828,3 @@ extension Mass: Measurement {
 extension Mass: Sendable where Value: Sendable {
 
 }
-

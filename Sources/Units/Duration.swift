@@ -6,19 +6,48 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
-/// TODO: INSERT DOCSTRING HERE
+/// A measurement representing the amount of time that passes between two
+/// events or moments.
 ///
-public struct Duration<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+/// Duration is stored as seconds, however it can be read and written in
+/// various units.
+///
+public struct Duration<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
+	/// One day contains 24 hours or 86,400 seconds.
+	///
 		case days
+		
+	/// One hour contains 60 minutes or 3,600 seconds.
+	///
 		case hours
+		
+	/// One microsecond is one millionth (1⁄1,000,000) of a second, or
+	/// 1,000 nanoseconds.
+	///
 		case microseconds
+	
+	/// One millisecond is one thousandth (1⁄1,000) of a second, or 1,000
+	/// microseconds.
+	///
 		case milliseconds
+		
+	/// One minute contains 60 seconds and there are 1,440 minutes in a day.
+	///
 		case minutes
+		
+	/// One nanosecond is one billionth (1⁄1,000,000,000) of a second, or
+	/// 1⁄1,000 of a microsecond.
+	///
 		case nanoseconds
+		
+	/// One picosecond is one trillionth (1⁄1,000,000,000,000) of a second,
+	/// or 1⁄1,000 of a nanosecond.
+	///
 		case picoseconds
+		
+	/// One second contains 1,000 milliseconds or 1,000,000 microseconds.
+	///
 		case seconds
 		
 		public static var base: Self {
@@ -28,185 +57,175 @@ public struct Duration<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .days:
-					return (value.magnitude == 1) ? "day" : "days"
+					(value.magnitude == 1) ? "day" : "days"
 			
 				case .hours:
-					return "hr"
+					"hr"
 
 				case .microseconds:
-					return "µs"
+					"µs"
 
 				case .milliseconds:
-					return "ms"
+					"ms"
 
 				case .minutes:
-					return "min"
+					"min"
 
 				case .nanoseconds:
-					return "ns"
+					"ns"
 
 				case .picoseconds:
-					return "ps"
+					"ps"
 
 				case .seconds:
-					return "s"
+					"s"
 			}
 		}
 		
-		public static func convert(value: Value, from: Duration<Value>.MeasurementUnit, to: Duration<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .days:
-						value * 86400.0
-				
-					case .hours:
-						value * 3600.0
-
-					case .microseconds:
-						value * 1e-06
-
-					case .milliseconds:
-						value * 0.001
-
-					case .minutes:
-						value * 60.0
-
-					case .nanoseconds:
-						value * 1e-09
-
-					case .picoseconds:
-						value * 1e-12
-
-					case .seconds:
-						value * 1.0
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .days:
-					return base * 1.1574074074074073e-05
+					86400.0
 			
 				case .hours:
-					return base * 0.0002777777777777778
+					3600.0
 
 				case .microseconds:
-					return base * 1000000.0
+					1e-06
 
 				case .milliseconds:
-					return base * 1000.0
+					0.001
 
 				case .minutes:
-					return base * 0.016666666666666666
+					60.0
 
 				case .nanoseconds:
-					return base * 999999999.9999999
+					1e-09
 
 				case .picoseconds:
-					return base * 1000000000000.0
+					1e-12
 
 				case .seconds:
-					return base * 1.0
+					1.0
 			}
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Duration {
-/// Initialize the measurement from a duration in days.
+/// Initialize the duration from a value in days.
+///
+/// One day contains 24 hours or 86,400 seconds.
 ///
 /// - Parameters:
 ///   - value: The duration in days.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func days(_ value: Value) -> Self {
 		Self(value, unit: .days)
 	}
 
-/// Initialize the measurement from a duration in hours.
+/// Initialize the duration from a value in hours.
+///
+/// One hour contains 60 minutes or 3,600 seconds.
 ///
 /// - Parameters:
 ///   - value: The duration in hours.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func hours(_ value: Value) -> Self {
 		Self(value, unit: .hours)
 	}
 
-/// Initialize the measurement from a duration in microseconds.
+/// Initialize the duration from a value in microseconds.
+///
+/// One microsecond is one millionth (1⁄1,000,000) of a second, or 1,000
+/// nanoseconds.
 ///
 /// - Parameters:
 ///   - value: The duration in microseconds.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func microseconds(_ value: Value) -> Self {
 		Self(value, unit: .microseconds)
 	}
 
-/// Initialize the measurement from a duration in milliseconds.
+/// Initialize the duration from a value in milliseconds.
+///
+/// One millisecond is one thousandth (1⁄1,000) of a second, or 1,000
+/// microseconds.
 ///
 /// - Parameters:
 ///   - value: The duration in milliseconds.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func milliseconds(_ value: Value) -> Self {
 		Self(value, unit: .milliseconds)
 	}
 
-/// Initialize the measurement from a duration in minutes.
+/// Initialize the duration from a value in minutes.
+///
+/// One minute contains 60 seconds and there are 1,440 minutes in a day.
 ///
 /// - Parameters:
 ///   - value: The duration in minutes.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func minutes(_ value: Value) -> Self {
 		Self(value, unit: .minutes)
 	}
 
-/// Initialize the measurement from a duration in nanoseconds.
+/// Initialize the duration from a value in nanoseconds.
+///
+/// One nanosecond is one billionth (1⁄1,000,000,000) of a second, or
+/// 1⁄1,000 of a microsecond.
 ///
 /// - Parameters:
 ///   - value: The duration in nanoseconds.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func nanoseconds(_ value: Value) -> Self {
 		Self(value, unit: .nanoseconds)
 	}
 
-/// Initialize the measurement from a duration in picoseconds.
+/// Initialize the duration from a value in picoseconds.
+///
+/// One picosecond is one trillionth (1⁄1,000,000,000,000) of a second,
+/// or 1⁄1,000 of a nanosecond.
 ///
 /// - Parameters:
 ///   - value: The duration in picoseconds.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func picoseconds(_ value: Value) -> Self {
 		Self(value, unit: .picoseconds)
 	}
 
-/// Initialize the measurement from a duration in seconds.
+/// Initialize the duration from a value in seconds.
+///
+/// One second contains 1,000 milliseconds or 1,000,000 microseconds.
 ///
 /// - Parameters:
 ///   - value: The duration in seconds.
 ///
-/// - Returns: The measurement of the provided duration.
+/// - Returns: The measurement representing the provided duration.
 ///
 	public static func seconds(_ value: Value) -> Self {
 		Self(value, unit: .seconds)
 	}
 
-/// The measurement in days.
+/// The duration measured in days.
+///
+/// One day contains 24 hours or 86,400 seconds.
 ///
 	public var days: Value {
 		get {
@@ -217,7 +236,9 @@ extension Duration {
 		}
 	}
 
-/// The measurement in hours.
+/// The duration measured in hours.
+///
+/// One hour contains 60 minutes or 3,600 seconds.
 ///
 	public var hours: Value {
 		get {
@@ -228,7 +249,10 @@ extension Duration {
 		}
 	}
 
-/// The measurement in microseconds.
+/// The duration measured in microseconds.
+///
+/// One microsecond is one millionth (1⁄1,000,000) of a second, or 1,000
+/// nanoseconds.
 ///
 	public var microseconds: Value {
 		get {
@@ -239,7 +263,10 @@ extension Duration {
 		}
 	}
 
-/// The measurement in milliseconds.
+/// The duration measured in milliseconds.
+///
+/// One millisecond is one thousandth (1⁄1,000) of a second, or 1,000
+/// microseconds.
 ///
 	public var milliseconds: Value {
 		get {
@@ -250,7 +277,9 @@ extension Duration {
 		}
 	}
 
-/// The measurement in minutes.
+/// The duration measured in minutes.
+///
+/// One minute contains 60 seconds and there are 1,440 minutes in a day.
 ///
 	public var minutes: Value {
 		get {
@@ -261,7 +290,10 @@ extension Duration {
 		}
 	}
 
-/// The measurement in nanoseconds.
+/// The duration measured in nanoseconds.
+///
+/// One nanosecond is one billionth (1⁄1,000,000,000) of a second, or
+/// 1⁄1,000 of a microsecond.
 ///
 	public var nanoseconds: Value {
 		get {
@@ -272,7 +304,10 @@ extension Duration {
 		}
 	}
 
-/// The measurement in picoseconds.
+/// The duration measured in picoseconds.
+///
+/// One picosecond is one trillionth (1⁄1,000,000,000,000) of a second,
+/// or 1⁄1,000 of a nanosecond.
 ///
 	public var picoseconds: Value {
 		get {
@@ -283,7 +318,9 @@ extension Duration {
 		}
 	}
 
-/// The measurement in seconds.
+/// The duration measured in seconds.
+///
+/// One second contains 1,000 milliseconds or 1,000,000 microseconds.
 ///
 	public var seconds: Value {
 		get {
@@ -294,73 +331,93 @@ extension Duration {
 		}
 	}
 
-/// Initialize the measurement from days.
+/// Initialize the measurement from a duration measured in days.
+///
+/// One day contains 24 hours or 86,400 seconds.
 ///
 /// - Parameters:
-///   - value: The duration in days.
+///   - value: The duration measured in days.
 ///
 	public init(days value: Value) {
 		self = Duration(value, unit: .days)
 	}
 
-/// Initialize the measurement from hours.
+/// Initialize the measurement from a duration measured in hours.
+///
+/// One hour contains 60 minutes or 3,600 seconds.
 ///
 /// - Parameters:
-///   - value: The duration in hours.
+///   - value: The duration measured in hours.
 ///
 	public init(hours value: Value) {
 		self = Duration(value, unit: .hours)
 	}
 
-/// Initialize the measurement from microseconds.
+/// Initialize the measurement from a duration measured in microseconds.
+///
+/// One microsecond is one millionth (1⁄1,000,000) of a second, or 1,000
+/// nanoseconds.
 ///
 /// - Parameters:
-///   - value: The duration in microseconds.
+///   - value: The duration measured in microseconds.
 ///
 	public init(microseconds value: Value) {
 		self = Duration(value, unit: .microseconds)
 	}
 
-/// Initialize the measurement from milliseconds.
+/// Initialize the measurement from a duration measured in milliseconds.
+///
+/// One millisecond is one thousandth (1⁄1,000) of a second, or 1,000
+/// microseconds.
 ///
 /// - Parameters:
-///   - value: The duration in milliseconds.
+///   - value: The duration measured in milliseconds.
 ///
 	public init(milliseconds value: Value) {
 		self = Duration(value, unit: .milliseconds)
 	}
 
-/// Initialize the measurement from minutes.
+/// Initialize the measurement from a duration measured in minutes.
+///
+/// One minute contains 60 seconds and there are 1,440 minutes in a day.
 ///
 /// - Parameters:
-///   - value: The duration in minutes.
+///   - value: The duration measured in minutes.
 ///
 	public init(minutes value: Value) {
 		self = Duration(value, unit: .minutes)
 	}
 
-/// Initialize the measurement from nanoseconds.
+/// Initialize the measurement from a duration measured in nanoseconds.
+///
+/// One nanosecond is one billionth (1⁄1,000,000,000) of a second, or
+/// 1⁄1,000 of a microsecond.
 ///
 /// - Parameters:
-///   - value: The duration in nanoseconds.
+///   - value: The duration measured in nanoseconds.
 ///
 	public init(nanoseconds value: Value) {
 		self = Duration(value, unit: .nanoseconds)
 	}
 
-/// Initialize the measurement from picoseconds.
+/// Initialize the measurement from a duration measured in picoseconds.
+///
+/// One picosecond is one trillionth (1⁄1,000,000,000,000) of a second,
+/// or 1⁄1,000 of a nanosecond.
 ///
 /// - Parameters:
-///   - value: The duration in picoseconds.
+///   - value: The duration measured in picoseconds.
 ///
 	public init(picoseconds value: Value) {
 		self = Duration(value, unit: .picoseconds)
 	}
 
-/// Initialize the measurement from seconds.
+/// Initialize the measurement from a duration measured in seconds.
+///
+/// One second contains 1,000 milliseconds or 1,000,000 microseconds.
 ///
 /// - Parameters:
-///   - value: The duration in seconds.
+///   - value: The duration measured in seconds.
 ///
 	public init(seconds value: Value) {
 		self = Duration(value, unit: .seconds)
@@ -372,7 +429,7 @@ extension Duration: Codable where Value: Codable {
 }
 
 extension Duration: Comparable where Value: Comparable {
-	public static func < (lhs: Duration<T>, rhs: Duration<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

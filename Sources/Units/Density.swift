@@ -10,10 +10,8 @@
 ///
 /// Density is stored as kilograms per cubic meter.
 ///
-public struct Density<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-
+public struct Density<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
 	/// One kilogram per cubic meter represents the mass of one kilogram
 	/// evenly distributed throughout one cubic meter of volume.
 	///
@@ -29,34 +27,28 @@ public struct Density<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .kilogramsPerCubicMeter:
-					return "kg/m³"
+					"kg/m³"
 			}
 		}
 		
-		public static func convert(value: Value, from: Density<Value>.MeasurementUnit, to: Density<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .kilogramsPerCubicMeter:
-						value * 1.0
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .kilogramsPerCubicMeter:
-					return base * 1.0
+					1.0
 			}
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Density {
 /// Initialize the density using a value in kilograms per cubic meter.
+///
+/// One kilogram per cubic meter represents the mass of one kilogram
+/// evenly distributed throughout one cubic meter of volume.
+///
+/// Water has a density of approximately 1,000 kilograms per cubic meter.
 ///
 /// - Parameters:
 ///   - value: The density in kilograms per cubic meter.
@@ -83,7 +75,7 @@ extension Density {
 		}
 	}
 
-/// Initialize the measurement from an density measured in kilograms per
+/// Initialize the measurement from a density measured in kilograms per
 /// cubic meter.
 ///
 /// One kilogram per cubic meter represents the mass of one kilogram evenly
@@ -104,7 +96,7 @@ extension Density: Codable where Value: Codable {
 }
 
 extension Density: Comparable where Value: Comparable {
-	public static func < (lhs: Density<T>, rhs: Density<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

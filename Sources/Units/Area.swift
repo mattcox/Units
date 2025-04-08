@@ -11,10 +11,8 @@
 /// Areas are stored as square meters, however they can be read and written in
 /// various units.
 ///
-public struct Area<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Area<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
 	/// One acre contains 43,560 square feet or about 4,047 square meters.
 	///
 		case acres
@@ -28,7 +26,8 @@ public struct Area<T: BinaryFloatingPoint> {
 	///
 		case squareCentimeters
 		
-	/// One square foot contains 144 square inches and 9 fit in a square yard.
+	/// One square foot contains 144 square inches and 9 fit in a square
+	/// yard.
 	///
 		case squareFeet
 		
@@ -77,142 +76,97 @@ public struct Area<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .acres:
-					return "ac"
+					"ac"
 
 				case .hectares:
-					return "ha"
+					"ha"
 
 				case .squareCentimeters:
-					return "cm²"
+					"cm²"
 
 				case .squareFeet:
-					return "ft²"
+					"ft²"
 
 				case .squareInches:
-					return "in²"
+					"in²"
 
 				case .squareKilometers:
-					return "km²"
+					"km²"
 
 				case .squareMegameters:
-					return "Mm²"
+					"Mm²"
 
 				case .squareMeters:
-					return "m²"
+					"m²"
 
 				case .squareMicrometers:
-					return "µm²"
+					"µm²"
 
 				case .squareMiles:
-					return "mi²"
+					"mi²"
 
 				case .squareMillimeters:
-					return "mm²"
+					"mm²"
 
 				case .squareNanometers:
-					return "nm²"
+					"nm²"
 
 				case .squareYards:
-					return "yd²"
+					"yd²"
 			}
 		}
 		
-		public static func convert(value: Value, from: Area<Value>.MeasurementUnit, to: Area<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .acres:
-						value * 4046.8564224
-
-					case .hectares:
-						value * 10000.0
-
-					case .squareCentimeters:
-						value * 0.0001
-
-					case .squareFeet:
-						value * 0.09290304
-
-					case .squareInches:
-						value * 0.00064516
-
-					case .squareKilometers:
-						value * 1000000.0
-
-					case .squareMegameters:
-						value * 1000000000000.0
-
-					case .squareMeters:
-						value * 1.0
-
-					case .squareMicrometers:
-						value * 1e-12
-
-					case .squareMiles:
-						value * 2589988.110336
-
-					case .squareMillimeters:
-						value * 1e-06
-
-					case .squareNanometers:
-						value * 1e-18
-
-					case .squareYards:
-						value * 0.83612736
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .acres:
-					return base * 0.0002471053814671653
+					4046.8564224
 
 				case .hectares:
-					return base * 0.0001
+					10000.0
 
 				case .squareCentimeters:
-					return base * 10000.0
+					0.0001
 
 				case .squareFeet:
-					return base * 10.763910416709722
+					0.09290304
 
 				case .squareInches:
-					return base * 1550.0031000062002
+					0.00064516
 
 				case .squareKilometers:
-					return base * 1e-06
+					1000000.0
 
 				case .squareMegameters:
-					return base * 1e-12
+					1000000000000.0
 
 				case .squareMeters:
-					return base * 1.0
+					1.0
 
 				case .squareMicrometers:
-					return base * 1000000000000.0
+					1e-12
 
 				case .squareMiles:
-					return base * 3.861021585424458e-07
+					2589988.110336
 
 				case .squareMillimeters:
-					return base * 1000000.0
+					1e-06
 
 				case .squareNanometers:
-					return base * 9.999999999999999e+17
+					1e-18
 
 				case .squareYards:
-					return base * 1.1959900463010802
+					0.83612736
 			}
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Area {
 /// Initialize the area using a value in acres.
+///
+/// One acre contains 43,560 square feet or about 4,047 square meters.
 ///
 /// - Parameters:
 ///   - value: The area in acres.
@@ -225,6 +179,8 @@ extension Area {
 
 /// Initialize the area using a value in hectares.
 ///
+/// One hectare contains 2.471 acres or 10,000 square meters.
+///
 /// - Parameters:
 ///   - value: The area in hectares.
 ///
@@ -235,6 +191,9 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square centimeters.
+///
+/// One square centimeter contains 100 square millimeters and 100 of them
+/// fit in a square decimeter.
 ///
 /// - Parameters:
 ///   - value: The area in square centimeters.
@@ -247,6 +206,8 @@ extension Area {
 
 /// Initialize the area using a value in square feet.
 ///
+/// One square foot contains 144 square inches and 9 fit in a square yard.
+///
 /// - Parameters:
 ///   - value: The area in square feet.
 ///
@@ -257,6 +218,8 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square inches.
+///
+/// One square inch is 1⁄144 of a square foot.
 ///
 /// - Parameters:
 ///   - value: The area in square inches.
@@ -269,6 +232,8 @@ extension Area {
 
 /// Initialize the area using a value in square kilometers.
 ///
+/// One square kilometer contains 100 hectares or 0.386 square miles.
+///
 /// - Parameters:
 ///   - value: The area in square kilometers.
 ///
@@ -279,6 +244,8 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square megameters.
+///
+/// One square megameter contains 1,000,000 square kilometers.
 ///
 /// - Parameters:
 ///   - value: The area in square megameters.
@@ -291,6 +258,9 @@ extension Area {
 
 /// Initialize the area using a value in square meters.
 ///
+/// One square meter contains 10,000 square centimeters or 1.196 square
+/// yards.
+///
 /// - Parameters:
 ///   - value: The area in square meters.
 ///
@@ -301,6 +271,8 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square micrometers.
+///
+/// One square micrometer is one millionth of a square millimeter.
 ///
 /// - Parameters:
 ///   - value: The area in square micrometers.
@@ -313,6 +285,8 @@ extension Area {
 
 /// Initialize the area using a value in square miles.
 ///
+/// One square mile is 640 acres or 2.59 square kilometers.
+///
 /// - Parameters:
 ///   - value: The area in square miles.
 ///
@@ -323,6 +297,9 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square millimeters.
+///
+/// One square millimeter contains 1,000,000 square nanometers and 100 fit
+/// in a square centimeter.
 ///
 /// - Parameters:
 ///   - value: The area in square millimeters.
@@ -335,6 +312,8 @@ extension Area {
 
 /// Initialize the area using a value in square nanometers.
 ///
+/// One square millimeter contains one trillion square nanometers.
+///
 /// - Parameters:
 ///   - value: The area in square nanometers.
 ///
@@ -345,6 +324,8 @@ extension Area {
 	}
 
 /// Initialize the area using a value in square yards.
+///
+/// One square yard is 9 square feet or 0.836 square meters.
 ///
 /// - Parameters:
 ///   - value: The area in square yards.
@@ -679,7 +660,7 @@ extension Area: Codable where Value: Codable {
 }
 
 extension Area: Comparable where Value: Comparable {
-	public static func < (lhs: Area<T>, rhs: Area<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

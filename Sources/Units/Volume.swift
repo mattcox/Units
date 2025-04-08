@@ -10,42 +10,145 @@
 /// by a substance or object.
 ///
 /// Volume is stored as litres, however it can be read and written in various
-/// units representing a volume.
+/// units.
 ///
-public struct Volume<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Volume<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
+	/// One acre-foot is about 1,233.5 cubic meters, the volume of water
+	/// covering one acre to a depth of one foot.
+	///
 		case acreFeet
+
+	/// One bushel is approximately 35.24 liters, used mainly for dry goods
+	/// like grain.
+	///
 		case bushels
+
+	/// One centiliter is 1⁄100 of a liter or 10 milliliters.
+	///
 		case centiliters
+
+	/// One cubic centimeter is equal to 1 milliliter or 1⁄1,000,000 of a
+	/// cubic meter.
+	///
 		case cubicCentimeters
+
+	/// One cubic decimeter is equal to 1 liter or 1,000 cubic centimeters.
+	///
 		case cubicDecimeters
+
+	/// One cubic foot is about 28.32 liters or 1,728 cubic inches.
+	///
 		case cubicFeet
+
+	/// One cubic inch is approximately 16.39 milliliters or 1⁄61 of a liter.
+	///
 		case cubicInches
+
+	/// One cubic kilometer is 1,000,000,000,000 liters or 1 billion cubic
+	/// meters.
+	///
 		case cubicKilometers
+
+	/// One cubic meter is the base SI unit of volume, equal to 1,000 liters
+	/// or 1,000,000 cubic centimeters.
+	///
 		case cubicMeters
+
+	/// One cubic mile is about 4.17 billion cubic meters or 1.1 trillion
+	/// gallons.
+	///
 		case cubicMiles
+
+	/// One cubic millimeter is 1⁄1,000,000 of a liter or 1⁄1,000 of a cubic
+	/// centimeter.
+	///
 		case cubicMillimeters
+
+	/// One cubic yard is about 764.55 liters or 27 cubic feet.
+	///
 		case cubicYards
+
+	/// One cup is typically 240 milliliters in US measurement, used for
+	/// cooking and serving sizes.
+	///
 		case cups
+
+	/// One deciliter is 1⁄10 of a liter or 100 milliliters.
+	///
 		case deciliters
+
+	/// One fluid ounce (US) is about 29.57 milliliters or 1⁄128 of a
+	/// gallon.
+	///
 		case fluidOunces
+
+	/// One gallon (US) is 3.785 liters or 128 fluid ounces.
+	///
 		case gallons
+
+	/// One imperial fluid ounce is about 28.41 milliliters, slightly larger
+	/// than the US fluid ounce.
+	///
 		case imperialFluidOunces
+
+	/// One imperial gallon is 4.546 liters or 160 imperial fluid ounces.
+	///
 		case imperialGallons
+
+	/// One imperial pint is 568 milliliters or 20 imperial fluid ounces.
+	///
 		case imperialPints
+
+	/// One imperial quart is 1.136 liters or 2 imperial pints.
+	///
 		case imperialQuarts
+
+	/// One imperial tablespoon is 17.76 milliliters or 3 imperial
+	/// teaspoons.
+	///
 		case imperialTablespoons
+
+	/// One imperial teaspoon is 5.92 milliliters, slightly larger than a US
+	/// teaspoon.
+	///
 		case imperialTeaspoons
+
+	/// One kiloliter is 1,000 liters or one cubic meter.
+	///
 		case kiloliters
+
+	/// One liter is 1,000 milliliters or one cubic decimeter.
+	///
 		case liters
+
+	/// One megaliter is 1,000,000 liters or 1,000 cubic meters.
+	///
 		case megaliters
+
+	/// One metric cup is 250 milliliters, used in Australian and New
+	/// Zealand recipes.
+	///
 		case metricCups
+
+	/// One milliliter is 1⁄1,000 of a liter or one cubic centimeter.
+	///
 		case milliliters
+
+	/// One pint (US) is 473 milliliters or 16 fluid ounces.
+	///
 		case pints
+
+	/// One quart (US) is 946 milliliters or 2 pints.
+	///
 		case quarts
+
+	/// One tablespoon (US) is about 14.79 milliliters or 3 teaspoons.
+	///
 		case tablespoons
+
+	/// One teaspoon (US) is about 4.93 milliliters.
+	///
 		case teaspoons
 		
 		public static var base: Self {
@@ -55,646 +158,620 @@ public struct Volume<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .acreFeet:
-					return "af"
+					"af"
 
 				case .bushels:
-					return "bsh"
+					"bsh"
 
 				case .centiliters:
-					return "cL"
+					"cL"
 
 				case .cubicCentimeters:
-					return "cm³"
+					"cm³"
 
 				case .cubicDecimeters:
-					return "dm³"
+					"dm³"
 
 				case .cubicFeet:
-					return "ft³"
+					"ft³"
 
 				case .cubicInches:
-					return "in³"
+					"in³"
 
 				case .cubicKilometers:
-					return "km³"
+					"km³"
 
 				case .cubicMeters:
-					return "m³"
+					"m³"
 
 				case .cubicMiles:
-					return "mi³"
+					"mi³"
 
 				case .cubicMillimeters:
-					return "mm³"
+					"mm³"
 
 				case .cubicYards:
-					return "yd³"
+					"yd³"
 
 				case .cups:
-					return "cup"
+					"cup"
 
 				case .deciliters:
-					return "dL"
+					"dL"
 
 				case .fluidOunces:
-					return "fl oz"
+					"fl oz"
 
 				case .gallons:
-					return "gal"
+					"gal"
 
 				case .imperialFluidOunces:
-					return "fl oz"
+					"fl oz"
 
 				case .imperialGallons:
-					return "gal"
+					"gal"
 
 				case .imperialPints:
-					return "pt"
+					"pt"
 
 				case .imperialQuarts:
-					return "qt"
+					"qt"
 
 				case .imperialTablespoons:
-					return "tbsp"
+					"tbsp"
 
 				case .imperialTeaspoons:
-					return "tsp"
+					"tsp"
 
 				case .kiloliters:
-					return "kL"
+					"kL"
 
 				case .liters:
-					return "L"
+					"L"
 
 				case .megaliters:
-					return "ML"
+					"ML"
 
 				case .metricCups:
-					return "metric cup"
+					"metric cup"
 
 				case .milliliters:
-					return "mL"
+					"mL"
 
 				case .pints:
-					return "pt"
+					"pt"
 
 				case .quarts:
-					return "qt"
+					"qt"
 
 				case .tablespoons:
-					return "tbsp"
+					"tbsp"
 
 				case .teaspoons:
-					return "tsp"
+					"tsp"
 			}
 		}
 		
-		public static func convert(value: Value, from: Volume<Value>.MeasurementUnit, to: Volume<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .acreFeet:
-						value * 1233000.0
-
-					case .bushels:
-						value * 35.2391
-
-					case .centiliters:
-						value * 0.01
-
-					case .cubicCentimeters:
-						value * 0.001
-
-					case .cubicDecimeters:
-						value * 1.0
-
-					case .cubicFeet:
-						value * 28.3168
-
-					case .cubicInches:
-						value * 0.0163871
-
-					case .cubicKilometers:
-						value * 1000000000000.0
-
-					case .cubicMeters:
-						value * 1000.0
-
-					case .cubicMiles:
-						value * 4168000000000.0
-
-					case .cubicMillimeters:
-						value * 1e-06
-
-					case .cubicYards:
-						value * 764.555
-
-					case .cups:
-						value * 0.24
-
-					case .deciliters:
-						value * 0.1
-
-					case .fluidOunces:
-						value * 0.0295735
-
-					case .gallons:
-						value * 3.78541
-
-					case .imperialFluidOunces:
-						value * 0.0284131
-
-					case .imperialGallons:
-						value * 4.54609
-
-					case .imperialPints:
-						value * 0.568261
-
-					case .imperialQuarts:
-						value * 1.13652
-
-					case .imperialTablespoons:
-						value * 0.0177582
-
-					case .imperialTeaspoons:
-						value * 0.00591939
-
-					case .kiloliters:
-						value * 1000.0
-
-					case .liters:
-						value * 1.0
-
-					case .megaliters:
-						value * 1000000.0
-
-					case .metricCups:
-						value * 0.25
-
-					case .milliliters:
-						value * 0.001
-
-					case .pints:
-						value * 0.473176
-
-					case .quarts:
-						value * 0.946353
-
-					case .tablespoons:
-						value * 0.0147868
-
-					case .teaspoons:
-						value * 0.00492892
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .acreFeet:
-					return base * 8.110300081103001e-07
+					1233000.0
 
 				case .bushels:
-					return base * 0.02837756923417454
+					35.2391
 
 				case .centiliters:
-					return base * 100.0
+					0.01
 
 				case .cubicCentimeters:
-					return base * 1000.0
+					0.001
 
 				case .cubicDecimeters:
-					return base * 1.0
+					1.0
 
 				case .cubicFeet:
-					return base * 0.035314724827664144
+					28.3168
 
 				case .cubicInches:
-					return base * 61.02361003472243
+					0.0163871
 
 				case .cubicKilometers:
-					return base * 1e-12
+					1000000000000.0
 
 				case .cubicMeters:
-					return base * 0.001
+					1000.0
 
 				case .cubicMiles:
-					return base * 2.399232245681382e-13
+					4168000000000.0
 
 				case .cubicMillimeters:
-					return base * 1000000.0
+					1e-06
 
 				case .cubicYards:
-					return base * 0.001307950376362721
+					764.555
 
 				case .cups:
-					return base * 4.166666666666667
+					0.24
 
 				case .deciliters:
-					return base * 10.0
+					0.1
 
 				case .fluidOunces:
-					return base * 33.81405650328842
+					0.0295735
 
 				case .gallons:
-					return base * 0.26417217685798894
+					3.78541
 
 				case .imperialFluidOunces:
-					return base * 35.19503327690396
+					0.0284131
 
 				case .imperialGallons:
-					return base * 0.21996924829908776
+					4.54609
 
 				case .imperialPints:
-					return base * 1.759754760576566
+					0.568261
 
 				case .imperialQuarts:
-					return base * 0.8798789286594165
+					1.13652
 
 				case .imperialTablespoons:
-					return base * 56.31201360498249
+					0.0177582
 
 				case .imperialTeaspoons:
-					return base * 168.93632620928847
+					0.00591939
 
 				case .kiloliters:
-					return base * 0.001
+					1000.0
 
 				case .liters:
-					return base * 1.0
+					1.0
 
 				case .megaliters:
-					return base * 1e-06
+					1000000.0
 
 				case .metricCups:
-					return base * 4.0
+					0.25
 
 				case .milliliters:
-					return base * 1000.0
+					0.001
 
 				case .pints:
-					return base * 2.1133785314555262
+					0.473176
 
 				case .quarts:
-					return base * 1.0566881491367386
+					0.946353
 
 				case .tablespoons:
-					return base * 67.62788432926665
+					0.0147868
 
 				case .teaspoons:
-					return base * 202.88420181297323
+					0.00492892
 			}
-	
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Volume {
-/// Initialize the measurement from a volume in acre feet.
+/// Initialize the volume using a value in acre feet.
+///
+/// One acre-foot is about 1,233.5 cubic meters, the volume of water
+/// covering one acre to a depth of one foot.
 ///
 /// - Parameters:
 ///   - value: The volume in acre feet.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func acreFeet(_ value: Value) -> Self {
 		Self(value, unit: .acreFeet)
 	}
 
-/// Initialize the measurement from a volume in bushels.
+/// Initialize the volume using a value in bushels.
+///
+/// One bushel is approximately 35.24 liters, used mainly for dry goods like
+/// grain.
 ///
 /// - Parameters:
 ///   - value: The volume in bushels.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func bushels(_ value: Value) -> Self {
 		Self(value, unit: .bushels)
 	}
 
-/// Initialize the measurement from a volume in centiliters.
+/// Initialize the volume using a value in centiliters.
+///
+/// One centiliter is 1⁄100 of a liter or 10 milliliters.
 ///
 /// - Parameters:
 ///   - value: The volume in centiliters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func centiliters(_ value: Value) -> Self {
 		Self(value, unit: .centiliters)
 	}
 
-/// Initialize the measurement from a volume in cubic centimeters.
+/// Initialize the volume using a value in cubic centimeters.
+///
+/// One cubic centimeter is equal to 1 milliliter or 1⁄1,000,000 of a cubic
+/// meter.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic centimeters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicCentimeters(_ value: Value) -> Self {
 		Self(value, unit: .cubicCentimeters)
 	}
 
-/// Initialize the measurement from a volume in cubic decimeters.
+/// Initialize the volume using a value in cubic decimeters.
+///
+/// One cubic decimeter is equal to 1 liter or 1,000 cubic centimeters.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic decimeters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicDecimeters(_ value: Value) -> Self {
 		Self(value, unit: .cubicDecimeters)
 	}
 
-/// Initialize the measurement from a volume in cubic feet.
+/// Initialize the volume using a value in cubic feet.
+///
+/// One cubic foot is about 28.32 liters or 1,728 cubic inches.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic feet.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicFeet(_ value: Value) -> Self {
 		Self(value, unit: .cubicFeet)
 	}
 
-/// Initialize the measurement from a volume in cubic inches.
+/// Initialize the volume using a value in cubic inches.
+///
+/// One cubic inch is approximately 16.39 milliliters or 1⁄61 of a liter.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic inches.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicInches(_ value: Value) -> Self {
 		Self(value, unit: .cubicInches)
 	}
 
-/// Initialize the measurement from a volume in cubic kilometers.
+/// Initialize the volume using a value in cubic kilometers.
+///
+/// One cubic kilometer is 1,000,000,000,000 liters or 1 billion cubic
+/// meters.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic kilometers.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicKilometers(_ value: Value) -> Self {
 		Self(value, unit: .cubicKilometers)
 	}
 
-/// Initialize the measurement from a volume in cubic meters.
+/// Initialize the volume using a value in cubic meters.
+///
+/// One cubic meter is the base SI unit of volume, equal to 1,000 liters or
+/// 1,000,000 cubic centimeters.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic meters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicMeters(_ value: Value) -> Self {
 		Self(value, unit: .cubicMeters)
 	}
 
-/// Initialize the measurement from a volume in cubic miles.
+/// Initialize the volume using a value in cubic miles.
+///
+/// One cubic mile is about 4.17 billion cubic meters or 1.1 trillion
+/// gallons.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic miles.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicMiles(_ value: Value) -> Self {
 		Self(value, unit: .cubicMiles)
 	}
 
-/// Initialize the measurement from a volume in cubic millimeters.
+/// Initialize the volume using a value in cubic millimeters.
+///
+/// One cubic millimeter is 1⁄1,000,000 of a liter or 1⁄1,000 of a cubic
+/// centimeter.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic millimeters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicMillimeters(_ value: Value) -> Self {
 		Self(value, unit: .cubicMillimeters)
 	}
 
-/// Initialize the measurement from a volume in cubic yards.
+/// Initialize the volume using a value in cubic yards.
+///
+/// One cubic yard is about 764.55 liters or 27 cubic feet.
 ///
 /// - Parameters:
 ///   - value: The volume in cubic yards.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cubicYards(_ value: Value) -> Self {
 		Self(value, unit: .cubicYards)
 	}
 
-/// Initialize the measurement from a volume in cups.
+/// Initialize the volume using a value in cups.
+///
+/// One cup is typically 240 milliliters in US measurement, used for cooking
+/// and serving sizes.
 ///
 /// - Parameters:
 ///   - value: The volume in cups.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func cups(_ value: Value) -> Self {
 		Self(value, unit: .cups)
 	}
 
-/// Initialize the measurement from a volume in deciliters.
+/// Initialize the volume using a value in deciliters.
+///
+/// One deciliter is 1⁄10 of a liter or 100 milliliters.
 ///
 /// - Parameters:
 ///   - value: The volume in deciliters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func deciliters(_ value: Value) -> Self {
 		Self(value, unit: .deciliters)
 	}
 
-/// Initialize the measurement from a volume in fluid ounces.
+/// Initialize the volume using a value in fluid ounces.
+///
+/// One fluid ounce (US) is about 29.57 milliliters or 1⁄128 of a gallon.
 ///
 /// - Parameters:
 ///   - value: The volume in fluid ounces.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func fluidOunces(_ value: Value) -> Self {
 		Self(value, unit: .fluidOunces)
 	}
 
-/// Initialize the measurement from a volume in gallons.
+/// Initialize the volume using a value in gallons.
+///
+/// One gallon (US) is 3.785 liters or 128 fluid ounces.
 ///
 /// - Parameters:
 ///   - value: The volume in gallons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func gallons(_ value: Value) -> Self {
 		Self(value, unit: .gallons)
 	}
 
-/// Initialize the measurement from a volume in imperial fluid ounces.
+/// Initialize the volume using a value in imperial fluid ounces.
+///
+/// One imperial fluid ounce is about 28.41 milliliters, slightly larger
+/// than the US fluid ounce.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial fluid ounces.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialFluidOunces(_ value: Value) -> Self {
 		Self(value, unit: .imperialFluidOunces)
 	}
 
-/// Initialize the measurement from a volume in imperial gallons.
+/// Initialize the volume using a value in imperial gallons.
+///
+/// One imperial gallon is 4.546 liters or 160 imperial fluid ounces.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial gallons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialGallons(_ value: Value) -> Self {
 		Self(value, unit: .imperialGallons)
 	}
 
-/// Initialize the measurement from a volume in imperial pints.
+/// Initialize the volume using a value in imperial pints.
+///
+/// One imperial pint is 568 milliliters or 20 imperial fluid ounces.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial pints.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialPints(_ value: Value) -> Self {
 		Self(value, unit: .imperialPints)
 	}
 
-/// Initialize the measurement from a volume in imperial quarts.
+/// Initialize the volume using a value in imperial quarts.
+///
+/// One imperial quart is 1.136 liters or 2 imperial pints.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial quarts.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialQuarts(_ value: Value) -> Self {
 		Self(value, unit: .imperialQuarts)
 	}
 
-/// Initialize the measurement from a volume in imperial tablespoons.
+/// Initialize the volume using a value in imperial tablespoons.
+///
+/// One imperial tablespoon is 17.76 milliliters or 3 imperial teaspoons.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial tablespoons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialTablespoons(_ value: Value) -> Self {
 		Self(value, unit: .imperialTablespoons)
 	}
 
-/// Initialize the measurement from a volume in imperial teaspoons.
+/// Initialize the volume using a value in imperial teaspoons.
+///
+/// One imperial teaspoon is 5.92 milliliters, slightly larger than a US
+/// teaspoon.
 ///
 /// - Parameters:
 ///   - value: The volume in imperial teaspoons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func imperialTeaspoons(_ value: Value) -> Self {
 		Self(value, unit: .imperialTeaspoons)
 	}
 
-/// Initialize the measurement from a volume in kiloliters.
+/// Initialize the volume using a value in kiloliters.
+///
+/// One kiloliter is 1,000 liters or one cubic meter.
 ///
 /// - Parameters:
 ///   - value: The volume in kiloliters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func kiloliters(_ value: Value) -> Self {
 		Self(value, unit: .kiloliters)
 	}
 
-/// Initialize the measurement from a volume in liters.
+/// Initialize the volume using a value in liters.
+///
+/// One liter is 1,000 milliliters or one cubic decimeter.
 ///
 /// - Parameters:
 ///   - value: The volume in liters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func liters(_ value: Value) -> Self {
 		Self(value, unit: .liters)
 	}
 
-/// Initialize the measurement from a volume in megaliters.
+/// Initialize the volume using a value in megaliters.
+///
+/// One megaliter is 1,000,000 liters or 1,000 cubic meters.
 ///
 /// - Parameters:
 ///   - value: The volume in megaliters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func megaliters(_ value: Value) -> Self {
 		Self(value, unit: .megaliters)
 	}
 
-/// Initialize the measurement from a volume in metric cups.
+/// Initialize the volume using a value in metric cups.
+///
+/// One metric cup is 250 milliliters, used in Australian and New Zealand
+/// recipes.
 ///
 /// - Parameters:
 ///   - value: The volume in metric cups.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func metricCups(_ value: Value) -> Self {
 		Self(value, unit: .metricCups)
 	}
 
-/// Initialize the measurement from a volume in milliliters.
+/// Initialize the volume using a value in milliliters.
+///
+/// One milliliter is 1⁄1,000 of a liter or one cubic centimeter.
 ///
 /// - Parameters:
 ///   - value: The volume in milliliters.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func milliliters(_ value: Value) -> Self {
 		Self(value, unit: .milliliters)
 	}
 
-/// Initialize the measurement from a volume in pints.
+/// Initialize the volume using a value in pints.
+///
+/// One pint (US) is 473 milliliters or 16 fluid ounces.
 ///
 /// - Parameters:
 ///   - value: The volume in pints.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func pints(_ value: Value) -> Self {
 		Self(value, unit: .pints)
 	}
 
-/// Initialize the measurement from a volume in quarts.
+/// Initialize the volume using a value in quarts.
+///
+/// One quart (US) is 946 milliliters or 2 pints.
 ///
 /// - Parameters:
 ///   - value: The volume in quarts.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func quarts(_ value: Value) -> Self {
 		Self(value, unit: .quarts)
 	}
 
-/// Initialize the measurement from a volume in tablespoons.
+/// Initialize the volume using a value in tablespoons.
+///
+/// One tablespoon (US) is about 14.79 milliliters or 3 teaspoons.
 ///
 /// - Parameters:
 ///   - value: The volume in tablespoons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func tablespoons(_ value: Value) -> Self {
 		Self(value, unit: .tablespoons)
 	}
 
-/// Initialize the measurement from a volume in teaspoons.
+/// Initialize the volume using a value in teaspoons.
+///
+/// One teaspoon (US) is about 4.93 milliliters.
 ///
 /// - Parameters:
 ///   - value: The volume in teaspoons.
 ///
-/// - Returns: The measurement of the provided volume.
+/// - Returns: The measurement representing the provided volume.
 ///
 	public static func teaspoons(_ value: Value) -> Self {
 		Self(value, unit: .teaspoons)
 	}
 
-/// The measurement in acre feet.
+/// The volume measured in acre feet.
+///
+/// One acre-foot is about 1,233.5 cubic meters, the volume of water
+/// covering one acre to a depth of one foot.
 ///
 	public var acreFeet: Value {
 		get {
@@ -705,7 +782,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in bushels.
+/// The volume measured in bushels.
+///
+/// One bushel is approximately 35.24 liters, used mainly for dry goods like
+/// grain.
 ///
 	public var bushels: Value {
 		get {
@@ -716,7 +796,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in centiliters.
+/// The volume measured in centiliters.
+///
+/// One centiliter is 1⁄100 of a liter or 10 milliliters.
 ///
 	public var centiliters: Value {
 		get {
@@ -727,7 +809,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic centimeters.
+/// The volume measured in cubic centimeters.
+///
+/// One cubic centimeter is equal to 1 milliliter or 1⁄1,000,000 of a cubic
+/// meter.
 ///
 	public var cubicCentimeters: Value {
 		get {
@@ -738,7 +823,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic decimeters.
+/// The volume measured in cubic decimeters.
+///
+/// One cubic decimeter is equal to 1 liter or 1,000 cubic centimeters.
 ///
 	public var cubicDecimeters: Value {
 		get {
@@ -749,7 +836,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic feet.
+/// The volume measured in cubic feet.
+///
+/// One cubic foot is about 28.32 liters or 1,728 cubic inches.
 ///
 	public var cubicFeet: Value {
 		get {
@@ -760,7 +849,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic inches.
+/// The volume measured in cubic inches.
+///
+/// One cubic inch is approximately 16.39 milliliters or 1⁄61 of a liter.
 ///
 	public var cubicInches: Value {
 		get {
@@ -771,7 +862,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic kilometers.
+/// The volume measured in cubic kilometers.
+///
+/// One cubic kilometer is 1,000,000,000,000 liters or 1 billion cubic
+/// meters.
 ///
 	public var cubicKilometers: Value {
 		get {
@@ -782,7 +876,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic meters.
+/// The volume measured in cubic meters.
+///
+/// One cubic meter is the base SI unit of volume, equal to 1,000 liters or
+/// 1,000,000 cubic centimeters.
 ///
 	public var cubicMeters: Value {
 		get {
@@ -793,7 +890,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic miles.
+/// The volume measured in cubic miles.
+///
+/// One cubic mile is about 4.17 billion cubic meters or 1.1 trillion
+/// gallons.
 ///
 	public var cubicMiles: Value {
 		get {
@@ -804,7 +904,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic millimeters.
+/// The volume measured in cubic millimeters.
+///
+/// One cubic millimeter is 1⁄1,000,000 of a liter or 1⁄1,000 of a cubic
+/// centimeter.
 ///
 	public var cubicMillimeters: Value {
 		get {
@@ -815,7 +918,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cubic yards.
+/// The volume measured in cubic yards.
+///
+/// One cubic yard is about 764.55 liters or 27 cubic feet.
 ///
 	public var cubicYards: Value {
 		get {
@@ -826,7 +931,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in cups.
+/// The volume measured in cups.
+///
+/// One cup is typically 240 milliliters in US measurement, used for cooking
+/// and serving sizes.
 ///
 	public var cups: Value {
 		get {
@@ -837,7 +945,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in deciliters.
+/// The volume measured in deciliters.
+///
+/// One deciliter is 1⁄10 of a liter or 100 milliliters.
 ///
 	public var deciliters: Value {
 		get {
@@ -848,7 +958,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in fluid ounces.
+/// The volume measured in fluid ounces.
+///
+/// One fluid ounce (US) is about 29.57 milliliters or 1⁄128 of a gallon.
 ///
 	public var fluidOunces: Value {
 		get {
@@ -859,7 +971,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in gallons.
+/// The volume measured in gallons.
+///
+/// One gallon (US) is 3.785 liters or 128 fluid ounces.
 ///
 	public var gallons: Value {
 		get {
@@ -870,7 +984,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial fluid ounces.
+/// The volume measured in imperial fluid ounces.
+///
+/// One imperial fluid ounce is about 28.41 milliliters, slightly larger
+/// than the US fluid ounce.
 ///
 	public var imperialFluidOunces: Value {
 		get {
@@ -881,7 +998,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial gallons.
+/// The volume measured in imperial gallons.
+///
+/// One imperial gallon is 4.546 liters or 160 imperial fluid ounces.
 ///
 	public var imperialGallons: Value {
 		get {
@@ -892,7 +1011,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial pints.
+/// The volume measured in imperial pints.
+///
+/// One imperial pint is 568 milliliters or 20 imperial fluid ounces.
 ///
 	public var imperialPints: Value {
 		get {
@@ -903,7 +1024,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial quarts.
+/// The volume measured in imperial quarts.
+///
+/// One imperial quart is 1.136 liters or 2 imperial pints.
 ///
 	public var imperialQuarts: Value {
 		get {
@@ -914,7 +1037,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial tablespoons.
+/// The volume measured in imperial tablespoons.
+///
+/// One imperial tablespoon is 17.76 milliliters or 3 imperial teaspoons.
 ///
 	public var imperialTablespoons: Value {
 		get {
@@ -925,7 +1050,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in imperial teaspoons.
+/// The volume measured in imperial teaspoons.
+///
+/// One imperial teaspoon is 5.92 milliliters, slightly larger than a US
+/// teaspoon.
 ///
 	public var imperialTeaspoons: Value {
 		get {
@@ -936,7 +1064,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in kiloliters.
+/// The volume measured in kiloliters.
+///
+/// One kiloliter is 1,000 liters or one cubic meter.
 ///
 	public var kiloliters: Value {
 		get {
@@ -947,7 +1077,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in liters.
+/// The volume measured in liters.
+///
+/// One liter is 1,000 milliliters or one cubic decimeter.
 ///
 	public var liters: Value {
 		get {
@@ -958,7 +1090,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in megaliters.
+/// The volume measured in megaliters.
+///
+/// One megaliter is 1,000,000 liters or 1,000 cubic meters.
 ///
 	public var megaliters: Value {
 		get {
@@ -969,7 +1103,10 @@ extension Volume {
 		}
 	}
 
-/// The measurement in metric cups.
+/// The volume measured in metric cups.
+///
+/// One metric cup is 250 milliliters, used in Australian and New Zealand
+/// recipes.
 ///
 	public var metricCups: Value {
 		get {
@@ -980,7 +1117,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in milliliters.
+/// The volume measured in milliliters.
+///
+/// One milliliter is 1⁄1,000 of a liter or one cubic centimeter.
 ///
 	public var milliliters: Value {
 		get {
@@ -991,7 +1130,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in pints.
+/// The volume measured in pints.
+///
+/// One pint (US) is 473 milliliters or 16 fluid ounces.
 ///
 	public var pints: Value {
 		get {
@@ -1002,7 +1143,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in quarts.
+/// The volume measured in quarts.
+///
+/// One quart (US) is 946 milliliters or 2 pints.
 ///
 	public var quarts: Value {
 		get {
@@ -1013,7 +1156,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in tablespoons.
+/// The volume measured in tablespoons.
+///
+/// One tablespoon (US) is about 14.79 milliliters or 3 teaspoons.
 ///
 	public var tablespoons: Value {
 		get {
@@ -1024,7 +1169,9 @@ extension Volume {
 		}
 	}
 
-/// The measurement in teaspoons.
+/// The volume measured in teaspoons.
+///
+/// One teaspoon (US) is about 4.93 milliliters.
 ///
 	public var teaspoons: Value {
 		get {
@@ -1035,280 +1182,353 @@ extension Volume {
 		}
 	}
 
-/// Initialize the measurement from acre feet.
+/// Initialize the measurement from a volume measured in acre feet.
+///
+/// One acre-foot is about 1,233.5 cubic meters, the volume of water
+/// covering one acre to a depth of one foot.
 ///
 /// - Parameters:
-///   - value: The Volume in acre feet.
+///   - value: The volume measured in acre feet.
 ///
 	public init(acreFeet value: Value) {
 		self = Volume(value, unit: .acreFeet)
 	}
 
-/// Initialize the measurement from bushels.
+/// Initialize the measurement from a volume measured in bushels.
+///
+/// One bushel is approximately 35.24 liters, used mainly for dry goods like
+/// grain.
 ///
 /// - Parameters:
-///   - value: The Volume in bushels.
+///   - value: The volume measured in bushels.
 ///
 	public init(bushels value: Value) {
 		self = Volume(value, unit: .bushels)
 	}
 
-/// Initialize the measurement from centiliters.
+/// Initialize the measurement from a volume measured in centiliters.
+///
+/// One centiliter is 1⁄100 of a liter or 10 milliliters.
 ///
 /// - Parameters:
-///   - value: The Volume in centiliters.
+///   - value: The volume measured in centiliters.
 ///
 	public init(centiliters value: Value) {
 		self = Volume(value, unit: .centiliters)
 	}
 
-/// Initialize the measurement from cubic centimeters.
+/// Initialize the measurement from a volume measured in cubic centimeters.
+///
+/// One cubic centimeter is equal to 1 milliliter or 1⁄1,000,000 of a cubic
+/// meter.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic centimeters.
+///   - value: The volume measured in cubic centimeters.
 ///
 	public init(cubicCentimeters value: Value) {
 		self = Volume(value, unit: .cubicCentimeters)
 	}
 
-/// Initialize the measurement from cubic decimeters.
+/// Initialize the measurement from a volume measured in cubic decimeters.
+///
+/// One cubic decimeter is equal to 1 liter or 1,000 cubic centimeters.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic decimeters.
+///   - value: The volume measured in cubic decimeters.
 ///
 	public init(cubicDecimeters value: Value) {
 		self = Volume(value, unit: .cubicDecimeters)
 	}
 
-/// Initialize the measurement from cubic feet.
+/// Initialize the measurement from a volume measured in cubic feet.
+///
+/// One cubic foot is about 28.32 liters or 1,728 cubic inches.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic feet.
+///   - value: The volume measured in cubic feet.
 ///
 	public init(cubicFeet value: Value) {
 		self = Volume(value, unit: .cubicFeet)
 	}
 
-/// Initialize the measurement from cubic inches.
+/// Initialize the measurement from a volume measured in cubic inches.
+///
+/// One cubic inch is approximately 16.39 milliliters or 1⁄61 of a liter.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic inches.
+///   - value: The volume measured in cubic inches.
 ///
 	public init(cubicInches value: Value) {
 		self = Volume(value, unit: .cubicInches)
 	}
 
-/// Initialize the measurement from cubic kilometers.
+/// Initialize the measurement from a volume measured in cubic kilometers.
+///
+/// One cubic kilometer is 1,000,000,000,000 liters or 1 billion cubic
+/// meters.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic kilometers.
+///   - value: The volume measured in cubic kilometers.
 ///
 	public init(cubicKilometers value: Value) {
 		self = Volume(value, unit: .cubicKilometers)
 	}
 
-/// Initialize the measurement from cubic meters.
+/// Initialize the measurement from a volume measured in cubic meters.
+///
+/// One cubic meter is the base SI unit of volume, equal to 1,000 liters or
+/// 1,000,000 cubic centimeters.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic meters.
+///   - value: The volume measured in cubic meters.
 ///
 	public init(cubicMeters value: Value) {
 		self = Volume(value, unit: .cubicMeters)
 	}
 
-/// Initialize the measurement from cubic miles.
+/// Initialize the measurement from a volume measured in cubic miles.
+///
+/// One cubic mile is about 4.17 billion cubic meters or 1.1 trillion
+/// gallons.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic miles.
+///   - value: The volume measured in cubic miles.
 ///
 	public init(cubicMiles value: Value) {
 		self = Volume(value, unit: .cubicMiles)
 	}
 
-/// Initialize the measurement from cubic millimeters.
+/// Initialize the measurement from a volume measured in cubic millimeters.
+///
+/// One cubic millimeter is 1⁄1,000,000 of a liter or 1⁄1,000 of a cubic
+/// centimeter.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic millimeters.
+///   - value: The volume measured in cubic millimeters.
 ///
 	public init(cubicMillimeters value: Value) {
 		self = Volume(value, unit: .cubicMillimeters)
 	}
 
-/// Initialize the measurement from cubic yards.
+/// Initialize the measurement from a volume measured in cubic yards.
+///
+/// One cubic yard is about 764.55 liters or 27 cubic feet.
 ///
 /// - Parameters:
-///   - value: The Volume in cubic yards.
+///   - value: The volume measured in cubic yards.
 ///
 	public init(cubicYards value: Value) {
 		self = Volume(value, unit: .cubicYards)
 	}
 
-/// Initialize the measurement from cups.
+/// Initialize the measurement from a volume measured in cups.
+///
+/// One cup is typically 240 milliliters in US measurement, used for cooking
+/// and serving sizes.
 ///
 /// - Parameters:
-///   - value: The Volume in cups.
+///   - value: The volume measured in cups.
 ///
 	public init(cups value: Value) {
 		self = Volume(value, unit: .cups)
 	}
 
-/// Initialize the measurement from deciliters.
+/// Initialize the measurement from a volume measured in deciliters.
+///
+/// One deciliter is 1⁄10 of a liter or 100 milliliters.
 ///
 /// - Parameters:
-///   - value: The Volume in deciliters.
+///   - value: The volume measured in deciliters.
 ///
 	public init(deciliters value: Value) {
 		self = Volume(value, unit: .deciliters)
 	}
 
-/// Initialize the measurement from fluid ounces.
+/// Initialize the measurement from a volume measured in fluid ounces.
+///
+/// One fluid ounce (US) is about 29.57 milliliters or 1⁄128 of a gallon.
 ///
 /// - Parameters:
-///   - value: The Volume in fluid ounces.
+///   - value: The volume measured in fluid ounces.
 ///
 	public init(fluidOunces value: Value) {
 		self = Volume(value, unit: .fluidOunces)
 	}
 
-/// Initialize the measurement from gallons.
+/// Initialize the measurement from a volume measured in gallons.
+///
+/// One gallon (US) is 3.785 liters or 128 fluid ounces.
 ///
 /// - Parameters:
-///   - value: The Volume in gallons.
+///   - value: The volume measured in gallons.
 ///
 	public init(gallons value: Value) {
 		self = Volume(value, unit: .gallons)
 	}
 
-/// Initialize the measurement from imperial fluid ounces.
+/// Initialize the measurement from a volume measured in imperial fluid ounces.
+///
+/// One imperial fluid ounce is about 28.41 milliliters, slightly larger
+/// than the US fluid ounce.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial fluid ounces.
+///   - value: The volume measured in imperial fluid ounces.
 ///
 	public init(imperialFluidOunces value: Value) {
 		self = Volume(value, unit: .imperialFluidOunces)
 	}
 
-/// Initialize the measurement from imperial gallons.
+/// Initialize the measurement from a volume measured in imperial gallons.
+///
+/// One imperial gallon is 4.546 liters or 160 imperial fluid ounces.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial gallons.
+///   - value: The volume measured in imperial gallons.
 ///
 	public init(imperialGallons value: Value) {
 		self = Volume(value, unit: .imperialGallons)
 	}
 
-/// Initialize the measurement from imperial pints.
+/// Initialize the measurement from a volume measured in imperial pints.
+///
+/// One imperial pint is 568 milliliters or 20 imperial fluid ounces.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial pints.
+///   - value: The volume measured in imperial pints.
 ///
 	public init(imperialPints value: Value) {
 		self = Volume(value, unit: .imperialPints)
 	}
 
-/// Initialize the measurement from imperial quarts.
+/// Initialize the measurement from a volume measured in imperial quarts.
+///
+/// One imperial quart is 1.136 liters or 2 imperial pints.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial quarts.
+///   - value: The volume measured in imperial quarts.
 ///
 	public init(imperialQuarts value: Value) {
 		self = Volume(value, unit: .imperialQuarts)
 	}
 
-/// Initialize the measurement from imperial tablespoons.
+/// Initialize the measurement from a volume measured in imperial tablespoons.
+///
+/// One imperial tablespoon is 17.76 milliliters or 3 imperial teaspoons.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial tablespoons.
+///   - value: The volume measured in imperial tablespoons.
 ///
 	public init(imperialTablespoons value: Value) {
 		self = Volume(value, unit: .imperialTablespoons)
 	}
 
-/// Initialize the measurement from imperial teaspoons.
+/// Initialize the measurement from a volume measured in imperial teaspoons.
+///
+/// One imperial teaspoon is 5.92 milliliters, slightly larger than a US
+/// teaspoon.
 ///
 /// - Parameters:
-///   - value: The Volume in imperial teaspoons.
+///   - value: The volume measured in imperial teaspoons.
 ///
 	public init(imperialTeaspoons value: Value) {
 		self = Volume(value, unit: .imperialTeaspoons)
 	}
 
-/// Initialize the measurement from kiloliters.
+/// Initialize the measurement from a volume measured in kiloliters.
+///
+/// One kiloliter is 1,000 liters or one cubic meter.
 ///
 /// - Parameters:
-///   - value: The Volume in kiloliters.
+///   - value: The volume measured in kiloliters.
 ///
 	public init(kiloliters value: Value) {
 		self = Volume(value, unit: .kiloliters)
 	}
 
-/// Initialize the measurement from liters.
+/// Initialize the measurement from a volume measured in liters.
+///
+/// One liter is 1,000 milliliters or one cubic decimeter.
 ///
 /// - Parameters:
-///   - value: The Volume in liters.
+///   - value: The volume measured in liters.
 ///
 	public init(liters value: Value) {
 		self = Volume(value, unit: .liters)
 	}
 
-/// Initialize the measurement from megaliters.
+/// Initialize the measurement from a volume measured in megaliters.
+///
+/// One megaliter is 1,000,000 liters or 1,000 cubic meters.
 ///
 /// - Parameters:
-///   - value: The Volume in megaliters.
+///   - value: The volume measured in megaliters.
 ///
 	public init(megaliters value: Value) {
 		self = Volume(value, unit: .megaliters)
 	}
 
-/// Initialize the measurement from metric cups.
+/// Initialize the measurement from a volume measured in metric cups.
+///
+/// One metric cup is 250 milliliters, used in Australian and New Zealand
+/// recipes.
 ///
 /// - Parameters:
-///   - value: The Volume in metric cups.
+///   - value: The volume measured in metric cups.
 ///
 	public init(metricCups value: Value) {
 		self = Volume(value, unit: .metricCups)
 	}
 
-/// Initialize the measurement from milliliters.
+/// Initialize the measurement from a volume measured in milliliters.
+///
+/// One milliliter is 1⁄1,000 of a liter or one cubic centimeter.
 ///
 /// - Parameters:
-///   - value: The Volume in milliliters.
+///   - value: The volume measured in milliliters.
 ///
 	public init(milliliters value: Value) {
 		self = Volume(value, unit: .milliliters)
 	}
 
-/// Initialize the measurement from pints.
+/// Initialize the measurement from a volume measured in pints.
+///
+/// One pint (US) is 473 milliliters or 16 fluid ounces.
 ///
 /// - Parameters:
-///   - value: The Volume in pints.
+///   - value: The volume measured in pints.
 ///
 	public init(pints value: Value) {
 		self = Volume(value, unit: .pints)
 	}
 
-/// Initialize the measurement from quarts.
+/// Initialize the measurement from a volume measured in quarts.
+///
+/// One quart (US) is 946 milliliters or 2 pints.
 ///
 /// - Parameters:
-///   - value: The Volume in quarts.
+///   - value: The volume measured in quarts.
 ///
 	public init(quarts value: Value) {
 		self = Volume(value, unit: .quarts)
 	}
 
-/// Initialize the measurement from tablespoons.
+/// Initialize the measurement from a volume measured in tablespoons.
+///
+/// One tablespoon (US) is about 14.79 milliliters or 3 teaspoons.
 ///
 /// - Parameters:
-///   - value: The Volume in tablespoons.
+///   - value: The volume measured in tablespoons.
 ///
 	public init(tablespoons value: Value) {
 		self = Volume(value, unit: .tablespoons)
 	}
 
-/// Initialize the measurement from teaspoons.
+/// Initialize the measurement from a volume measured in teaspoons.
+///
+/// One teaspoon (US) is about 4.93 milliliters.
 ///
 /// - Parameters:
-///   - value: The Volume in teaspoons.
+///   - value: The volume measured in teaspoons.
 ///
 	public init(teaspoons value: Value) {
 		self = Volume(value, unit: .teaspoons)
@@ -1320,7 +1540,7 @@ extension Volume: Codable where Value: Codable {
 }
 
 extension Volume: Comparable where Value: Comparable {
-	public static func < (lhs: Volume<T>, rhs: Volume<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }
@@ -1344,4 +1564,3 @@ extension Volume: Measurement {
 extension Volume: Sendable where Value: Sendable {
 
 }
-

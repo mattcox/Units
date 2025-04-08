@@ -11,10 +11,8 @@
 /// Angles are stored as radians, however they can be read and written in
 /// various units.
 ///
-public struct Angle<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-
+public struct Angle<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
 	/// An arc minute is 1/60th of one degree.
 	///
 		case arcMinutes
@@ -44,58 +42,37 @@ public struct Angle<T: BinaryFloatingPoint> {
 			.radians
 		}
 		
-		public func symbol(for value: T) -> String {
+		public func symbol(for value: Value) -> String {
 			switch self {
 				case .arcMinutes:
-					return "ʹ"
+					"ʹ"
 				case .arcSeconds:
-					return "ʺ"
+					"ʺ"
 				case .degrees:
-					return "°"
+					"°"
 				case .gradians:
-					return "grad"
+					"grad"
 				case .radians:
-					return "rad"
+					"rad"
 				case .revolutions:
-					return "rev"
+					"rev"
 			}
 		}
 		
-		public static func convert(value: T, from: Angle<T>.MeasurementUnit, to: Angle<T>.MeasurementUnit) -> T {
-			guard from != to else {
-				return value
-			}
-
-			let base: T = {
-				switch from {
-					case .arcMinutes:
-						value * (.pi / 10800)
-					case .arcSeconds:
-						value * (.pi / 648000)
-					case .degrees:
-						value * (.pi / 180)
-					case .gradians:
-						value * (.pi / 200)
-					case .radians:
-						value * 1.0
-					case .revolutions:
-						value * (2 * .pi)
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .arcMinutes:
-					return base * (10800 / .pi)
+					.pi / 10800
 				case .arcSeconds:
-					return base * (648000 / .pi)
+					.pi / 648000
 				case .degrees:
-					return base * (180 / .pi)
+					.pi / 180
 				case .gradians:
-					return base * (200 / .pi)
+					.pi / 200
 				case .radians:
-					return base * 1.0
+					1.0
 				case .revolutions:
-					return base / (2 * .pi)
+					2 * .pi
 			}
 		}
 	}
@@ -124,7 +101,7 @@ public struct Angle<T: BinaryFloatingPoint> {
 		case reflex
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Angle {
@@ -153,7 +130,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func arcMinutes(_ value: T) -> Self {
+	public static func arcMinutes(_ value: Value) -> Self {
 		Self(value, unit: .arcMinutes)
 	}
 	
@@ -166,7 +143,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func arcSeconds(_ value: T) -> Self {
+	public static func arcSeconds(_ value: Value) -> Self {
 		Self(value, unit: .arcSeconds)
 	}
 	
@@ -179,7 +156,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func degrees(_ value: T) -> Self {
+	public static func degrees(_ value: Value) -> Self {
 		Self(value, unit: .degrees)
 	}
 
@@ -192,7 +169,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func gradians(_ value: T) -> Self {
+	public static func gradians(_ value: Value) -> Self {
 		Self(value, unit: .gradians)
 	}
 	
@@ -206,7 +183,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func radians(_ value: T) -> Self {
+	public static func radians(_ value: Value) -> Self {
 		Self(value, unit: .radians)
 	}
 	
@@ -219,7 +196,7 @@ extension Angle {
 ///
 /// - Returns: The measurement representing the provided angle.
 ///
-	public static func revolutions(_ value: T) -> Self {
+	public static func revolutions(_ value: Value) -> Self {
 		Self(value, unit: .revolutions)
 	}
 
@@ -251,7 +228,7 @@ extension Angle {
 /// 2π, or 0 and 360 degrees.
 ///
 	public mutating func normalize() {
-		let twoPi = 2 * T.pi
+		let twoPi = 2 * Value.pi
 		let normalized = self.value.truncatingRemainder(dividingBy: twoPi)
 		self.value = normalized >= 0 ? normalized : normalized + twoPi
 	}
@@ -260,7 +237,7 @@ extension Angle {
 /// 2π, or 0 and 360 degrees.
 ///
 	public var normalized: Angle {
-		let twoPi = 2 * T.pi
+		let twoPi = 2 * Value.pi
 		let normalized = self.value.truncatingRemainder(dividingBy: twoPi)
 		return Angle(normalized >= 0 ? normalized : normalized + twoPi, unit: .radians)
 	}
@@ -425,7 +402,7 @@ extension Angle: Codable where Value: Codable {
 }
 
 extension Angle: Comparable where Value: Comparable {
-	public static func < (lhs: Angle<T>, rhs: Angle<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }

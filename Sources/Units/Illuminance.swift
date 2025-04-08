@@ -11,10 +11,8 @@
 ///
 /// Illuminance is stored as lux.
 ///
-public struct Illuminance<T: BinaryFloatingPoint> {
-	public enum MeasurementUnit: Unit {
-		public typealias Value = T
-		
+public struct Illuminance<Value: BinaryFloatingPoint> {
+	public enum MeasurementUnit: UnitLinear {
 	/// One lux is equal to one lumen per square meter.
 	///
 	/// Typical daylight is around 10,000–100,000 lux, and a well-lit office
@@ -29,34 +27,28 @@ public struct Illuminance<T: BinaryFloatingPoint> {
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .lux:
-					return "lx"
+					"lx"
 			}
 		}
 		
-		public static func convert(value: Value, from: Illuminance<Value>.MeasurementUnit, to: Illuminance<Value>.MeasurementUnit) -> Value {
-			guard from != to else {
-				return value
-			}
-			
-			let base: T = {
-				switch from {
-					case .lux:
-						value * 1.0
-				}
-			}()
-
-			switch to {
+		public var coefficient: Value {
+			switch self {
 				case .lux:
-					return base * 1.0
+					1.0
 			}
 		}
 	}
 	
-	private(set) public var value: T
+	private(set) public var value: Value
 }
 
 extension Illuminance {
 /// Initialize the illuminance using a value in lux.
+///
+/// One lux is equal to one lumen per square meter.
+///
+/// Typical daylight is around 10,000–100,000 lux, and a well-lit office is
+/// around 300–500 lux.
 ///
 /// - Parameters:
 ///   - value: The illuminance in lux.
@@ -103,7 +95,7 @@ extension Illuminance: Codable where Value: Codable {
 }
 
 extension Illuminance: Comparable where Value: Comparable {
-	public static func < (lhs: Illuminance<T>, rhs: Illuminance<T>) -> Bool {
+	public static func < (lhs: Self, rhs: Self) -> Bool {
 		lhs.value < rhs.value
 	}
 }
