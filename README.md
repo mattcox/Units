@@ -1,4 +1,12 @@
 # 📐 Units
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Swift-orange.svg" alt="Swift" />
+    <a href="https://swift.org/package-manager">
+        <img src="https://img.shields.io/badge/swiftpm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
+    </a>
+</p>
+
 Welcome to **Units**, a Swift package for working with physical units in a clear, type-safe, and expressive way.
 
 Units provides a lightweight alternative to Foundation’s Measurement and Dimension APIs, with a cleaner syntax and built-in support for unit conversion across categories like distance, angle, speed, temperature, and more.
