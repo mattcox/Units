@@ -19,7 +19,7 @@ extension FloatingPoint {
 /// - Returns: A boolean indicating if the two values are almost identical.
 ///
 	public static func almostEqual(_ lhs: Self, _ rhs: Self) -> Bool {
-		rhs.almostEqual(lhs)
+		rhs.almostEqual(to: lhs)
 	}
 	
 /// Returns true if the current value is close enough to another to be
@@ -30,7 +30,7 @@ extension FloatingPoint {
 ///
 /// - Returns: A boolean indicating if the two values are almost identical.
 ///
-	public func almostEqual(_ to: Self) -> Bool {
+	public func almostEqual(to: Self) -> Bool {
 		(to >= self.nextDown && to <= self.nextUp)
 	}
 }
