@@ -440,7 +440,7 @@ extension Duration: Equatable {
 	}
 }
 
-extension Duration: Measurement {
+extension Duration: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

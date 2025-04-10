@@ -45,9 +45,3 @@ public protocol Measurement {
 ///
 	func get(unit: MeasurementUnit) -> Value
 }
-
-extension Measurement where Value: Numeric {
-	public static var zero: Self {
-		Self(Value.zero, unit: .base)
-	}
-}

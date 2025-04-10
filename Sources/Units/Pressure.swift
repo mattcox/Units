@@ -561,7 +561,7 @@ extension Pressure: Equatable {
 	}
 }
 
-extension Pressure: Measurement {
+extension Pressure: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

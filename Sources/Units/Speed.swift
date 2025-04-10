@@ -254,7 +254,7 @@ extension Speed: Equatable {
 	}
 }
 
-extension Speed: Measurement {
+extension Speed: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

@@ -1107,7 +1107,7 @@ extension Distance: Equatable {
 	}
 }
 
-extension Distance: Measurement {
+extension Distance: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

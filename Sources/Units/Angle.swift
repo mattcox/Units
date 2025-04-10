@@ -104,15 +104,7 @@ public struct Angle<Value: BinaryFloatingPoint> {
 	private(set) public var value: Value
 }
 
-extension Angle {
-/// The Angle representing Pi or π.
-///
-/// Pi is equivalent to approximately 3.142 radians.
-///
-	public static var pi: Angle {
-		Angle(.pi, unit: .radians)
-	}
-	
+extension Angle {	
 /// The Angle representing Pi or π.
 ///
 /// Pi is equivalent to approximately 3.142 radians.
@@ -416,7 +408,7 @@ extension Angle: Equatable {
 	}
 }
 
-extension Angle: Measurement {
+extension Angle: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

@@ -815,7 +815,7 @@ extension Mass: Equatable {
 	}
 }
 
-extension Mass: Measurement {
+extension Mass: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}
