@@ -775,10 +775,10 @@ extension Volume {
 ///
 	public var acreFeet: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .acreFeet)
+			self.get(unit: .acreFeet)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .acreFeet, to: .base)
+			self.set(newValue, unit: .acreFeet)
 		}
 	}
 
@@ -789,10 +789,10 @@ extension Volume {
 ///
 	public var bushels: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .bushels)
+			self.get(unit: .bushels)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .bushels, to: .base)
+			self.set(newValue, unit: .bushels)
 		}
 	}
 
@@ -802,10 +802,10 @@ extension Volume {
 ///
 	public var centiliters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .centiliters)
+			self.get(unit: .centiliters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .centiliters, to: .base)
+			self.set(newValue, unit: .centiliters)
 		}
 	}
 
@@ -816,10 +816,10 @@ extension Volume {
 ///
 	public var cubicCentimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicCentimeters)
+			self.get(unit: .cubicCentimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicCentimeters, to: .base)
+			self.set(newValue, unit: .cubicCentimeters)
 		}
 	}
 
@@ -829,10 +829,10 @@ extension Volume {
 ///
 	public var cubicDecimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicDecimeters)
+			self.get(unit: .cubicDecimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicDecimeters, to: .base)
+			self.set(newValue, unit: .cubicDecimeters)
 		}
 	}
 
@@ -842,10 +842,10 @@ extension Volume {
 ///
 	public var cubicFeet: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicFeet)
+			self.get(unit: .cubicFeet)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicFeet, to: .base)
+			self.set(newValue, unit: .cubicFeet)
 		}
 	}
 
@@ -855,10 +855,10 @@ extension Volume {
 ///
 	public var cubicInches: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicInches)
+			self.get(unit: .cubicInches)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicInches, to: .base)
+			self.set(newValue, unit: .cubicInches)
 		}
 	}
 
@@ -869,10 +869,10 @@ extension Volume {
 ///
 	public var cubicKilometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicKilometers)
+			self.get(unit: .cubicKilometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicKilometers, to: .base)
+			self.set(newValue, unit: .cubicKilometers)
 		}
 	}
 
@@ -883,10 +883,10 @@ extension Volume {
 ///
 	public var cubicMeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicMeters)
+			self.get(unit: .cubicMeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicMeters, to: .base)
+			self.set(newValue, unit: .cubicMeters)
 		}
 	}
 
@@ -897,10 +897,10 @@ extension Volume {
 ///
 	public var cubicMiles: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicMiles)
+			self.get(unit: .cubicMiles)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicMiles, to: .base)
+			self.set(newValue, unit: .cubicMiles)
 		}
 	}
 
@@ -911,10 +911,10 @@ extension Volume {
 ///
 	public var cubicMillimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicMillimeters)
+			self.get(unit: .cubicMillimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicMillimeters, to: .base)
+			self.set(newValue, unit: .cubicMillimeters)
 		}
 	}
 
@@ -924,10 +924,10 @@ extension Volume {
 ///
 	public var cubicYards: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cubicYards)
+			self.get(unit: .cubicYards)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cubicYards, to: .base)
+			self.set(newValue, unit: .cubicYards)
 		}
 	}
 
@@ -938,10 +938,10 @@ extension Volume {
 ///
 	public var cups: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .cups)
+			self.get(unit: .cups)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .cups, to: .base)
+			self.set(newValue, unit: .cups)
 		}
 	}
 
@@ -951,10 +951,10 @@ extension Volume {
 ///
 	public var deciliters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .deciliters)
+			self.get(unit: .deciliters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .deciliters, to: .base)
+			self.set(newValue, unit: .deciliters)
 		}
 	}
 
@@ -964,10 +964,10 @@ extension Volume {
 ///
 	public var fluidOunces: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .fluidOunces)
+			self.get(unit: .fluidOunces)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .fluidOunces, to: .base)
+			self.set(newValue, unit: .fluidOunces)
 		}
 	}
 
@@ -977,10 +977,10 @@ extension Volume {
 ///
 	public var gallons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .gallons)
+			self.get(unit: .gallons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .gallons, to: .base)
+			self.set(newValue, unit: .gallons)
 		}
 	}
 
@@ -991,10 +991,10 @@ extension Volume {
 ///
 	public var imperialFluidOunces: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialFluidOunces)
+			self.get(unit: .imperialFluidOunces)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialFluidOunces, to: .base)
+			self.set(newValue, unit: .imperialFluidOunces)
 		}
 	}
 
@@ -1004,10 +1004,10 @@ extension Volume {
 ///
 	public var imperialGallons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialGallons)
+			self.get(unit: .imperialGallons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialGallons, to: .base)
+			self.set(newValue, unit: .imperialGallons)
 		}
 	}
 
@@ -1017,10 +1017,10 @@ extension Volume {
 ///
 	public var imperialPints: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialPints)
+			self.get(unit: .imperialPints)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialPints, to: .base)
+			self.set(newValue, unit: .imperialPints)
 		}
 	}
 
@@ -1030,10 +1030,10 @@ extension Volume {
 ///
 	public var imperialQuarts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialQuarts)
+			self.get(unit: .imperialQuarts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialQuarts, to: .base)
+			self.set(newValue, unit: .imperialQuarts)
 		}
 	}
 
@@ -1043,10 +1043,10 @@ extension Volume {
 ///
 	public var imperialTablespoons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialTablespoons)
+			self.get(unit: .imperialTablespoons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialTablespoons, to: .base)
+			self.set(newValue, unit: .imperialTablespoons)
 		}
 	}
 
@@ -1057,10 +1057,10 @@ extension Volume {
 ///
 	public var imperialTeaspoons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .imperialTeaspoons)
+			self.get(unit: .imperialTeaspoons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .imperialTeaspoons, to: .base)
+			self.set(newValue, unit: .imperialTeaspoons)
 		}
 	}
 
@@ -1070,10 +1070,10 @@ extension Volume {
 ///
 	public var kiloliters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kiloliters)
+			self.get(unit: .kiloliters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kiloliters, to: .base)
+			self.set(newValue, unit: .kiloliters)
 		}
 	}
 
@@ -1083,10 +1083,10 @@ extension Volume {
 ///
 	public var liters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .liters)
+			self.get(unit: .liters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .liters, to: .base)
+			self.set(newValue, unit: .liters)
 		}
 	}
 
@@ -1096,10 +1096,10 @@ extension Volume {
 ///
 	public var megaliters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .megaliters)
+			self.get(unit: .megaliters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .megaliters, to: .base)
+			self.set(newValue, unit: .megaliters)
 		}
 	}
 
@@ -1110,10 +1110,10 @@ extension Volume {
 ///
 	public var metricCups: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .metricCups)
+			self.get(unit: .metricCups)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .metricCups, to: .base)
+			self.set(newValue, unit: .metricCups)
 		}
 	}
 
@@ -1123,10 +1123,10 @@ extension Volume {
 ///
 	public var milliliters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .milliliters)
+			self.get(unit: .milliliters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .milliliters, to: .base)
+			self.set(newValue, unit: .milliliters)
 		}
 	}
 
@@ -1136,10 +1136,10 @@ extension Volume {
 ///
 	public var pints: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .pints)
+			self.get(unit: .pints)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .pints, to: .base)
+			self.set(newValue, unit: .pints)
 		}
 	}
 
@@ -1149,10 +1149,10 @@ extension Volume {
 ///
 	public var quarts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .quarts)
+			self.get(unit: .quarts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .quarts, to: .base)
+			self.set(newValue, unit: .quarts)
 		}
 	}
 
@@ -1162,10 +1162,10 @@ extension Volume {
 ///
 	public var tablespoons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .tablespoons)
+			self.get(unit: .tablespoons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .tablespoons, to: .base)
+			self.set(newValue, unit: .tablespoons)
 		}
 	}
 
@@ -1175,10 +1175,10 @@ extension Volume {
 ///
 	public var teaspoons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .teaspoons)
+			self.get(unit: .teaspoons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .teaspoons, to: .base)
+			self.set(newValue, unit: .teaspoons)
 		}
 	}
 
@@ -1558,6 +1558,10 @@ extension Volume: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

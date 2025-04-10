@@ -248,10 +248,10 @@ extension Angle {
 ///
 	public var arcMinutes: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .arcMinutes)
+			self.get(unit: .arcMinutes)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .arcMinutes, to: .base)
+			self.set(newValue, unit: .arcMinutes)
 		}
 	}
 	
@@ -261,10 +261,10 @@ extension Angle {
 ///
 	public var arcSeconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .arcSeconds)
+			self.get(unit: .arcSeconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .arcSeconds, to: .base)
+			self.set(newValue, unit: .arcSeconds)
 		}
 	}
 	
@@ -274,10 +274,10 @@ extension Angle {
 ///
 	public var degrees: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .degrees)
+			self.get(unit: .degrees)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .degrees, to: .base)
+			self.set(newValue, unit: .degrees)
 		}
 	}
 	
@@ -287,10 +287,10 @@ extension Angle {
 ///
 	public var gradians: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .gradians)
+			self.get(unit: .gradians)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .gradians, to: .base)
+			self.set(newValue, unit: .gradians)
 		}
 	}
 	
@@ -301,10 +301,10 @@ extension Angle {
 ///
 	public var radians: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .radians)
+			self.get(unit: .radians)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .radians, to: .base)
+			self.set(newValue, unit: .radians)
 		}
 	}
 	
@@ -314,10 +314,10 @@ extension Angle {
 ///
 	public var revolutions: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .revolutions)
+			self.get(unit: .revolutions)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .revolutions, to: .base)
+			self.set(newValue, unit: .revolutions)
 		}
 	}
 	
@@ -423,6 +423,10 @@ extension Angle: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

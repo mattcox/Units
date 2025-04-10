@@ -342,10 +342,10 @@ extension Area {
 ///
 	public var acres: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .acres)
+			self.get(unit: .acres)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .acres, to: .base)
+			self.set(newValue, unit: .acres)
 		}
 	}
 
@@ -355,10 +355,10 @@ extension Area {
 ///
 	public var hectares: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .hectares)
+			self.get(unit: .hectares)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .hectares, to: .base)
+			self.set(newValue, unit: .hectares)
 		}
 	}
 
@@ -369,10 +369,10 @@ extension Area {
 ///
 	public var squareCentimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareCentimeters)
+			self.get(unit: .squareCentimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareCentimeters, to: .base)
+			self.set(newValue, unit: .squareCentimeters)
 		}
 	}
 
@@ -382,10 +382,10 @@ extension Area {
 ///
 	public var squareFeet: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareFeet)
+			self.get(unit: .squareFeet)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareFeet, to: .base)
+			self.set(newValue, unit: .squareFeet)
 		}
 	}
 
@@ -395,10 +395,10 @@ extension Area {
 ///
 	public var squareInches: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareInches)
+			self.get(unit: .squareInches)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareInches, to: .base)
+			self.set(newValue, unit: .squareInches)
 		}
 	}
 
@@ -408,10 +408,10 @@ extension Area {
 ///
 	public var squareKilometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareKilometers)
+			self.get(unit: .squareKilometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareKilometers, to: .base)
+			self.set(newValue, unit: .squareKilometers)
 		}
 	}
 
@@ -421,10 +421,10 @@ extension Area {
 ///
 	public var squareMegameters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareMegameters)
+			self.get(unit: .squareMegameters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareMegameters, to: .base)
+			self.set(newValue, unit: .squareMegameters)
 		}
 	}
 
@@ -435,10 +435,10 @@ extension Area {
 ///
 	public var squareMeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareMeters)
+			self.get(unit: .squareMeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareMeters, to: .base)
+			self.set(newValue, unit: .squareMeters)
 		}
 	}
 
@@ -448,10 +448,10 @@ extension Area {
 ///
 	public var squareMicrometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareMicrometers)
+			self.get(unit: .squareMicrometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareMicrometers, to: .base)
+			self.set(newValue, unit: .squareMicrometers)
 		}
 	}
 
@@ -461,10 +461,10 @@ extension Area {
 ///
 	public var squareMiles: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareMiles)
+			self.get(unit: .squareMiles)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareMiles, to: .base)
+			self.set(newValue, unit: .squareMiles)
 		}
 	}
 
@@ -475,10 +475,10 @@ extension Area {
 ///
 	public var squareMillimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareMillimeters)
+			self.get(unit: .squareMillimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareMillimeters, to: .base)
+			self.set(newValue, unit: .squareMillimeters)
 		}
 	}
 
@@ -488,10 +488,10 @@ extension Area {
 ///
 	public var squareNanometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareNanometers)
+			self.get(unit: .squareNanometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareNanometers, to: .base)
+			self.set(newValue, unit: .squareNanometers)
 		}
 	}
 
@@ -501,10 +501,10 @@ extension Area {
 ///
 	public var squareYards: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .squareYards)
+			self.get(unit: .squareYards)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .squareYards, to: .base)
+			self.set(newValue, unit: .squareYards)
 		}
 	}
 
@@ -678,6 +678,10 @@ extension Area: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

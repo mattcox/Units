@@ -229,10 +229,10 @@ extension Duration {
 ///
 	public var days: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .days)
+			self.get(unit: .days)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .days, to: .base)
+			self.set(newValue, unit: .days)
 		}
 	}
 
@@ -242,10 +242,10 @@ extension Duration {
 ///
 	public var hours: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .hours)
+			self.get(unit: .hours)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .hours, to: .base)
+			self.set(newValue, unit: .hours)
 		}
 	}
 
@@ -256,10 +256,10 @@ extension Duration {
 ///
 	public var microseconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .microseconds)
+			self.get(unit: .microseconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .microseconds, to: .base)
+			self.set(newValue, unit: .microseconds)
 		}
 	}
 
@@ -270,10 +270,10 @@ extension Duration {
 ///
 	public var milliseconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .milliseconds)
+			self.get(unit: .milliseconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .milliseconds, to: .base)
+			self.set(newValue, unit: .milliseconds)
 		}
 	}
 
@@ -283,10 +283,10 @@ extension Duration {
 ///
 	public var minutes: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .minutes)
+			self.get(unit: .minutes)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .minutes, to: .base)
+			self.set(newValue, unit: .minutes)
 		}
 	}
 
@@ -297,10 +297,10 @@ extension Duration {
 ///
 	public var nanoseconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nanoseconds)
+			self.get(unit: .nanoseconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nanoseconds, to: .base)
+			self.set(newValue, unit: .nanoseconds)
 		}
 	}
 
@@ -311,10 +311,10 @@ extension Duration {
 ///
 	public var picoseconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .picoseconds)
+			self.get(unit: .picoseconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .picoseconds, to: .base)
+			self.set(newValue, unit: .picoseconds)
 		}
 	}
 
@@ -324,10 +324,10 @@ extension Duration {
 ///
 	public var seconds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .seconds)
+			self.get(unit: .seconds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .seconds, to: .base)
+			self.set(newValue, unit: .seconds)
 		}
 	}
 
@@ -447,6 +447,10 @@ extension Duration: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

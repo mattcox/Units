@@ -287,10 +287,10 @@ extension Pressure {
 ///
 	public var bars: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .bars)
+			self.get(unit: .bars)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .bars, to: .base)
+			self.set(newValue, unit: .bars)
 		}
 	}
 
@@ -301,10 +301,10 @@ extension Pressure {
 ///
 	public var gigapascals: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .gigapascals)
+			self.get(unit: .gigapascals)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .gigapascals, to: .base)
+			self.set(newValue, unit: .gigapascals)
 		}
 	}
 
@@ -315,10 +315,10 @@ extension Pressure {
 ///
 	public var hectopascals: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .hectopascals)
+			self.get(unit: .hectopascals)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .hectopascals, to: .base)
+			self.set(newValue, unit: .hectopascals)
 		}
 	}
 
@@ -329,10 +329,10 @@ extension Pressure {
 ///
 	public var inchesOfMercury: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .inchesOfMercury)
+			self.get(unit: .inchesOfMercury)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .inchesOfMercury, to: .base)
+			self.set(newValue, unit: .inchesOfMercury)
 		}
 	}
 
@@ -343,10 +343,10 @@ extension Pressure {
 ///
 	public var kilopascals: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilopascals)
+			self.get(unit: .kilopascals)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilopascals, to: .base)
+			self.set(newValue, unit: .kilopascals)
 		}
 	}
 
@@ -357,10 +357,10 @@ extension Pressure {
 ///
 	public var megapascals: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .megapascals)
+			self.get(unit: .megapascals)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .megapascals, to: .base)
+			self.set(newValue, unit: .megapascals)
 		}
 	}
 
@@ -371,10 +371,10 @@ extension Pressure {
 ///
 	public var millibars: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .millibars)
+			self.get(unit: .millibars)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .millibars, to: .base)
+			self.set(newValue, unit: .millibars)
 		}
 	}
 
@@ -385,10 +385,10 @@ extension Pressure {
 ///
 	public var millimetersOfMercury: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .millimetersOfMercury)
+			self.get(unit: .millimetersOfMercury)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .millimetersOfMercury, to: .base)
+			self.set(newValue, unit: .millimetersOfMercury)
 		}
 	}
 
@@ -399,10 +399,10 @@ extension Pressure {
 ///
 	public var newtonsPerMetersSquared: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .newtonsPerMetersSquared)
+			self.get(unit: .newtonsPerMetersSquared)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .newtonsPerMetersSquared, to: .base)
+			self.set(newValue, unit: .newtonsPerMetersSquared)
 		}
 	}
 
@@ -413,10 +413,10 @@ extension Pressure {
 ///
 	public var poundsForcePerSquareInch: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .poundsForcePerSquareInch)
+			self.get(unit: .poundsForcePerSquareInch)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .poundsForcePerSquareInch, to: .base)
+			self.set(newValue, unit: .poundsForcePerSquareInch)
 		}
 	}
 
@@ -568,6 +568,10 @@ extension Pressure: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

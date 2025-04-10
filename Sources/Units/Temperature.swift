@@ -136,10 +136,10 @@ extension Temperature {
 ///
 	public var celsius: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .celsius)
+			self.get(unit: .celsius)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .celsius, to: .base)
+			self.set(newValue, unit: .celsius)
 		}
 	}
 
@@ -150,10 +150,10 @@ extension Temperature {
 ///
 	public var fahrenheit: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .fahrenheit)
+			self.get(unit: .fahrenheit)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .fahrenheit, to: .base)
+			self.set(newValue, unit: .fahrenheit)
 		}
 	}
 
@@ -164,10 +164,10 @@ extension Temperature {
 ///
 	public var kelvin: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kelvin)
+			self.get(unit: .kelvin)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kelvin, to: .base)
+			self.set(newValue, unit: .kelvin)
 		}
 	}
 
@@ -232,6 +232,10 @@ extension Temperature: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

@@ -138,10 +138,10 @@ extension Speed {
 ///
 	public var kilometersPerHour: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilometersPerHour)
+			self.get(unit: .kilometersPerHour)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilometersPerHour, to: .base)
+			self.set(newValue, unit: .kilometersPerHour)
 		}
 	}
 
@@ -152,10 +152,10 @@ extension Speed {
 ///
 	public var knots: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .knots)
+			self.get(unit: .knots)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .knots, to: .base)
+			self.set(newValue, unit: .knots)
 		}
 	}
 
@@ -166,10 +166,10 @@ extension Speed {
 ///
 	public var metersPerSecond: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .metersPerSecond)
+			self.get(unit: .metersPerSecond)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .metersPerSecond, to: .base)
+			self.set(newValue, unit: .metersPerSecond)
 		}
 	}
 
@@ -180,10 +180,10 @@ extension Speed {
 ///
 	public var milesPerHour: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .milesPerHour)
+			self.get(unit: .milesPerHour)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .milesPerHour, to: .base)
+			self.set(newValue, unit: .milesPerHour)
 		}
 	}
 
@@ -261,6 +261,10 @@ extension Speed: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

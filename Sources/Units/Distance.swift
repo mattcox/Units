@@ -556,10 +556,10 @@ extension Distance {
 ///
 	public var astronomicalUnits: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .astronomicalUnits)
+			self.get(unit: .astronomicalUnits)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .astronomicalUnits, to: .base)
+			self.set(newValue, unit: .astronomicalUnits)
 		}
 	}
 
@@ -569,10 +569,10 @@ extension Distance {
 ///
 	public var centimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .centimeters)
+			self.get(unit: .centimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .centimeters, to: .base)
+			self.set(newValue, unit: .centimeters)
 		}
 	}
 
@@ -582,10 +582,10 @@ extension Distance {
 ///
 	public var decameters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .decameters)
+			self.get(unit: .decameters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .decameters, to: .base)
+			self.set(newValue, unit: .decameters)
 		}
 	}
 
@@ -595,10 +595,10 @@ extension Distance {
 ///
 	public var decimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .decimeters)
+			self.get(unit: .decimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .decimeters, to: .base)
+			self.set(newValue, unit: .decimeters)
 		}
 	}
 
@@ -609,10 +609,10 @@ extension Distance {
 ///
 	public var fathoms: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .fathoms)
+			self.get(unit: .fathoms)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .fathoms, to: .base)
+			self.set(newValue, unit: .fathoms)
 		}
 	}
 
@@ -622,10 +622,10 @@ extension Distance {
 ///
 	public var feet: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .feet)
+			self.get(unit: .feet)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .feet, to: .base)
+			self.set(newValue, unit: .feet)
 		}
 	}
 
@@ -635,10 +635,10 @@ extension Distance {
 ///
 	public var furlongs: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .furlongs)
+			self.get(unit: .furlongs)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .furlongs, to: .base)
+			self.set(newValue, unit: .furlongs)
 		}
 	}
 
@@ -648,10 +648,10 @@ extension Distance {
 ///
 	public var hectometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .hectometers)
+			self.get(unit: .hectometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .hectometers, to: .base)
+			self.set(newValue, unit: .hectometers)
 		}
 	}
 
@@ -661,10 +661,10 @@ extension Distance {
 ///
 	public var inches: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .inches)
+			self.get(unit: .inches)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .inches, to: .base)
+			self.set(newValue, unit: .inches)
 		}
 	}
 
@@ -674,10 +674,10 @@ extension Distance {
 ///
 	public var kilometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilometers)
+			self.get(unit: .kilometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilometers, to: .base)
+			self.set(newValue, unit: .kilometers)
 		}
 	}
 
@@ -688,10 +688,10 @@ extension Distance {
 ///
 	public var lightyears: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .lightyears)
+			self.get(unit: .lightyears)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .lightyears, to: .base)
+			self.set(newValue, unit: .lightyears)
 		}
 	}
 
@@ -701,10 +701,10 @@ extension Distance {
 ///
 	public var megameters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .megameters)
+			self.get(unit: .megameters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .megameters, to: .base)
+			self.set(newValue, unit: .megameters)
 		}
 	}
 
@@ -714,10 +714,10 @@ extension Distance {
 ///
 	public var meters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .meters)
+			self.get(unit: .meters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .meters, to: .base)
+			self.set(newValue, unit: .meters)
 		}
 	}
 
@@ -727,10 +727,10 @@ extension Distance {
 ///
 	public var micrometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .micrometers)
+			self.get(unit: .micrometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .micrometers, to: .base)
+			self.set(newValue, unit: .micrometers)
 		}
 	}
 
@@ -740,10 +740,10 @@ extension Distance {
 ///
 	public var miles: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .miles)
+			self.get(unit: .miles)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .miles, to: .base)
+			self.set(newValue, unit: .miles)
 		}
 	}
 
@@ -753,10 +753,10 @@ extension Distance {
 ///
 	public var millimeters: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .millimeters)
+			self.get(unit: .millimeters)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .millimeters, to: .base)
+			self.set(newValue, unit: .millimeters)
 		}
 	}
 
@@ -766,10 +766,10 @@ extension Distance {
 ///
 	public var nanometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nanometers)
+			self.get(unit: .nanometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nanometers, to: .base)
+			self.set(newValue, unit: .nanometers)
 		}
 	}
 
@@ -780,10 +780,10 @@ extension Distance {
 ///
 	public var nauticalMiles: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nauticalMiles)
+			self.get(unit: .nauticalMiles)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nauticalMiles, to: .base)
+			self.set(newValue, unit: .nauticalMiles)
 		}
 	}
 
@@ -793,10 +793,10 @@ extension Distance {
 ///
 	public var parsecs: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .parsecs)
+			self.get(unit: .parsecs)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .parsecs, to: .base)
+			self.set(newValue, unit: .parsecs)
 		}
 	}
 
@@ -806,10 +806,10 @@ extension Distance {
 ///
 	public var picometers: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .picometers)
+			self.get(unit: .picometers)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .picometers, to: .base)
+			self.set(newValue, unit: .picometers)
 		}
 	}
 
@@ -820,10 +820,10 @@ extension Distance {
 ///
 	public var scandinavianMiles: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .scandinavianMiles)
+			self.get(unit: .scandinavianMiles)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .scandinavianMiles, to: .base)
+			self.set(newValue, unit: .scandinavianMiles)
 		}
 	}
 
@@ -833,10 +833,10 @@ extension Distance {
 ///
 	public var yards: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .yards)
+			self.get(unit: .yards)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .yards, to: .base)
+			self.set(newValue, unit: .yards)
 		}
 	}
 
@@ -1114,6 +1114,10 @@ extension Distance: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

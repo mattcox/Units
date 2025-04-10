@@ -307,10 +307,10 @@ extension Power {
 ///
 	public var femtowatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .femtowatts)
+			self.get(unit: .femtowatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .femtowatts, to: .base)
+			self.set(newValue, unit: .femtowatts)
 		}
 	}
 
@@ -321,10 +321,10 @@ extension Power {
 ///
 	public var gigawatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .gigawatts)
+			self.get(unit: .gigawatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .gigawatts, to: .base)
+			self.set(newValue, unit: .gigawatts)
 		}
 	}
 
@@ -335,10 +335,10 @@ extension Power {
 ///
 	public var horsepower: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .horsepower)
+			self.get(unit: .horsepower)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .horsepower, to: .base)
+			self.set(newValue, unit: .horsepower)
 		}
 	}
 
@@ -349,10 +349,10 @@ extension Power {
 ///
 	public var kilowatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilowatts)
+			self.get(unit: .kilowatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilowatts, to: .base)
+			self.set(newValue, unit: .kilowatts)
 		}
 	}
 
@@ -363,10 +363,10 @@ extension Power {
 ///
 	public var megawatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .megawatts)
+			self.get(unit: .megawatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .megawatts, to: .base)
+			self.set(newValue, unit: .megawatts)
 		}
 	}
 
@@ -376,10 +376,10 @@ extension Power {
 ///
 	public var microwatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .microwatts)
+			self.get(unit: .microwatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .microwatts, to: .base)
+			self.set(newValue, unit: .microwatts)
 		}
 	}
 
@@ -389,10 +389,10 @@ extension Power {
 ///
 	public var milliwatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .milliwatts)
+			self.get(unit: .milliwatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .milliwatts, to: .base)
+			self.set(newValue, unit: .milliwatts)
 		}
 	}
 
@@ -402,10 +402,10 @@ extension Power {
 ///
 	public var nanowatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nanowatts)
+			self.get(unit: .nanowatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nanowatts, to: .base)
+			self.set(newValue, unit: .nanowatts)
 		}
 	}
 
@@ -415,10 +415,10 @@ extension Power {
 ///
 	public var picowatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .picowatts)
+			self.get(unit: .picowatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .picowatts, to: .base)
+			self.set(newValue, unit: .picowatts)
 		}
 	}
 
@@ -429,10 +429,10 @@ extension Power {
 ///
 	public var terawatts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .terawatts)
+			self.get(unit: .terawatts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .terawatts, to: .base)
+			self.set(newValue, unit: .terawatts)
 		}
 	}
 
@@ -442,10 +442,10 @@ extension Power {
 ///
 	public var watts: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .watts)
+			self.get(unit: .watts)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .watts, to: .base)
+			self.set(newValue, unit: .watts)
 		}
 	}
 
@@ -599,6 +599,10 @@ extension Power: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

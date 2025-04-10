@@ -68,10 +68,10 @@ extension Illuminance {
 ///
 	public var lux: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .lux)
+			self.get(unit: .lux)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .lux, to: .base)
+			self.set(newValue, unit: .lux)
 		}
 	}
 
@@ -113,6 +113,10 @@ extension Illuminance: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

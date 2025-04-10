@@ -414,10 +414,10 @@ extension Mass {
 ///
 	public var carats: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .carats)
+			self.get(unit: .carats)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .carats, to: .base)
+			self.set(newValue, unit: .carats)
 		}
 	}
 
@@ -427,10 +427,10 @@ extension Mass {
 ///
 	public var centigrams: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .centigrams)
+			self.get(unit: .centigrams)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .centigrams, to: .base)
+			self.set(newValue, unit: .centigrams)
 		}
 	}
 
@@ -440,10 +440,10 @@ extension Mass {
 ///
 	public var decigrams: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .decigrams)
+			self.get(unit: .decigrams)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .decigrams, to: .base)
+			self.set(newValue, unit: .decigrams)
 		}
 	}
 
@@ -454,10 +454,10 @@ extension Mass {
 ///
 	public var grams: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .grams)
+			self.get(unit: .grams)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .grams, to: .base)
+			self.set(newValue, unit: .grams)
 		}
 	}
 
@@ -467,10 +467,10 @@ extension Mass {
 ///
 	public var kilograms: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilograms)
+			self.get(unit: .kilograms)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilograms, to: .base)
+			self.set(newValue, unit: .kilograms)
 		}
 	}
 
@@ -480,10 +480,10 @@ extension Mass {
 ///
 	public var metricTons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .metricTons)
+			self.get(unit: .metricTons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .metricTons, to: .base)
+			self.set(newValue, unit: .metricTons)
 		}
 	}
 
@@ -493,10 +493,10 @@ extension Mass {
 ///
 	public var micrograms: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .micrograms)
+			self.get(unit: .micrograms)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .micrograms, to: .base)
+			self.set(newValue, unit: .micrograms)
 		}
 	}
 
@@ -506,10 +506,10 @@ extension Mass {
 ///
 	public var milligrams: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .milligrams)
+			self.get(unit: .milligrams)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .milligrams, to: .base)
+			self.set(newValue, unit: .milligrams)
 		}
 	}
 
@@ -519,10 +519,10 @@ extension Mass {
 ///
 	public var nanograms: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nanograms)
+			self.get(unit: .nanograms)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nanograms, to: .base)
+			self.set(newValue, unit: .nanograms)
 		}
 	}
 
@@ -532,10 +532,10 @@ extension Mass {
 ///
 	public var ounces: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .ounces)
+			self.get(unit: .ounces)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .ounces, to: .base)
+			self.set(newValue, unit: .ounces)
 		}
 	}
 
@@ -545,10 +545,10 @@ extension Mass {
 ///
 	public var ouncesTroy: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .ouncesTroy)
+			self.get(unit: .ouncesTroy)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .ouncesTroy, to: .base)
+			self.set(newValue, unit: .ouncesTroy)
 		}
 	}
 
@@ -558,10 +558,10 @@ extension Mass {
 ///
 	public var picograms: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .picograms)
+			self.get(unit: .picograms)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .picograms, to: .base)
+			self.set(newValue, unit: .picograms)
 		}
 	}
 
@@ -571,10 +571,10 @@ extension Mass {
 ///
 	public var pounds: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .pounds)
+			self.get(unit: .pounds)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .pounds, to: .base)
+			self.set(newValue, unit: .pounds)
 		}
 	}
 
@@ -584,10 +584,10 @@ extension Mass {
 ///
 	public var shortTons: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .shortTons)
+			self.get(unit: .shortTons)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .shortTons, to: .base)
+			self.set(newValue, unit: .shortTons)
 		}
 	}
 
@@ -598,10 +598,10 @@ extension Mass {
 ///
 	public var slugs: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .slugs)
+			self.get(unit: .slugs)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .slugs, to: .base)
+			self.set(newValue, unit: .slugs)
 		}
 	}
 
@@ -612,10 +612,10 @@ extension Mass {
 ///
 	public var stones: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .stones)
+			self.get(unit: .stones)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .stones, to: .base)
+			self.set(newValue, unit: .stones)
 		}
 	}
 
@@ -822,6 +822,10 @@ extension Mass: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

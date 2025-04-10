@@ -68,10 +68,10 @@ extension Density {
 ///
 	public var kilogramsPerCubicMeter: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilogramsPerCubicMeter)
+			self.get(unit: .kilogramsPerCubicMeter)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilogramsPerCubicMeter, to: .base)
+			self.set(newValue, unit: .kilogramsPerCubicMeter)
 		}
 	}
 
@@ -114,6 +114,10 @@ extension Density: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 

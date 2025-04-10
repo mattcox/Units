@@ -37,6 +37,13 @@ public protocol Measurement {
 ///   - unit: The unit the value is measured in.
 ///
 	mutating func set(_ value: Value, unit: MeasurementUnit)
+	
+/// Get the value of the measurement with a value in the specified units.
+///
+/// - Parameters:
+///   - unit: The unit to get the value in.
+///
+	func get(unit: MeasurementUnit) -> Value
 }
 
 extension Measurement where Value: Numeric {

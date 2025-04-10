@@ -263,10 +263,10 @@ extension Frequency {
 ///
 	public var framesPerSecond: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .framesPerSecond)
+			self.get(unit: .framesPerSecond)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .framesPerSecond, to: .base)
+			self.set(newValue, unit: .framesPerSecond)
 		}
 	}
 
@@ -277,10 +277,10 @@ extension Frequency {
 ///
 	public var gigahertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .gigahertz)
+			self.get(unit: .gigahertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .gigahertz, to: .base)
+			self.set(newValue, unit: .gigahertz)
 		}
 	}
 
@@ -291,10 +291,10 @@ extension Frequency {
 ///
 	public var hertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .hertz)
+			self.get(unit: .hertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .hertz, to: .base)
+			self.set(newValue, unit: .hertz)
 		}
 	}
 
@@ -305,10 +305,10 @@ extension Frequency {
 ///
 	public var kilohertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .kilohertz)
+			self.get(unit: .kilohertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .kilohertz, to: .base)
+			self.set(newValue, unit: .kilohertz)
 		}
 	}
 
@@ -319,10 +319,10 @@ extension Frequency {
 ///
 	public var megahertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .megahertz)
+			self.get(unit: .megahertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .megahertz, to: .base)
+			self.set(newValue, unit: .megahertz)
 		}
 	}
 
@@ -333,10 +333,10 @@ extension Frequency {
 ///
 	public var microhertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .microhertz)
+			self.get(unit: .microhertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .microhertz, to: .base)
+			self.set(newValue, unit: .microhertz)
 		}
 	}
 
@@ -347,10 +347,10 @@ extension Frequency {
 ///
 	public var millihertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .millihertz)
+			self.get(unit: .millihertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .millihertz, to: .base)
+			self.set(newValue, unit: .millihertz)
 		}
 	}
 
@@ -361,10 +361,10 @@ extension Frequency {
 ///
 	public var nanohertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .nanohertz)
+			self.get(unit: .nanohertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .nanohertz, to: .base)
+			self.set(newValue, unit: .nanohertz)
 		}
 	}
 
@@ -375,10 +375,10 @@ extension Frequency {
 ///
 	public var terahertz: Value {
 		get {
-			MeasurementUnit.convert(value: self.value, from: .base, to: .terahertz)
+			self.get(unit: .terahertz)
 		}
 		set {
-			self.value = MeasurementUnit.convert(value: newValue, from: .terahertz, to: .base)
+			self.set(newValue, unit: .terahertz)
 		}
 	}
 
@@ -515,6 +515,10 @@ extension Frequency: Measurement {
 	
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
+	}
+	
+	public func get(unit: MeasurementUnit) -> Value {
+		MeasurementUnit.convert(value: self.value, from: .base, to: unit)
 	}
 }
 
