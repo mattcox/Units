@@ -69,6 +69,19 @@ extension Measurement where Value: FloatingPoint {
 		Self(-measurement.value, unit: .base)
 	}
 	
+/// Performs a multiplication operation with two measurements.
+///
+/// - Parameters:
+///   - lhs: The first measurement in the multiplication operation.
+///   - rhs: The first measurement in the multiplication operation.
+///
+/// - Returns: A measurement containing the result of the multiplication
+/// operation.
+///
+	public static func * (lhs: Self, rhs: Self) -> Self {
+		Self(lhs.value * rhs.value, unit: .base)
+	}
+	
 /// Performs a multiplication operation of a measurement with a scalar
 /// value.
 ///
@@ -97,6 +110,17 @@ extension Measurement where Value: FloatingPoint {
 		Self(lhs * rhs.value, unit: .base)
 	}
 	
+/// Performs a multiplication operation with two measurements.
+///
+/// - Parameters:
+///   - lhs: The first measurement in the multiplication operation. This
+///   will be modified.
+///   - rhs: The second measurement in the multiplication operation.
+///
+	public static func *= (lhs: inout Self, rhs: Self) {
+		lhs.set(lhs.value * rhs.value, unit: .base)
+	}
+	
 /// Performs a multiplication operation of a measurement with a scalar
 /// value.
 ///
@@ -107,6 +131,19 @@ extension Measurement where Value: FloatingPoint {
 ///
 	public static func *= (lhs: inout Self, rhs: Value) {
 		lhs.set(lhs.value * rhs, unit: .base)
+	}
+	
+/// Performs a division operation with two measurements.
+///
+/// - Parameters:
+///   - lhs: The first measurement in the division operation.
+///   - rhs: The second measurement in the division operation.
+///
+/// - Returns: A measurement containing the result of the multiplication
+/// operation.
+///
+	public static func / (lhs: Self, rhs: Self) -> Self {
+		Self(lhs.value / rhs.value, unit: .base)
 	}
 	
 /// Performs a division operation of a measurement with a scalar value.
@@ -120,6 +157,17 @@ extension Measurement where Value: FloatingPoint {
 ///
 	public static func / (lhs: Self, rhs: Value) -> Self {
 		Self(lhs.value / rhs, unit: .base)
+	}
+
+/// Performs a division operation of a measurement with another measurement.
+///
+/// - Parameters:
+///   - lhs: The measurement in the division operation. This will be
+///   modified.
+///   - rhs: The second measurement in the multiplication operation.
+///
+	public static func /= (lhs: inout Self, rhs: Self) {
+		lhs.set(lhs.value / rhs.value, unit: .base)
 	}
 
 /// Performs a division operation of a measurement with a scalar value.
