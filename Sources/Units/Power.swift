@@ -150,7 +150,7 @@ extension Power {
 /// Power representing 1.21 Gigawatts!
 ///
 	public static var greatScott: Power {
-		Power(1.21, unit: .gigawatts)
+		Self(1.21, unit: .gigawatts)
 	}
 
 /// Initialize the power using a value in femtowatts.
@@ -457,7 +457,7 @@ extension Power {
 ///   - value: The power measured in femtowatts.
 ///
 	public init(femtowatts value: Value) {
-		self = Power(value, unit: .femtowatts)
+		self = Self(value, unit: .femtowatts)
 	}
 
 /// Initialize the measurement from a power measured in gigawatts.
@@ -469,7 +469,7 @@ extension Power {
 ///   - value: The power measured in gigawatts.
 ///
 	public init(gigawatts value: Value) {
-		self = Power(value, unit: .gigawatts)
+		self = Self(value, unit: .gigawatts)
 	}
 
 /// Initialize the measurement from a power measured in horsepower.
@@ -481,7 +481,7 @@ extension Power {
 ///   - value: The power measured in horsepower.
 ///
 	public init(horsepower value: Value) {
-		self = Power(value, unit: .horsepower)
+		self = Self(value, unit: .horsepower)
 	}
 
 /// Initialize the measurement from a power measured in kilowatts.
@@ -493,7 +493,7 @@ extension Power {
 ///   - value: The power measured in kilowatts.
 ///
 	public init(kilowatts value: Value) {
-		self = Power(value, unit: .kilowatts)
+		self = Self(value, unit: .kilowatts)
 	}
 
 /// Initialize the measurement from a power measured in megawatts.
@@ -505,7 +505,7 @@ extension Power {
 ///   - value: The power measured in megawatts.
 ///
 	public init(megawatts value: Value) {
-		self = Power(value, unit: .megawatts)
+		self = Self(value, unit: .megawatts)
 	}
 
 /// Initialize the measurement from a power measured in microwatts.
@@ -516,7 +516,7 @@ extension Power {
 ///   - value: The power measured in microwatts.
 ///
 	public init(microwatts value: Value) {
-		self = Power(value, unit: .microwatts)
+		self = Self(value, unit: .microwatts)
 	}
 
 /// Initialize the measurement from a power measured in milliwatts.
@@ -527,7 +527,7 @@ extension Power {
 ///   - value: The power measured in milliwatts.
 ///
 	public init(milliwatts value: Value) {
-		self = Power(value, unit: .milliwatts)
+		self = Self(value, unit: .milliwatts)
 	}
 
 /// Initialize the measurement from a power measured in nanowatts.
@@ -538,7 +538,7 @@ extension Power {
 ///   - value: The power measured in nanowatts.
 ///
 	public init(nanowatts value: Value) {
-		self = Power(value, unit: .nanowatts)
+		self = Self(value, unit: .nanowatts)
 	}
 
 /// Initialize the measurement from a power measured in picowatts.
@@ -549,7 +549,7 @@ extension Power {
 ///   - value: The power measured in picowatts.
 ///
 	public init(picowatts value: Value) {
-		self = Power(value, unit: .picowatts)
+		self = Self(value, unit: .picowatts)
 	}
 
 /// Initialize the measurement from a power measured in terawatts.
@@ -561,7 +561,7 @@ extension Power {
 ///   - value: The power measured in terawatts.
 ///
 	public init(terawatts value: Value) {
-		self = Power(value, unit: .terawatts)
+		self = Self(value, unit: .terawatts)
 	}
 
 /// Initialize the measurement from a power measured in watts.
@@ -572,7 +572,7 @@ extension Power {
 ///   - value: The power measured in watts.
 ///
 	public init(watts value: Value) {
-		self = Power(value, unit: .watts)
+		self = Self(value, unit: .watts)
 	}
 }
 

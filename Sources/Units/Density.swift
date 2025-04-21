@@ -87,7 +87,7 @@ extension Density {
 ///   - value: The density measured in kilograms per cubic meter.
 ///
 	public init(kilogramsPerCubicMeter value: Value) {
-		self = Density(value, unit: .kilogramsPerCubicMeter)
+		self = Self(value, unit: .kilogramsPerCubicMeter)
 	}
 }
 

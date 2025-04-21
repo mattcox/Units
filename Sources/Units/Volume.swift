@@ -1191,7 +1191,7 @@ extension Volume {
 ///   - value: The volume measured in acre feet.
 ///
 	public init(acreFeet value: Value) {
-		self = Volume(value, unit: .acreFeet)
+		self = Self(value, unit: .acreFeet)
 	}
 
 /// Initialize the measurement from a volume measured in bushels.
@@ -1203,7 +1203,7 @@ extension Volume {
 ///   - value: The volume measured in bushels.
 ///
 	public init(bushels value: Value) {
-		self = Volume(value, unit: .bushels)
+		self = Self(value, unit: .bushels)
 	}
 
 /// Initialize the measurement from a volume measured in centiliters.
@@ -1214,7 +1214,7 @@ extension Volume {
 ///   - value: The volume measured in centiliters.
 ///
 	public init(centiliters value: Value) {
-		self = Volume(value, unit: .centiliters)
+		self = Self(value, unit: .centiliters)
 	}
 
 /// Initialize the measurement from a volume measured in cubic centimeters.
@@ -1226,7 +1226,7 @@ extension Volume {
 ///   - value: The volume measured in cubic centimeters.
 ///
 	public init(cubicCentimeters value: Value) {
-		self = Volume(value, unit: .cubicCentimeters)
+		self = Self(value, unit: .cubicCentimeters)
 	}
 
 /// Initialize the measurement from a volume measured in cubic decimeters.
@@ -1237,7 +1237,7 @@ extension Volume {
 ///   - value: The volume measured in cubic decimeters.
 ///
 	public init(cubicDecimeters value: Value) {
-		self = Volume(value, unit: .cubicDecimeters)
+		self = Self(value, unit: .cubicDecimeters)
 	}
 
 /// Initialize the measurement from a volume measured in cubic feet.
@@ -1248,7 +1248,7 @@ extension Volume {
 ///   - value: The volume measured in cubic feet.
 ///
 	public init(cubicFeet value: Value) {
-		self = Volume(value, unit: .cubicFeet)
+		self = Self(value, unit: .cubicFeet)
 	}
 
 /// Initialize the measurement from a volume measured in cubic inches.
@@ -1259,7 +1259,7 @@ extension Volume {
 ///   - value: The volume measured in cubic inches.
 ///
 	public init(cubicInches value: Value) {
-		self = Volume(value, unit: .cubicInches)
+		self = Self(value, unit: .cubicInches)
 	}
 
 /// Initialize the measurement from a volume measured in cubic kilometers.
@@ -1271,7 +1271,7 @@ extension Volume {
 ///   - value: The volume measured in cubic kilometers.
 ///
 	public init(cubicKilometers value: Value) {
-		self = Volume(value, unit: .cubicKilometers)
+		self = Self(value, unit: .cubicKilometers)
 	}
 
 /// Initialize the measurement from a volume measured in cubic meters.
@@ -1283,7 +1283,7 @@ extension Volume {
 ///   - value: The volume measured in cubic meters.
 ///
 	public init(cubicMeters value: Value) {
-		self = Volume(value, unit: .cubicMeters)
+		self = Self(value, unit: .cubicMeters)
 	}
 
 /// Initialize the measurement from a volume measured in cubic miles.
@@ -1295,7 +1295,7 @@ extension Volume {
 ///   - value: The volume measured in cubic miles.
 ///
 	public init(cubicMiles value: Value) {
-		self = Volume(value, unit: .cubicMiles)
+		self = Self(value, unit: .cubicMiles)
 	}
 
 /// Initialize the measurement from a volume measured in cubic millimeters.
@@ -1307,7 +1307,7 @@ extension Volume {
 ///   - value: The volume measured in cubic millimeters.
 ///
 	public init(cubicMillimeters value: Value) {
-		self = Volume(value, unit: .cubicMillimeters)
+		self = Self(value, unit: .cubicMillimeters)
 	}
 
 /// Initialize the measurement from a volume measured in cubic yards.
@@ -1318,7 +1318,7 @@ extension Volume {
 ///   - value: The volume measured in cubic yards.
 ///
 	public init(cubicYards value: Value) {
-		self = Volume(value, unit: .cubicYards)
+		self = Self(value, unit: .cubicYards)
 	}
 
 /// Initialize the measurement from a volume measured in cups.
@@ -1330,7 +1330,7 @@ extension Volume {
 ///   - value: The volume measured in cups.
 ///
 	public init(cups value: Value) {
-		self = Volume(value, unit: .cups)
+		self = Self(value, unit: .cups)
 	}
 
 /// Initialize the measurement from a volume measured in deciliters.
@@ -1341,7 +1341,7 @@ extension Volume {
 ///   - value: The volume measured in deciliters.
 ///
 	public init(deciliters value: Value) {
-		self = Volume(value, unit: .deciliters)
+		self = Self(value, unit: .deciliters)
 	}
 
 /// Initialize the measurement from a volume measured in fluid ounces.
@@ -1352,7 +1352,7 @@ extension Volume {
 ///   - value: The volume measured in fluid ounces.
 ///
 	public init(fluidOunces value: Value) {
-		self = Volume(value, unit: .fluidOunces)
+		self = Self(value, unit: .fluidOunces)
 	}
 
 /// Initialize the measurement from a volume measured in gallons.
@@ -1363,7 +1363,7 @@ extension Volume {
 ///   - value: The volume measured in gallons.
 ///
 	public init(gallons value: Value) {
-		self = Volume(value, unit: .gallons)
+		self = Self(value, unit: .gallons)
 	}
 
 /// Initialize the measurement from a volume measured in imperial fluid ounces.
@@ -1375,7 +1375,7 @@ extension Volume {
 ///   - value: The volume measured in imperial fluid ounces.
 ///
 	public init(imperialFluidOunces value: Value) {
-		self = Volume(value, unit: .imperialFluidOunces)
+		self = Self(value, unit: .imperialFluidOunces)
 	}
 
 /// Initialize the measurement from a volume measured in imperial gallons.
@@ -1386,7 +1386,7 @@ extension Volume {
 ///   - value: The volume measured in imperial gallons.
 ///
 	public init(imperialGallons value: Value) {
-		self = Volume(value, unit: .imperialGallons)
+		self = Self(value, unit: .imperialGallons)
 	}
 
 /// Initialize the measurement from a volume measured in imperial pints.
@@ -1397,7 +1397,7 @@ extension Volume {
 ///   - value: The volume measured in imperial pints.
 ///
 	public init(imperialPints value: Value) {
-		self = Volume(value, unit: .imperialPints)
+		self = Self(value, unit: .imperialPints)
 	}
 
 /// Initialize the measurement from a volume measured in imperial quarts.
@@ -1408,7 +1408,7 @@ extension Volume {
 ///   - value: The volume measured in imperial quarts.
 ///
 	public init(imperialQuarts value: Value) {
-		self = Volume(value, unit: .imperialQuarts)
+		self = Self(value, unit: .imperialQuarts)
 	}
 
 /// Initialize the measurement from a volume measured in imperial tablespoons.
@@ -1419,7 +1419,7 @@ extension Volume {
 ///   - value: The volume measured in imperial tablespoons.
 ///
 	public init(imperialTablespoons value: Value) {
-		self = Volume(value, unit: .imperialTablespoons)
+		self = Self(value, unit: .imperialTablespoons)
 	}
 
 /// Initialize the measurement from a volume measured in imperial teaspoons.
@@ -1431,7 +1431,7 @@ extension Volume {
 ///   - value: The volume measured in imperial teaspoons.
 ///
 	public init(imperialTeaspoons value: Value) {
-		self = Volume(value, unit: .imperialTeaspoons)
+		self = Self(value, unit: .imperialTeaspoons)
 	}
 
 /// Initialize the measurement from a volume measured in kiloliters.
@@ -1442,7 +1442,7 @@ extension Volume {
 ///   - value: The volume measured in kiloliters.
 ///
 	public init(kiloliters value: Value) {
-		self = Volume(value, unit: .kiloliters)
+		self = Self(value, unit: .kiloliters)
 	}
 
 /// Initialize the measurement from a volume measured in liters.
@@ -1453,7 +1453,7 @@ extension Volume {
 ///   - value: The volume measured in liters.
 ///
 	public init(liters value: Value) {
-		self = Volume(value, unit: .liters)
+		self = Self(value, unit: .liters)
 	}
 
 /// Initialize the measurement from a volume measured in megaliters.
@@ -1464,7 +1464,7 @@ extension Volume {
 ///   - value: The volume measured in megaliters.
 ///
 	public init(megaliters value: Value) {
-		self = Volume(value, unit: .megaliters)
+		self = Self(value, unit: .megaliters)
 	}
 
 /// Initialize the measurement from a volume measured in metric cups.
@@ -1476,7 +1476,7 @@ extension Volume {
 ///   - value: The volume measured in metric cups.
 ///
 	public init(metricCups value: Value) {
-		self = Volume(value, unit: .metricCups)
+		self = Self(value, unit: .metricCups)
 	}
 
 /// Initialize the measurement from a volume measured in milliliters.
@@ -1487,7 +1487,7 @@ extension Volume {
 ///   - value: The volume measured in milliliters.
 ///
 	public init(milliliters value: Value) {
-		self = Volume(value, unit: .milliliters)
+		self = Self(value, unit: .milliliters)
 	}
 
 /// Initialize the measurement from a volume measured in pints.
@@ -1498,7 +1498,7 @@ extension Volume {
 ///   - value: The volume measured in pints.
 ///
 	public init(pints value: Value) {
-		self = Volume(value, unit: .pints)
+		self = Self(value, unit: .pints)
 	}
 
 /// Initialize the measurement from a volume measured in quarts.
@@ -1509,7 +1509,7 @@ extension Volume {
 ///   - value: The volume measured in quarts.
 ///
 	public init(quarts value: Value) {
-		self = Volume(value, unit: .quarts)
+		self = Self(value, unit: .quarts)
 	}
 
 /// Initialize the measurement from a volume measured in tablespoons.
@@ -1520,7 +1520,7 @@ extension Volume {
 ///   - value: The volume measured in tablespoons.
 ///
 	public init(tablespoons value: Value) {
-		self = Volume(value, unit: .tablespoons)
+		self = Self(value, unit: .tablespoons)
 	}
 
 /// Initialize the measurement from a volume measured in teaspoons.
@@ -1531,7 +1531,7 @@ extension Volume {
 ///   - value: The volume measured in teaspoons.
 ///
 	public init(teaspoons value: Value) {
-		self = Volume(value, unit: .teaspoons)
+		self = Self(value, unit: .teaspoons)
 	}
 }
 

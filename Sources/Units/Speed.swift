@@ -197,7 +197,7 @@ extension Speed {
 ///   - value: The speed measured in kilometers per hour.
 ///
 	public init(kilometersPerHour value: Value) {
-		self = Speed(value, unit: .kilometersPerHour)
+		self = Self(value, unit: .kilometersPerHour)
 	}
 
 /// Initialize the measurement from a speed measured in knots.
@@ -209,7 +209,7 @@ extension Speed {
 ///   - value: The speed measured in knots.
 ///
 	public init(knots value: Value) {
-		self = Speed(value, unit: .knots)
+		self = Self(value, unit: .knots)
 	}
 
 /// Initialize the measurement from a speed measured in meters per second.
@@ -221,7 +221,7 @@ extension Speed {
 ///   - value: The speed measured in meters per second.
 ///
 	public init(metersPerSecond value: Value) {
-		self = Speed(value, unit: .metersPerSecond)
+		self = Self(value, unit: .metersPerSecond)
 	}
 
 /// Initialize the measurement from a speed measured in miles per hour.
@@ -234,7 +234,7 @@ extension Speed {
 ///   - value: The speed measured in miles per hour.
 ///
 	public init(milesPerHour value: Value) {
-		self = Speed(value, unit: .milesPerHour)
+		self = Self(value, unit: .milesPerHour)
 	}
 }
 

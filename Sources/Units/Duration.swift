@@ -339,7 +339,7 @@ extension Duration {
 ///   - value: The duration measured in days.
 ///
 	public init(days value: Value) {
-		self = Duration(value, unit: .days)
+		self = Self(value, unit: .days)
 	}
 
 /// Initialize the measurement from a duration measured in hours.
@@ -350,7 +350,7 @@ extension Duration {
 ///   - value: The duration measured in hours.
 ///
 	public init(hours value: Value) {
-		self = Duration(value, unit: .hours)
+		self = Self(value, unit: .hours)
 	}
 
 /// Initialize the measurement from a duration measured in microseconds.
@@ -362,7 +362,7 @@ extension Duration {
 ///   - value: The duration measured in microseconds.
 ///
 	public init(microseconds value: Value) {
-		self = Duration(value, unit: .microseconds)
+		self = Self(value, unit: .microseconds)
 	}
 
 /// Initialize the measurement from a duration measured in milliseconds.
@@ -374,7 +374,7 @@ extension Duration {
 ///   - value: The duration measured in milliseconds.
 ///
 	public init(milliseconds value: Value) {
-		self = Duration(value, unit: .milliseconds)
+		self = Self(value, unit: .milliseconds)
 	}
 
 /// Initialize the measurement from a duration measured in minutes.
@@ -385,7 +385,7 @@ extension Duration {
 ///   - value: The duration measured in minutes.
 ///
 	public init(minutes value: Value) {
-		self = Duration(value, unit: .minutes)
+		self = Self(value, unit: .minutes)
 	}
 
 /// Initialize the measurement from a duration measured in nanoseconds.
@@ -397,7 +397,7 @@ extension Duration {
 ///   - value: The duration measured in nanoseconds.
 ///
 	public init(nanoseconds value: Value) {
-		self = Duration(value, unit: .nanoseconds)
+		self = Self(value, unit: .nanoseconds)
 	}
 
 /// Initialize the measurement from a duration measured in picoseconds.
@@ -409,7 +409,7 @@ extension Duration {
 ///   - value: The duration measured in picoseconds.
 ///
 	public init(picoseconds value: Value) {
-		self = Duration(value, unit: .picoseconds)
+		self = Self(value, unit: .picoseconds)
 	}
 
 /// Initialize the measurement from a duration measured in seconds.
@@ -420,7 +420,7 @@ extension Duration {
 ///   - value: The duration measured in seconds.
 ///
 	public init(seconds value: Value) {
-		self = Duration(value, unit: .seconds)
+		self = Self(value, unit: .seconds)
 	}
 }
 

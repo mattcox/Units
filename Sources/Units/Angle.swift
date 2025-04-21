@@ -110,7 +110,7 @@ extension Angle {
 /// Pi is equivalent to approximately 3.142 radians.
 ///
 	public static var π: Angle {
-		Angle(.pi, unit: .radians)
+		Self(.pi, unit: .radians)
 	}
 	
 /// Initialize the angle using a value in arc minutes.
@@ -231,7 +231,7 @@ extension Angle {
 	public var normalized: Angle {
 		let twoPi = 2 * Value.pi
 		let normalized = self.value.truncatingRemainder(dividingBy: twoPi)
-		return Angle(normalized >= 0 ? normalized : normalized + twoPi, unit: .radians)
+		return Self(normalized >= 0 ? normalized : normalized + twoPi, unit: .radians)
 	}
 	
 /// The angle measured in arc minutes.
@@ -321,7 +321,7 @@ extension Angle {
 ///   - value: The angle measured in arc minutes.
 ///
 	public init(arcMinutes value: Value) {
-		self = Angle(value, unit: .arcMinutes)
+		self = Self(value, unit: .arcMinutes)
 	}
 	
 /// Initialize the measurement from an angle measured in arc seconds.
@@ -332,7 +332,7 @@ extension Angle {
 ///   - value: The angle measured in arc seconds.
 ///
 	public init(arcSeconds value: Value) {
-		self = Angle(value, unit: .arcSeconds)
+		self = Self(value, unit: .arcSeconds)
 	}
 	
 /// Initialize the measurement from an angle measured in degrees.
@@ -347,10 +347,10 @@ extension Angle {
 ///
 	public init(degrees value: Value, normalize: Bool = false) {
 		if normalize {
-			self = Angle(value, unit: .degrees).normalized
+			self = Self(value, unit: .degrees).normalized
 		}
 		else {
-			self = Angle(value, unit: .degrees)
+			self = Self(value, unit: .degrees)
 		}
 	}
 	
@@ -362,7 +362,7 @@ extension Angle {
 ///   - value: The angle measured in gradians.
 ///
 	public init(gradians value: Value) {
-		self = Angle(value, unit: .gradians)
+		self = Self(value, unit: .gradians)
 	}
 	
 /// Initialize the measurement from radians.
@@ -374,7 +374,7 @@ extension Angle {
 ///   - value: The angle measured in radians.
 ///
 	public init(radians value: Value) {
-		self = Angle(value, unit: .radians)
+		self = Self(value, unit: .radians)
 	}
 	
 /// Initialize the measurement from an angle measured in revolutions.
@@ -385,7 +385,7 @@ extension Angle {
 ///   - value: The angle measured in revolutions.
 ///
 	public init(revolutions value: Value) {
-		self = Angle(value, unit: .revolutions)
+		self = Self(value, unit: .revolutions)
 	}
 }
 

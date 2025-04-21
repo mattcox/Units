@@ -392,7 +392,7 @@ extension Frequency {
 ///   - value: The frequency measured in frames per second.
 ///
 	public init(framesPerSecond value: Value) {
-		self = Frequency(value, unit: .framesPerSecond)
+		self = Self(value, unit: .framesPerSecond)
 	}
 
 /// Initialize the measurement from a frequency measured in gigahertz.
@@ -404,7 +404,7 @@ extension Frequency {
 ///   - value: The frequency measured in gigahertz.
 ///
 	public init(gigahertz value: Value) {
-		self = Frequency(value, unit: .gigahertz)
+		self = Self(value, unit: .gigahertz)
 	}
 
 /// Initialize the measurement from a frequency measured in hertz.
@@ -416,7 +416,7 @@ extension Frequency {
 ///   - value: The frequency measured in hertz.
 ///
 	public init(hertz value: Value) {
-		self = Frequency(value, unit: .hertz)
+		self = Self(value, unit: .hertz)
 	}
 
 /// Initialize the measurement from a frequency measured in kilohertz.
@@ -428,7 +428,7 @@ extension Frequency {
 ///   - value: The frequency measured in kilohertz.
 ///
 	public init(kilohertz value: Value) {
-		self = Frequency(value, unit: .kilohertz)
+		self = Self(value, unit: .kilohertz)
 	}
 
 /// Initialize the measurement from a frequency measured in megahertz.
@@ -440,7 +440,7 @@ extension Frequency {
 ///   - value: The frequency measured in megahertz.
 ///
 	public init(megahertz value: Value) {
-		self = Frequency(value, unit: .megahertz)
+		self = Self(value, unit: .megahertz)
 	}
 
 /// Initialize the measurement from a frequency measured in microhertz.
@@ -452,7 +452,7 @@ extension Frequency {
 ///   - value: The frequency measured in microhertz.
 ///
 	public init(microhertz value: Value) {
-		self = Frequency(value, unit: .microhertz)
+		self = Self(value, unit: .microhertz)
 	}
 
 /// Initialize the measurement from a frequency measured in millihertz.
@@ -464,7 +464,7 @@ extension Frequency {
 ///   - value: The frequency measured in millihertz.
 ///
 	public init(millihertz value: Value) {
-		self = Frequency(value, unit: .millihertz)
+		self = Self(value, unit: .millihertz)
 	}
 
 /// Initialize the measurement from a frequency measured in nanohertz.
@@ -476,7 +476,7 @@ extension Frequency {
 ///   - value: The frequency measured in nanohertz.
 ///
 	public init(nanohertz value: Value) {
-		self = Frequency(value, unit: .nanohertz)
+		self = Self(value, unit: .nanohertz)
 	}
 
 /// Initialize the measurement from a frequency measured in terahertz.
@@ -488,7 +488,7 @@ extension Frequency {
 ///   - value: The frequency measured in terahertz.
 ///
 	public init(terahertz value: Value) {
-		self = Frequency(value, unit: .terahertz)
+		self = Self(value, unit: .terahertz)
 	}
 }
 

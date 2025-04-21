@@ -429,7 +429,7 @@ extension Pressure {
 ///   - value: The pressure measured in bars.
 ///
 	public init(bars value: Value) {
-		self = Pressure(value, unit: .bars)
+		self = Self(value, unit: .bars)
 	}
 
 /// Initialize the measurement from a pressure measured in gigapascals.
@@ -441,7 +441,7 @@ extension Pressure {
 ///   - value: The pressure measured in gigapascals.
 ///
 	public init(gigapascals value: Value) {
-		self = Pressure(value, unit: .gigapascals)
+		self = Self(value, unit: .gigapascals)
 	}
 
 /// Initialize the measurement from a pressure measured in hectopascals.
@@ -453,7 +453,7 @@ extension Pressure {
 ///   - value: The pressure measured in hectopascals.
 ///
 	public init(hectopascals value: Value) {
-		self = Pressure(value, unit: .hectopascals)
+		self = Self(value, unit: .hectopascals)
 	}
 
 /// Initialize the measurement from a pressure measured in inches of
@@ -466,7 +466,7 @@ extension Pressure {
 ///   - value: The pressure measured in inches of mercury.
 ///
 	public init(inchesOfMercury value: Value) {
-		self = Pressure(value, unit: .inchesOfMercury)
+		self = Self(value, unit: .inchesOfMercury)
 	}
 
 /// Initialize the measurement from a pressure measured in kilopascals.
@@ -478,7 +478,7 @@ extension Pressure {
 ///   - value: The pressure measured in kilopascals.
 ///
 	public init(kilopascals value: Value) {
-		self = Pressure(value, unit: .kilopascals)
+		self = Self(value, unit: .kilopascals)
 	}
 
 /// Initialize the measurement from a pressure measured in megapascals.
@@ -490,7 +490,7 @@ extension Pressure {
 ///   - value: The pressure measured in megapascals.
 ///
 	public init(megapascals value: Value) {
-		self = Pressure(value, unit: .megapascals)
+		self = Self(value, unit: .megapascals)
 	}
 
 /// Initialize the measurement from a pressure measured in millibars.
@@ -502,7 +502,7 @@ extension Pressure {
 ///   - value: The pressure measured in millibars.
 ///
 	public init(millibars value: Value) {
-		self = Pressure(value, unit: .millibars)
+		self = Self(value, unit: .millibars)
 	}
 
 /// Initialize the measurement from a pressure measured in millimeters of
@@ -515,7 +515,7 @@ extension Pressure {
 ///   - value: The pressure measured in millimeters of mercury.
 ///
 	public init(millimetersOfMercury value: Value) {
-		self = Pressure(value, unit: .millimetersOfMercury)
+		self = Self(value, unit: .millimetersOfMercury)
 	}
 
 /// Initialize the measurement from a pressure measured in newtons per
@@ -528,7 +528,7 @@ extension Pressure {
 ///   - value: The pressure measured in newtons per meters squared.
 ///
 	public init(newtonsPerMetersSquared value: Value) {
-		self = Pressure(value, unit: .newtonsPerMetersSquared)
+		self = Self(value, unit: .newtonsPerMetersSquared)
 	}
 
 /// Initialize the measurement from a pressure measured in pounds force per
@@ -541,7 +541,7 @@ extension Pressure {
 ///   - value: The pressure measured in pounds force per square inch.
 ///
 	public init(poundsForcePerSquareInch value: Value) {
-		self = Pressure(value, unit: .poundsForcePerSquareInch)
+		self = Self(value, unit: .poundsForcePerSquareInch)
 	}
 }
 

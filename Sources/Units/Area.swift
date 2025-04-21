@@ -516,7 +516,7 @@ extension Area {
 ///   - value: The area measured in acres.
 ///
 	public init(acres value: Value) {
-		self = Area(value, unit: .acres)
+		self = Self(value, unit: .acres)
 	}
 
 /// Initialize the measurement from an area measured in hectares.
@@ -527,7 +527,7 @@ extension Area {
 ///   - value: The area measured in hectares.
 ///
 	public init(hectares value: Value) {
-		self = Area(value, unit: .hectares)
+		self = Self(value, unit: .hectares)
 	}
 
 /// Initialize the measurement from an area measured in square centimeters.
@@ -539,7 +539,7 @@ extension Area {
 ///   - value: The area measured in square centimeters.
 ///
 	public init(squareCentimeters value: Value) {
-		self = Area(value, unit: .squareCentimeters)
+		self = Self(value, unit: .squareCentimeters)
 	}
 
 /// Initialize the measurement from an area measured in square feet.
@@ -550,7 +550,7 @@ extension Area {
 ///   - value: The area measured in square feet.
 ///
 	public init(squareFeet value: Value) {
-		self = Area(value, unit: .squareFeet)
+		self = Self(value, unit: .squareFeet)
 	}
 
 /// Initialize the measurement from an area measured in square inches.
@@ -561,7 +561,7 @@ extension Area {
 ///   - value: The area measured in square inches.
 ///
 	public init(squareInches value: Value) {
-		self = Area(value, unit: .squareInches)
+		self = Self(value, unit: .squareInches)
 	}
 
 /// Initialize the measurement from an area measured in square kilometers.
@@ -572,7 +572,7 @@ extension Area {
 ///   - value: The area measured in square kilometers.
 ///
 	public init(squareKilometers value: Value) {
-		self = Area(value, unit: .squareKilometers)
+		self = Self(value, unit: .squareKilometers)
 	}
 
 /// Initialize the measurement from an area measured in square megameters.
@@ -583,7 +583,7 @@ extension Area {
 ///   - value: The area measured in square megameters.
 ///
 	public init(squareMegameters value: Value) {
-		self = Area(value, unit: .squareMegameters)
+		self = Self(value, unit: .squareMegameters)
 	}
 
 /// Initialize the measurement from an area measured in square meters.
@@ -595,7 +595,7 @@ extension Area {
 ///   - value: The area measured in square meters.
 ///
 	public init(squareMeters value: Value) {
-		self = Area(value, unit: .squareMeters)
+		self = Self(value, unit: .squareMeters)
 	}
 
 /// Initialize the measurement from an area measured in square micrometers.
@@ -606,7 +606,7 @@ extension Area {
 ///   - value: The area measured in square micrometers.
 ///
 	public init(squareMicrometers value: Value) {
-		self = Area(value, unit: .squareMicrometers)
+		self = Self(value, unit: .squareMicrometers)
 	}
 
 /// Initialize the measurement from an area measured in square miles.
@@ -617,7 +617,7 @@ extension Area {
 ///   - value: The area measured in square miles.
 ///
 	public init(squareMiles value: Value) {
-		self = Area(value, unit: .squareMiles)
+		self = Self(value, unit: .squareMiles)
 	}
 
 /// Initialize the measurement from an area measured in square millimeters.
@@ -629,7 +629,7 @@ extension Area {
 ///   - value: The area measured in square millimeters.
 ///
 	public init(squareMillimeters value: Value) {
-		self = Area(value, unit: .squareMillimeters)
+		self = Self(value, unit: .squareMillimeters)
 	}
 
 /// Initialize the measurement from an area measured in square nanometers.
@@ -640,7 +640,7 @@ extension Area {
 ///   - value: The area measured in square nanometers.
 ///
 	public init(squareNanometers value: Value) {
-		self = Area(value, unit: .squareNanometers)
+		self = Self(value, unit: .squareNanometers)
 	}
 
 /// Initialize the measurement from an area measured in square yards.
@@ -651,7 +651,7 @@ extension Area {
 ///   - value: The area measured in square yards.
 ///
 	public init(squareYards value: Value) {
-		self = Area(value, unit: .squareYards)
+		self = Self(value, unit: .squareYards)
 	}
 }
 

@@ -181,7 +181,7 @@ extension Temperature {
 ///   - value: The temperature measured in celsius.
 ///
 	public init(celsius value: Value) {
-		self = Temperature(value, unit: .celsius)
+		self = Self(value, unit: .celsius)
 	}
 
 /// Initialize the measurement from a temperature measured in fahrenheit.
@@ -193,7 +193,7 @@ extension Temperature {
 ///   - value: The temperature measured in fahrenheit.
 ///
 	public init(fahrenheit value: Value) {
-		self = Temperature(value, unit: .fahrenheit)
+		self = Self(value, unit: .fahrenheit)
 	}
 
 /// Initialize the measurement from a temperature measured in kelvin.
@@ -205,7 +205,7 @@ extension Temperature {
 ///   - value: The temperature measured in kelvin.
 ///
 	public init(kelvin value: Value) {
-		self = Temperature(value, unit: .kelvin)
+		self = Self(value, unit: .kelvin)
 	}
 }
 

@@ -278,7 +278,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in centimeters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func centimeters(_ value: Value) -> Self {
 		Self(value, unit: .centimeters)
@@ -291,7 +291,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in decameters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func decameters(_ value: Value) -> Self {
 		Self(value, unit: .decameters)
@@ -304,7 +304,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in decimeters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func decimeters(_ value: Value) -> Self {
 		Self(value, unit: .decimeters)
@@ -318,7 +318,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in fathoms.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func fathoms(_ value: Value) -> Self {
 		Self(value, unit: .fathoms)
@@ -331,7 +331,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in feet.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func feet(_ value: Value) -> Self {
 		Self(value, unit: .feet)
@@ -344,7 +344,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in furlongs.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func furlongs(_ value: Value) -> Self {
 		Self(value, unit: .furlongs)
@@ -357,7 +357,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in hectometers.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func hectometers(_ value: Value) -> Self {
 		Self(value, unit: .hectometers)
@@ -370,7 +370,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in inches.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func inches(_ value: Value) -> Self {
 		Self(value, unit: .inches)
@@ -383,7 +383,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in kilometers.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func kilometers(_ value: Value) -> Self {
 		Self(value, unit: .kilometers)
@@ -397,7 +397,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in lightyears.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func lightyears(_ value: Value) -> Self {
 		Self(value, unit: .lightyears)
@@ -410,7 +410,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in megameters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func megameters(_ value: Value) -> Self {
 		Self(value, unit: .megameters)
@@ -423,7 +423,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in meters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func meters(_ value: Value) -> Self {
 		Self(value, unit: .meters)
@@ -436,7 +436,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in micrometers.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func micrometers(_ value: Value) -> Self {
 		Self(value, unit: .micrometers)
@@ -449,7 +449,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in miles.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func miles(_ value: Value) -> Self {
 		Self(value, unit: .miles)
@@ -462,7 +462,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in millimeters.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func millimeters(_ value: Value) -> Self {
 		Self(value, unit: .millimeters)
@@ -475,7 +475,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in nanometers.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func nanometers(_ value: Value) -> Self {
 		Self(value, unit: .nanometers)
@@ -489,7 +489,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in nautical miles.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func nauticalMiles(_ value: Value) -> Self {
 		Self(value, unit: .nauticalMiles)
@@ -502,7 +502,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in parsecs.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func parsecs(_ value: Value) -> Self {
 		Self(value, unit: .parsecs)
@@ -516,7 +516,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in picometers.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func picometers(_ value: Value) -> Self {
 		Self(value, unit: .picometers)
@@ -530,7 +530,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in scandinavian miles.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func scandinavianMiles(_ value: Value) -> Self {
 		Self(value, unit: .scandinavianMiles)
@@ -543,7 +543,7 @@ extension Distance {
 /// - Parameters:
 ///   - value: The distance in yards.
 ///
-/// - Returns: The measurement representing the provided distance
+/// - Returns: The measurement representing the provided distance.
 ///
 	public static func yards(_ value: Value) -> Self {
 		Self(value, unit: .yards)
@@ -850,7 +850,7 @@ extension Distance {
 ///   - value: The distance measured in astronomical units.
 ///
 	public init(astronomicalUnits value: Value) {
-		self = Distance(value, unit: .astronomicalUnits)
+		self = Self(value, unit: .astronomicalUnits)
 	}
 
 /// Initialize the measurement from a distance measured in centimeters.
@@ -861,7 +861,7 @@ extension Distance {
 ///   - value: The distance measured in centimeters.
 ///
 	public init(centimeters value: Value) {
-		self = Distance(value, unit: .centimeters)
+		self = Self(value, unit: .centimeters)
 	}
 
 /// Initialize the measurement from a distance measured in decameters.
@@ -872,7 +872,7 @@ extension Distance {
 ///   - value: The distance measured in decameters.
 ///
 	public init(decameters value: Value) {
-		self = Distance(value, unit: .decameters)
+		self = Self(value, unit: .decameters)
 	}
 
 /// Initialize the measurement from a distance measured in decimeters.
@@ -883,7 +883,7 @@ extension Distance {
 ///   - value: The distance measured in decimeters.
 ///
 	public init(decimeters value: Value) {
-		self = Distance(value, unit: .decimeters)
+		self = Self(value, unit: .decimeters)
 	}
 
 /// Initialize the measurement from a distance measured in fathoms.
@@ -895,7 +895,7 @@ extension Distance {
 ///   - value: The distance measured in fathoms.
 ///
 	public init(fathoms value: Value) {
-		self = Distance(value, unit: .fathoms)
+		self = Self(value, unit: .fathoms)
 	}
 
 /// Initialize the measurement from a distance measured in feet.
@@ -906,7 +906,7 @@ extension Distance {
 ///   - value: The distance measured in feet.
 ///
 	public init(feet value: Value) {
-		self = Distance(value, unit: .feet)
+		self = Self(value, unit: .feet)
 	}
 
 /// Initialize the measurement from a distance measured in furlongs.
@@ -917,7 +917,7 @@ extension Distance {
 ///   - value: The distance measured in furlongs.
 ///
 	public init(furlongs value: Value) {
-		self = Distance(value, unit: .furlongs)
+		self = Self(value, unit: .furlongs)
 	}
 
 /// Initialize the measurement from a distance measured in hectometers.
@@ -928,7 +928,7 @@ extension Distance {
 ///   - value: The distance measured in hectometers.
 ///
 	public init(hectometers value: Value) {
-		self = Distance(value, unit: .hectometers)
+		self = Self(value, unit: .hectometers)
 	}
 
 /// Initialize the measurement from a distance measured in inches.
@@ -939,7 +939,7 @@ extension Distance {
 ///   - value: The distance measured in inches.
 ///
 	public init(inches value: Value) {
-		self = Distance(value, unit: .inches)
+		self = Self(value, unit: .inches)
 	}
 
 /// Initialize the measurement from a distance measured in kilometers.
@@ -950,7 +950,7 @@ extension Distance {
 ///   - value: The distance measured in kilometers.
 ///
 	public init(kilometers value: Value) {
-		self = Distance(value, unit: .kilometers)
+		self = Self(value, unit: .kilometers)
 	}
 
 /// Initialize the measurement from a distance measured in lightyears.
@@ -962,7 +962,7 @@ extension Distance {
 ///   - value: The distance measured in lightyears.
 ///
 	public init(lightyears value: Value) {
-		self = Distance(value, unit: .lightyears)
+		self = Self(value, unit: .lightyears)
 	}
 
 /// Initialize the measurement from a distance measured in megameters.
@@ -973,7 +973,7 @@ extension Distance {
 ///   - value: The distance measured in megameters.
 ///
 	public init(megameters value: Value) {
-		self = Distance(value, unit: .megameters)
+		self = Self(value, unit: .megameters)
 	}
 
 /// Initialize the measurement from a distance measured in meters.
@@ -984,7 +984,7 @@ extension Distance {
 ///   - value: The distance measured in meters.
 ///
 	public init(meters value: Value) {
-		self = Distance(value, unit: .meters)
+		self = Self(value, unit: .meters)
 	}
 
 /// Initialize the measurement from a distance measured in micrometers.
@@ -995,7 +995,7 @@ extension Distance {
 ///   - value: The distance measured in micrometers.
 ///
 	public init(micrometers value: Value) {
-		self = Distance(value, unit: .micrometers)
+		self = Self(value, unit: .micrometers)
 	}
 
 /// Initialize the measurement from a distance measured in miles.
@@ -1006,7 +1006,7 @@ extension Distance {
 ///   - value: The distance measured in miles.
 ///
 	public init(miles value: Value) {
-		self = Distance(value, unit: .miles)
+		self = Self(value, unit: .miles)
 	}
 
 /// Initialize the measurement from a distance measured in millimeters.
@@ -1017,7 +1017,7 @@ extension Distance {
 ///   - value: The distance measured in millimeters.
 ///
 	public init(millimeters value: Value) {
-		self = Distance(value, unit: .millimeters)
+		self = Self(value, unit: .millimeters)
 	}
 
 /// Initialize the measurement from a distance measured in nanometers.
@@ -1028,7 +1028,7 @@ extension Distance {
 ///   - value: The distance measured in nanometers.
 ///
 	public init(nanometers value: Value) {
-		self = Distance(value, unit: .nanometers)
+		self = Self(value, unit: .nanometers)
 	}
 
 /// Initialize the measurement from a distance measured in nautical miles.
@@ -1040,7 +1040,7 @@ extension Distance {
 ///   - value: The distance measured in nautical miles.
 ///
 	public init(nauticalMiles value: Value) {
-		self = Distance(value, unit: .nauticalMiles)
+		self = Self(value, unit: .nauticalMiles)
 	}
 
 /// Initialize the measurement from a distance measured in parsecs.
@@ -1051,7 +1051,7 @@ extension Distance {
 ///   - value: The distance measured in parsecs.
 ///
 	public init(parsecs value: Value) {
-		self = Distance(value, unit: .parsecs)
+		self = Self(value, unit: .parsecs)
 	}
 
 /// Initialize the measurement from a distance measured in picometers.
@@ -1063,7 +1063,7 @@ extension Distance {
 ///   - value: The distance measured in picometers.
 ///
 	public init(picometers value: Value) {
-		self = Distance(value, unit: .picometers)
+		self = Self(value, unit: .picometers)
 	}
 
 /// Initialize the measurement from a distance measured in scandinavian
@@ -1076,7 +1076,7 @@ extension Distance {
 ///   - value: The distance measured in scandinavian miles.
 ///
 	public init(scandinavianMiles value: Value) {
-		self = Distance(value, unit: .scandinavianMiles)
+		self = Self(value, unit: .scandinavianMiles)
 	}
 
 /// Initialize the measurement from a distance measured in yards.
@@ -1087,7 +1087,7 @@ extension Distance {
 ///   - value: The distance measured in yards.
 ///
 	public init(yards value: Value) {
-		self = Distance(value, unit: .yards)
+		self = Self(value, unit: .yards)
 	}
 }
 

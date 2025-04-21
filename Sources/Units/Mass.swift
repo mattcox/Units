@@ -627,7 +627,7 @@ extension Mass {
 ///   - value: The mass measured in carats.
 ///
 	public init(carats value: Value) {
-		self = Mass(value, unit: .carats)
+		self = Self(value, unit: .carats)
 	}
 
 /// Initialize the measurement from a mass measured in centigrams.
@@ -638,7 +638,7 @@ extension Mass {
 ///   - value: The mass measured in centigrams.
 ///
 	public init(centigrams value: Value) {
-		self = Mass(value, unit: .centigrams)
+		self = Self(value, unit: .centigrams)
 	}
 
 /// Initialize the measurement from a mass measured in decigrams.
@@ -649,7 +649,7 @@ extension Mass {
 ///   - value: The mass measured in decigrams.
 ///
 	public init(decigrams value: Value) {
-		self = Mass(value, unit: .decigrams)
+		self = Self(value, unit: .decigrams)
 	}
 
 /// Initialize the measurement from a mass measured in grams.
@@ -661,7 +661,7 @@ extension Mass {
 ///   - value: The mass measured in grams.
 ///
 	public init(grams value: Value) {
-		self = Mass(value, unit: .grams)
+		self = Self(value, unit: .grams)
 	}
 
 /// Initialize the measurement from a mass measured in kilograms.
@@ -672,7 +672,7 @@ extension Mass {
 ///   - value: The mass measured in kilograms.
 ///
 	public init(kilograms value: Value) {
-		self = Mass(value, unit: .kilograms)
+		self = Self(value, unit: .kilograms)
 	}
 
 /// Initialize the measurement from a mass measured in metric tons.
@@ -683,7 +683,7 @@ extension Mass {
 ///   - value: The mass measured in metric tons.
 ///
 	public init(metricTons value: Value) {
-		self = Mass(value, unit: .metricTons)
+		self = Self(value, unit: .metricTons)
 	}
 
 /// Initialize the measurement from a mass measured in micrograms.
@@ -694,7 +694,7 @@ extension Mass {
 ///   - value: The mass measured in micrograms.
 ///
 	public init(micrograms value: Value) {
-		self = Mass(value, unit: .micrograms)
+		self = Self(value, unit: .micrograms)
 	}
 
 /// Initialize the measurement from a mass measured in milligrams.
@@ -705,7 +705,7 @@ extension Mass {
 ///   - value: The mass measured in milligrams.
 ///
 	public init(milligrams value: Value) {
-		self = Mass(value, unit: .milligrams)
+		self = Self(value, unit: .milligrams)
 	}
 
 /// Initialize the measurement from a mass measured in nanograms.
@@ -716,7 +716,7 @@ extension Mass {
 ///   - value: The mass measured in nanograms.
 ///
 	public init(nanograms value: Value) {
-		self = Mass(value, unit: .nanograms)
+		self = Self(value, unit: .nanograms)
 	}
 
 /// Initialize the measurement from a mass measured in ounces.
@@ -727,7 +727,7 @@ extension Mass {
 ///   - value: The mass measured in ounces.
 ///
 	public init(ounces value: Value) {
-		self = Mass(value, unit: .ounces)
+		self = Self(value, unit: .ounces)
 	}
 
 /// Initialize the measurement from a mass measured in troy ounces.
@@ -738,7 +738,7 @@ extension Mass {
 ///   - value: The mass measured in troy ounces.
 ///
 	public init(ouncesTroy value: Value) {
-		self = Mass(value, unit: .ouncesTroy)
+		self = Self(value, unit: .ouncesTroy)
 	}
 
 /// Initialize the measurement from a mass measured in picograms.
@@ -749,7 +749,7 @@ extension Mass {
 ///   - value: The mass measured in picograms.
 ///
 	public init(picograms value: Value) {
-		self = Mass(value, unit: .picograms)
+		self = Self(value, unit: .picograms)
 	}
 
 /// Initialize the measurement from a mass measured in pounds.
@@ -760,7 +760,7 @@ extension Mass {
 ///   - value: The mass measured in pounds.
 ///
 	public init(pounds value: Value) {
-		self = Mass(value, unit: .pounds)
+		self = Self(value, unit: .pounds)
 	}
 
 /// Initialize the measurement from a mass measured in short tons.
@@ -771,7 +771,7 @@ extension Mass {
 ///   - value: The mass measured in short tons.
 ///
 	public init(shortTons value: Value) {
-		self = Mass(value, unit: .shortTons)
+		self = Self(value, unit: .shortTons)
 	}
 
 /// Initialize the measurement from a mass measured in slugs.
@@ -783,7 +783,7 @@ extension Mass {
 ///   - value: The mass measured in slugs.
 ///
 	public init(slugs value: Value) {
-		self = Mass(value, unit: .slugs)
+		self = Self(value, unit: .slugs)
 	}
 
 /// Initialize the measurement from a mass measured in stones.
@@ -795,7 +795,7 @@ extension Mass {
 ///   - value: The mass measured in stones.
 ///
 	public init(stones value: Value) {
-		self = Mass(value, unit: .stones)
+		self = Self(value, unit: .stones)
 	}
 }
 

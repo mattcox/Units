@@ -86,7 +86,7 @@ extension Illuminance {
 ///   - value: The illuminance measured in lux.
 ///
 	public init(lux value: Value) {
-		self = Illuminance(value, unit: .lux)
+		self = Self(value, unit: .lux)
 	}
 }
 
