@@ -6,6 +6,8 @@
 //  Copyright © 2025 Matt Cox. All rights reserved.
 //
 
+import Foundation
+
 extension Area {
 /// Initialize the area from two distances.
 ///
@@ -51,6 +53,29 @@ extension Distance {
 ///
 	public init(speed: Speed<Value>, duration: Duration<Value>) {
 		self = Distance(meters: speed.metersPerSecond * duration.seconds)
+	}
+	
+/// Initialize the distance from two positions.
+///
+/// `distance = |a-b|`
+///
+/// - Parameters:
+///   - from: The first position.
+///   - to: The second position.
+///
+/// - Returns: The distance between the two positions.
+///
+	public init<V: SIMD>(from first: Position<V>, to second: Position<V>) where V.Scalar == Value {
+		let squaredDistance = (0..<V.scalarCount)
+			.map { index in
+				let component = first.value[index] - second.value[index]
+				return component * component
+			}
+			.reduce(V.Scalar.zero) {
+				$0 + $1
+			}
+			
+		self = Distance(meters: sqrt(squaredDistance))
 	}
 }
 
