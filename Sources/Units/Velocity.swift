@@ -200,16 +200,26 @@ extension Velocity: Equatable {
 	}
 }
 
-extension Velocity: Measurement {
+extension Velocity: MeasurementVector {
 	public static var zero: Self {
 		Self(.zero, unit: .base)
 	}
+	
 	public init(_ value: Value, unit: MeasurementUnit) {
 		var vector = Self.Value.zero
 		for i in 0..<Self.Value.scalarCount {
 			vector[i] = MeasurementUnit.convert(value: value[i], from: unit, to: .base)
 		}
 		self.value = vector
+	}
+
+	public subscript(_ index: Int) -> Speed<Value.Scalar> {
+		get {
+			Speed(value[index], unit: .base)
+		}
+		set {
+			self.value[index] = newValue.value
+		}
 	}
 
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
