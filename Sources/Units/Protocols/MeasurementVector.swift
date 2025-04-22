@@ -33,83 +33,83 @@ extension MeasurementVector where Scalar.Value: FloatingPoint, Scalar.Value == V
 		Scalar(value.sum(), unit: .base)
 	}
 	
-	static func + (lhs: Self, rhs: Self) -> Self {
+	public static func + (lhs: Self, rhs: Self) -> Self {
 		Self(lhs.value + rhs.value, unit: .base)
 	}
 	
-	static func += (lhs: inout Self, rhs: Self) {
+	public static func += (lhs: inout Self, rhs: Self) {
 		lhs = Self(lhs.value + rhs.value, unit: .base)
 	}
 
-	static func + (lhs: Self, rhs: Scalar) -> Self {
+	public static func + (lhs: Self, rhs: Scalar) -> Self {
 		Self(lhs.value + rhs.value, unit: .base)
 	}
 
-	static func + (lhs: Scalar, rhs: Self) -> Self {
+	public static func + (lhs: Scalar, rhs: Self) -> Self {
 		Self(lhs.value + rhs.value, unit: .base)
 	}
 	
-	static func += (lhs: inout Self, rhs: Scalar) {
+	public static func += (lhs: inout Self, rhs: Scalar) {
 		lhs = Self(lhs.value + rhs.value, unit: .base)
 	}
 
-	static func - (lhs: Self, rhs: Self) -> Self {
+	public static func - (lhs: Self, rhs: Self) -> Self {
 		Self(lhs.value - rhs.value, unit: .base)
 	}
 	
-	static func -= (lhs: inout Self, rhs: Self) {
+	public static func -= (lhs: inout Self, rhs: Self) {
 		lhs = Self(lhs.value - rhs.value, unit: .base)
 	}
 	
-	static func - (lhs: Self, rhs: Scalar) -> Self {
+	public static func - (lhs: Self, rhs: Scalar) -> Self {
 		Self(lhs.value - rhs.value, unit: .base)
 	}
 	
-	static func - (lhs: Scalar, rhs: Self) -> Self {
+	public static func - (lhs: Scalar, rhs: Self) -> Self {
 		Self(lhs.value - rhs.value, unit: .base)
 	}
 	
-	static func -= (lhs: inout Self, rhs: Scalar) {
+	public static func -= (lhs: inout Self, rhs: Scalar) {
 		lhs = Self(lhs.value - rhs.value, unit: .base)
 	}
 	
-	static prefix func - (vector: Self) -> Self {
+	public static prefix func - (vector: Self) -> Self {
 		Self(-vector.value, unit: .base)
 	}
 	
-	static func * (lhs: Self, rhs: Self) -> Self {
+	public static func * (lhs: Self, rhs: Self) -> Self {
 		Self(lhs.value * rhs.value, unit: .base)
 	}
 	
-	static func *= (lhs: inout Self, rhs: Self) {
+	public static func *= (lhs: inout Self, rhs: Self) {
 		lhs = Self(lhs.value * rhs.value, unit: .base)
 	}
 	
-	static func * (lhs: Self, rhs: Scalar) -> Self {
+	public static func * (lhs: Self, rhs: Scalar) -> Self {
 		Self(lhs.value * rhs.value, unit: .base)
 	}
 	
-	static func * (lhs: Scalar, rhs: Self) -> Self {
+	public static func * (lhs: Scalar, rhs: Self) -> Self {
 		Self(lhs.value * rhs.value, unit: .base)
 	}
 	
-	static func *= (lhs: inout Self, rhs: Scalar) {
+	public static func *= (lhs: inout Self, rhs: Scalar) {
 		lhs = Self(lhs.value * rhs.value, unit: .base)
 	}
 	
-	static func / (lhs: Self, rhs: Self) -> Self {
+	public static func / (lhs: Self, rhs: Self) -> Self {
 		Self(lhs.value / rhs.value, unit: .base)
 	}
 	
-	static func /= (lhs: inout Self, rhs: Self) {
+	public static func /= (lhs: inout Self, rhs: Self) {
 		lhs = Self(lhs.value / rhs.value, unit: .base)
 	}
 	
-	static func / (lhs: Self, rhs: Scalar) -> Self {
+	public static func / (lhs: Self, rhs: Scalar) -> Self {
 		Self(lhs.value / rhs.value, unit: .base)
 	}
 	
-	static func /= (lhs: inout Self, rhs: Scalar) {
+	public static func /= (lhs: inout Self, rhs: Scalar) {
 		lhs = Self(lhs.value / rhs.value, unit: .base)
 	}
 }
