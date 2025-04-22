@@ -201,6 +201,8 @@ extension Velocity: Equatable {
 }
 
 extension Velocity: MeasurementVector {
+	public typealias Scalar = Speed<Value.Scalar>
+
 	public static var zero: Self {
 		Self(.zero, unit: .base)
 	}
@@ -213,7 +215,7 @@ extension Velocity: MeasurementVector {
 		self.value = vector
 	}
 
-	public subscript(_ index: Int) -> Speed<Value.Scalar> {
+	public subscript(_ index: Int) -> Scalar {
 		get {
 			Speed(value[index], unit: .base)
 		}

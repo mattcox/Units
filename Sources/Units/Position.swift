@@ -873,6 +873,8 @@ extension Position: Equatable {
 }
 
 extension Position: MeasurementVector {
+	public typealias Scalar = Distance<Value.Scalar>
+
 	public static var zero: Self {
 		Self(.zero, unit: .base)
 	}
@@ -885,7 +887,7 @@ extension Position: MeasurementVector {
 		self.value = vector
 	}
 
-	public subscript(_ index: Int) -> Distance<Value.Scalar> {
+	public subscript(_ index: Int) -> Scalar {
 		get {
 			Distance(value[index], unit: .base)
 		}
