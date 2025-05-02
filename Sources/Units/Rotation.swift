@@ -16,7 +16,7 @@ import Foundation
 /// various units.
 ///
 public struct Rotation<Value: SIMD> where Value.Scalar: BinaryFloatingPoint {
-	public typealias MeasurementUnit = Angle<Value.Scalar>.MeasurementUnit
+	public typealias MeasurementUnit = Scalar.MeasurementUnit
 	
 	private(set) public var value: Value
 }
