@@ -14,7 +14,7 @@
 /// various units.
 ///
 public struct Velocity<Value: SIMD> where Value.Scalar: BinaryFloatingPoint {
-	public typealias MeasurementUnit = Speed<Value.Scalar>.MeasurementUnit
+	public typealias MeasurementUnit = Scalar.MeasurementUnit
 	
 	private(set) public var value: Value
 }
@@ -217,7 +217,7 @@ extension Velocity: MeasurementVector {
 
 	public subscript(_ index: Int) -> Scalar {
 		get {
-			Speed(value[index], unit: .base)
+			Scalar(value[index], unit: .base)
 		}
 		set {
 			self.value[index] = newValue.value
