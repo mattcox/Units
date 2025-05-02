@@ -8,7 +8,7 @@
 
 /// A type specifying a unit of measurement.
 ///
-public protocol Unit: CaseIterable {
+public protocol Unit: CaseIterable, Sendable {
 /// The value type associated with the unit.
 ///
 	associatedtype Value
