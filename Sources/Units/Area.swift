@@ -660,15 +660,11 @@ extension Area: Codable where Value: Codable {
 }
 
 extension Area: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Area: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Area: MeasurementBinaryFloatingPoint {

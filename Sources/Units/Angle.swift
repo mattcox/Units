@@ -339,19 +339,11 @@ extension Angle {
 ///
 /// There are 360 degrees in one revolution.
 ///
-/// The value can optionally be normalized to a range of 0..<360.
-///
 /// - Parameters:
 ///   - value: The angle measured in degrees.
-///   - normalize: Normalize the angle to a range of 0..<360.
 ///
-	public init(degrees value: Value, normalize: Bool = false) {
-		if normalize {
-			self = Self(value, unit: .degrees).normalized
-		}
-		else {
-			self = Self(value, unit: .degrees)
-		}
+	public init(degrees value: Value) {
+		self = Self(value, unit: .degrees)
 	}
 	
 /// Initialize the measurement from an angle measured in gradians.
@@ -394,18 +386,11 @@ extension Angle: Codable where Value: Codable {
 }
 
 extension Angle: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Angle: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		let a = lhs.normalized
-		let b = rhs.normalized
 	
-		return a.value == b.value
-	}
 }
 
 extension Angle: MeasurementBinaryFloatingPoint {

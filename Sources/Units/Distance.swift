@@ -1096,15 +1096,11 @@ extension Distance: Codable where Value: Codable {
 }
 
 extension Distance: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Distance: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Distance: MeasurementBinaryFloatingPoint {

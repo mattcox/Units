@@ -1,5 +1,5 @@
 //
-//  Utilities.swift
+//  BinaryFloatingPoint.swift
 //  Units
 //
 //  Created by Matt Cox on 06/04/2025.
@@ -8,7 +8,7 @@
 
 import Testing
 
-extension FloatingPoint {
+extension BinaryFloatingPoint {
 /// Returns true if one value is close enough to the other to be considered
 /// the same value, usually within some pre-defined tolerance.
 ///

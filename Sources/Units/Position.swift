@@ -16,13 +16,13 @@ import Foundation
 /// various units.
 ///
 public struct Position<Value: SIMD> where Value.Scalar: BinaryFloatingPoint {
-	public typealias MeasurementUnit = Distance<Value.Scalar>.MeasurementUnit
+	public typealias MeasurementUnit = Scalar.MeasurementUnit
 
 	private(set) public var value: Value
 }
 
 extension Position {
-/// Initialize the position from a value in astronomical units.
+/// Initialize the position using a value in astronomical units.
 ///
 /// One astronomical unit is about 149.6 million kilometers, the average
 /// distance from the Earth to the Sun.
@@ -36,7 +36,7 @@ extension Position {
 		Self(value, unit: .astronomicalUnits)
 	}
 
-/// Initialize the position from a value in centimeters.
+/// Initialize the position using a value in centimeters.
 ///
 /// One centimeter is 10 millimeters or 1⁄100 of a meter.
 ///
@@ -49,7 +49,7 @@ extension Position {
 		Self(value, unit: .centimeters)
 	}
 
-/// Initialize the position from a value in decameters.
+/// Initialize the position using a value in decameters.
 ///
 /// One decameter is 10 meters or 1⁄100 of a kilometer.
 ///
@@ -62,7 +62,7 @@ extension Position {
 		Self(value, unit: .decameters)
 	}
 
-/// Initialize the position from a value in decimeters.
+/// Initialize the position using a value in decimeters.
 ///
 /// One decimeter is 10 centimeters or 1⁄10 of a meter.
 ///
@@ -75,7 +75,7 @@ extension Position {
 		Self(value, unit: .decimeters)
 	}
 
-/// Initialize the position from a value in fathoms.
+/// Initialize the position using a value in fathoms.
 ///
 /// One fathom is 6 feet or 1.8288 meters and is traditionally used to
 /// measure water depth.
@@ -89,7 +89,7 @@ extension Position {
 		Self(value, unit: .fathoms)
 	}
 
-/// Initialize the position from a value in feet.
+/// Initialize the position using a value in feet.
 ///
 /// One foot is 12 inches or 0.3048 meters.
 ///
@@ -102,7 +102,7 @@ extension Position {
 		Self(value, unit: .feet)
 	}
 
-/// Initialize the position from a value in furlongs.
+/// Initialize the position using a value in furlongs.
 ///
 /// One furlong is 660 feet or 201.168 meters.
 ///
@@ -115,7 +115,7 @@ extension Position {
 		Self(value, unit: .furlongs)
 	}
 
-/// Initialize the position from a value in hectometers.
+/// Initialize the position using a value in hectometers.
 ///
 /// One hectometer is 100 meters or 1⁄10 of a kilometer.
 ///
@@ -128,7 +128,7 @@ extension Position {
 		Self(value, unit: .hectometers)
 	}
 
-/// Initialize the position from a value in inches.
+/// Initialize the position using a value in inches.
 ///
 /// One inch is 2.54 centimeters or 1⁄12 of a foot.
 ///
@@ -141,7 +141,7 @@ extension Position {
 		Self(value, unit: .inches)
 	}
 
-/// Initialize the position from a value in kilometers.
+/// Initialize the position using a value in kilometers.
 ///
 /// One kilometer is 1,000 meters or about 0.621 miles.
 ///
@@ -154,7 +154,7 @@ extension Position {
 		Self(value, unit: .kilometers)
 	}
 
-/// Initialize the position from a value in lightyears.
+/// Initialize the position using a value in lightyears.
 ///
 /// One lightyear is about 9.46 trillion kilometers or 63,241 astronomical
 /// units.
@@ -168,7 +168,7 @@ extension Position {
 		Self(value, unit: .lightyears)
 	}
 
-/// Initialize the position from a value in megameters.
+/// Initialize the position using a value in megameters.
 ///
 /// One megameter is 1,000 kilometers or 1 million meters.
 ///
@@ -181,7 +181,7 @@ extension Position {
 		Self(value, unit: .megameters)
 	}
 
-/// Initialize the position from a value in meters.
+/// Initialize the position using a value in meters.
 ///
 /// One meter is equal to 100 centimeters or about 3.28 feet.
 ///
@@ -194,7 +194,7 @@ extension Position {
 		Self(value, unit: .meters)
 	}
 
-/// Initialize the position from a value in micrometers.
+/// Initialize the position using a value in micrometers.
 ///
 /// One micrometer is 1⁄1,000,000 of a meter or 1,000 nanometers.
 ///
@@ -207,7 +207,7 @@ extension Position {
 		Self(value, unit: .micrometers)
 	}
 
-/// Initialize the position from a value in miles.
+/// Initialize the position using a value in miles.
 ///
 /// One mile is 5,280 feet or about 1.609 kilometers.
 ///
@@ -220,7 +220,7 @@ extension Position {
 		Self(value, unit: .miles)
 	}
 
-/// Initialize the position from a value in millimeters.
+/// Initialize the position using a value in millimeters.
 ///
 /// One millimeter is 1⁄1,000 of a meter or 1⁄10 of a centimeter.
 ///
@@ -233,7 +233,7 @@ extension Position {
 		Self(value, unit: .millimeters)
 	}
 
-/// Initialize the position from a value in nanometers.
+/// Initialize the position using a value in nanometers.
 ///
 /// One nanometer is 1⁄1,000,000,000 of a meter or 1⁄1,000 of a micrometer.
 ///
@@ -246,7 +246,7 @@ extension Position {
 		Self(value, unit: .nanometers)
 	}
 
-/// Initialize the position from a value in nautical miles.
+/// Initialize the position using a value in nautical miles.
 ///
 /// One nautical mile is 1,852 meters or about 1.151 miles and is used in
 /// maritime and air navigation.
@@ -260,7 +260,7 @@ extension Position {
 		Self(value, unit: .nauticalMiles)
 	}
 
-/// Initialize the position from a value in parsecs.
+/// Initialize the position using a value in parsecs.
 ///
 /// One parsec is about 3.26 lightyears or 206,265 astronomical units.
 ///
@@ -273,7 +273,7 @@ extension Position {
 		Self(value, unit: .parsecs)
 	}
 
-/// Initialize the position from a value in picometers.
+/// Initialize the position using a value in picometers.
 ///
 /// One picometer is 1⁄1,000,000,000,000 of a meter or 1⁄1,000 of a
 /// nanometer.
@@ -287,7 +287,7 @@ extension Position {
 		Self(value, unit: .picometers)
 	}
 
-/// Initialize the position from a value in scandinavian miles.
+/// Initialize the position using a value in scandinavian miles.
 ///
 /// One Scandinavian mile is exactly 10 kilometers and used mainly in Sweden
 /// and Norway.
@@ -301,7 +301,7 @@ extension Position {
 		Self(value, unit: .scandinavianMiles)
 	}
 
-/// Initialize the position from a value in yards.
+/// Initialize the position using a value in yards.
 ///
 /// One yard is 3 feet or 0.9144 meters.
 ///
@@ -867,21 +867,31 @@ extension Position: Comparable where Value: Comparable {
 }
 
 extension Position: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
-extension Position: Measurement {
+extension Position: MeasurementVector {
+	public typealias Scalar = Distance<Value.Scalar>
+
 	public static var zero: Self {
 		Self(.zero, unit: .base)
 	}
+	
 	public init(_ value: Value, unit: MeasurementUnit) {
 		var vector = Self.Value.zero
 		for i in 0..<Self.Value.scalarCount {
 			vector[i] = MeasurementUnit.convert(value: value[i], from: unit, to: .base)
 		}
 		self.value = vector
+	}
+
+	public subscript(_ index: Int) -> Scalar {
+		get {
+			Scalar(value[index], unit: .base)
+		}
+		set {
+			self.value[index] = newValue.value
+		}
 	}
 
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {

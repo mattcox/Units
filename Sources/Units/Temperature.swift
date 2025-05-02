@@ -214,15 +214,11 @@ extension Temperature: Codable where Value: Codable {
 }
 
 extension Temperature: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Temperature: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Temperature: MeasurementBinaryFloatingPoint {

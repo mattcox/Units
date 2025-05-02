@@ -14,7 +14,7 @@
 /// various units.
 ///
 public struct Velocity<Value: SIMD> where Value.Scalar: BinaryFloatingPoint {
-	public typealias MeasurementUnit = Speed<Value.Scalar>.MeasurementUnit
+	public typealias MeasurementUnit = Scalar.MeasurementUnit
 	
 	private(set) public var value: Value
 }
@@ -195,21 +195,31 @@ extension Velocity: Comparable where Value: Comparable {
 }
 
 extension Velocity: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
-extension Velocity: Measurement {
+extension Velocity: MeasurementVector {
+	public typealias Scalar = Speed<Value.Scalar>
+
 	public static var zero: Self {
 		Self(.zero, unit: .base)
 	}
+	
 	public init(_ value: Value, unit: MeasurementUnit) {
 		var vector = Self.Value.zero
 		for i in 0..<Self.Value.scalarCount {
 			vector[i] = MeasurementUnit.convert(value: value[i], from: unit, to: .base)
 		}
 		self.value = vector
+	}
+
+	public subscript(_ index: Int) -> Scalar {
+		get {
+			Scalar(value[index], unit: .base)
+		}
+		set {
+			self.value[index] = newValue.value
+		}
 	}
 
 	public mutating func set(_ value: Value, unit: MeasurementUnit) {
