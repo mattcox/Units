@@ -8,9 +8,8 @@
 
 import Foundation
 
-/// A type that allows a measurement to be composed of other measurements.
-///
-/// For example, a vector measurement composed of individual scalar values.
+/// A type that allows a measurement to be composed of other measurements, for
+/// example, a vector measurement composed of individual scalar values.
 ///
 public protocol MeasurementComposable: Measurement {
 /// The type of value used to describe a single component of the value.
