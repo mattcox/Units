@@ -497,15 +497,11 @@ extension Frequency: Codable where Value: Codable {
 }
 
 extension Frequency: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Frequency: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Frequency: MeasurementBinaryFloatingPoint {

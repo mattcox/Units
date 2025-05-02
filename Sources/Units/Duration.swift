@@ -429,15 +429,11 @@ extension Duration: Codable where Value: Codable {
 }
 
 extension Duration: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Duration: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Duration: MeasurementBinaryFloatingPoint {

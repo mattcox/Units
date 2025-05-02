@@ -386,18 +386,11 @@ extension Angle: Codable where Value: Codable {
 }
 
 extension Angle: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Angle: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		let a = lhs.normalized
-		let b = rhs.normalized
 	
-		return a.value == b.value
-	}
 }
 
 extension Angle: MeasurementBinaryFloatingPoint {

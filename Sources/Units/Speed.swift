@@ -243,15 +243,11 @@ extension Speed: Codable where Value: Codable {
 }
 
 extension Speed: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Speed: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Speed: MeasurementBinaryFloatingPoint {

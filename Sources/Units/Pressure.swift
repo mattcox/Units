@@ -550,15 +550,11 @@ extension Pressure: Codable where Value: Codable {
 }
 
 extension Pressure: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Pressure: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Pressure: MeasurementBinaryFloatingPoint {

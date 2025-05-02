@@ -1540,15 +1540,11 @@ extension Volume: Codable where Value: Codable {
 }
 
 extension Volume: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Volume: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Volume: MeasurementBinaryFloatingPoint {

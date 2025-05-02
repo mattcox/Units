@@ -581,15 +581,11 @@ extension Power: Codable where Value: Codable {
 }
 
 extension Power: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Power: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Power: MeasurementBinaryFloatingPoint {

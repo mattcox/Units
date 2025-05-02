@@ -96,15 +96,11 @@ extension Density: Codable where Value: Codable {
 }
 
 extension Density: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Density: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Density: MeasurementBinaryFloatingPoint {

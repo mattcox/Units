@@ -283,12 +283,7 @@ extension Rotation: Comparable where Value: Comparable {
 }
 
 extension Rotation: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		let a = lhs.normalized
-		let b = rhs.normalized
 	
-		return a.value == b.value
-	}
 }
 
 extension Rotation: MeasurementVector {

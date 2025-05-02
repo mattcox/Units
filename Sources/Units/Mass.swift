@@ -804,15 +804,11 @@ extension Mass: Codable where Value: Codable {
 }
 
 extension Mass: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Mass: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Mass: MeasurementBinaryFloatingPoint {

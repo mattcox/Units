@@ -195,9 +195,7 @@ extension Velocity: Comparable where Value: Comparable {
 }
 
 extension Velocity: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Velocity: MeasurementVector {

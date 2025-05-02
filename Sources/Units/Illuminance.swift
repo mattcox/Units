@@ -95,15 +95,11 @@ extension Illuminance: Codable where Value: Codable {
 }
 
 extension Illuminance: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
+	
 }
 
 extension Illuminance: Equatable {
-	public static func == (lhs: Self, rhs: Self) -> Bool {
-		lhs.value == rhs.value
-	}
+	
 }
 
 extension Illuminance: MeasurementBinaryFloatingPoint {
