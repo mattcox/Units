@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// A measurement representing the magnitude that can be applied to an object
-/// with mass, causing it to change it's velocity.
+/// A measurement representing the magnitude of a force that can be applied to
+/// an object with mass, causing it to change it's velocity.
 ///
 /// Forces are stored in newtons.
 ///
