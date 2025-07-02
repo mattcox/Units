@@ -79,7 +79,7 @@ public struct Angle<Value: BinaryFloatingPoint> {
 	
 /// The type or classification of an angle.
 ///
-	public enum Classification {
+	public enum Classification: Sendable {
 	/// An acute angle is less than 90 degrees.
 	///
 		case acute
@@ -195,21 +195,21 @@ extension Angle {
 /// The type or classification of the angle.
 ///
 	public var classification: Classification {
-		let degrees = self.normalized.degrees
+		let angle = self.normalized
 		
-		if degrees < 90.0 {
+		if angle < .pi / 2 {
 			return .acute
 		}
 		
-		if degrees == 90.0 {
+		if angle == .pi / 2 {
 			return .right
 		}
 		
-		if degrees < 180.0 {
+		if angle < .pi {
 			return .obtuse
 		}
 		
-		if degrees == 180.0 {
+		if angle == .pi {
 			return .straight
 		}
 		
@@ -394,7 +394,7 @@ extension Angle: Equatable {
 }
 
 extension Angle: MeasurementBinaryFloatingPoint {
-	public init(_ value: Value, unit: MeasurementUnit) {
+	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}
 	

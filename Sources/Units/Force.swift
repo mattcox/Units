@@ -85,7 +85,7 @@ extension Force: MeasurementVector {
 		Self(.zero, unit: .base)
 	}
 	
-	public init(_ value: Value, unit: MeasurementUnit) {
+	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		var vector = Self.Value.zero
 		for i in 0..<Self.Value.scalarCount {
 			vector[i] = MeasurementUnit.convert(value: value[i], from: unit, to: .base)

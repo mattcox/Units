@@ -668,7 +668,7 @@ extension Area: Equatable {
 }
 
 extension Area: MeasurementBinaryFloatingPoint {
-	public init(_ value: Value, unit: MeasurementUnit) {
+	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}
 	
