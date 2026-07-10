@@ -51,7 +51,7 @@ public struct Temperature<Value: BinaryFloatingPoint> {
 				case .celsius:
 					1.0
 				case .fahrenheit:
-					0.55555555555556
+					5.0 / 9.0
 				case .kelvin:
 					1.0
 			}
@@ -62,9 +62,9 @@ public struct Temperature<Value: BinaryFloatingPoint> {
 				case .celsius:
 					273.15
 				case .fahrenheit:
-					255.37222222222428
+					273.15 - (32.0 * 5.0 / 9.0)
 				case .kelvin:
-					1.0
+					0.0
 			}
 		}
 	}
@@ -75,13 +75,13 @@ public struct Temperature<Value: BinaryFloatingPoint> {
 extension Temperature {
 /// The freezing point of water at sea level.
 ///
-	public var freezingPoint: Self {
+	public static var freezingPoint: Self {
 		.celsius(0.0)
 	}
 
 /// The boiling point of water at sea level.
 ///
-	public var boiling: Self {
+	public static var boilingPoint: Self {
 		.celsius(100.0)
 	}
 

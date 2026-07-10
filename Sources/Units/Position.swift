@@ -860,12 +860,6 @@ extension Position: Codable where Value: Codable {
 
 }
 
-extension Position: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
-}
-
 extension Position: Equatable {
 	
 }

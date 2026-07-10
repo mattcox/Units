@@ -27,6 +27,6 @@ extension UnitLinear where Value: FloatingPoint {
 	}
 
 	public static func convert(value: Value, from: Self, to: Self) -> Value {
-		(((value * from.coefficient) + from.constant) / to.coefficient) - to.constant
+		(((value * from.coefficient) + from.constant) - to.constant) / to.coefficient
 	}
 }

@@ -188,12 +188,6 @@ extension Velocity: Codable where Value: Codable {
 
 }
 
-extension Velocity: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
-}
-
 extension Velocity: Equatable {
 	
 }

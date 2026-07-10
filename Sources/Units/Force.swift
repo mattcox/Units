@@ -68,12 +68,6 @@ extension Force: Codable where Value: Codable {
 	
 }
 
-extension Force: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
-}
-
 extension Force: Equatable {
 	
 }

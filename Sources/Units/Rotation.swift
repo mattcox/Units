@@ -276,12 +276,6 @@ extension Rotation: Codable where Value: Codable {
 	
 }
 
-extension Rotation: Comparable where Value: Comparable {
-	public static func < (lhs: Self, rhs: Self) -> Bool {
-		lhs.value < rhs.value
-	}
-}
-
 extension Rotation: Equatable {
 	
 }

@@ -12,6 +12,9 @@ let package = Package(
 			]
 		),
 	],
+	dependencies: [
+		.package(url: "https://github.com/apple/swift-numerics", from: Version(1, 0, 0))
+	],
 	targets: [
 		.target(
 			name: "Units"
@@ -19,6 +22,7 @@ let package = Package(
 		.testTarget(
 			name: "UnitsTests",
 			dependencies: [
+				.product(name: "RealModule", package: "swift-numerics"),
 				"Units"
 			]
 		),

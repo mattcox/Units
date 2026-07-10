@@ -61,7 +61,7 @@ public struct Area<Value: BinaryFloatingPoint> {
 	///
 		case squareMillimeters
 	
-	/// One square millimeter contains one trillion square nanometers.
+	/// One square nanometer is one trillionth of a square millimeter.
 	///
 		case squareNanometers
 		

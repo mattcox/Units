@@ -161,7 +161,7 @@ extension MeasurementBinaryFloatingPoint {
 	}
 	
 	public init(signOf: Self, magnitudeOf: Self) {
-		self = Self(Value(signOf: signOf.value, magnitudeOf: signOf.magnitude.value), unit: .base)
+		self = Self(Value(signOf: signOf.value, magnitudeOf: magnitudeOf.value), unit: .base)
 	}
 	
 	public static func + (lhs: Self, rhs: Self) -> Self {
