@@ -123,6 +123,38 @@ extension Frequency {
 	}
 }
 
+extension Illuminance {
+/// Initialize the illuminance from a luminous flux spread over an area.
+///
+/// `illuminance = luminousFlux ÷ area`
+///
+/// - Parameters:
+///   - luminousFlux: The luminous flux incident on the area.
+///   - area: The area the luminous flux is spread over.
+///
+/// - Returns: The measurement representing the computed illuminance.
+///
+	public init(luminousFlux: LuminousFlux<Value>, area: Area<Value>) {
+		self = Illuminance(lux: luminousFlux.lumens / area.squareMeters)
+	}
+}
+
+extension LuminousFlux {
+/// Initialize the luminous flux from an illuminance over an area.
+///
+/// `luminousFlux = illuminance ⨯ area`
+///
+/// - Parameters:
+///   - illuminance: The illuminance incident on the area.
+///   - area: The area the illuminance is measured over.
+///
+/// - Returns: The measurement representing the computed luminous flux.
+///
+	public init(illuminance: Illuminance<Value>, area: Area<Value>) {
+		self = LuminousFlux(lumens: illuminance.lux * area.squareMeters)
+	}
+}
+
 extension Mass {
 /// Initialize the mass from a volume and the density of the volume.
 ///

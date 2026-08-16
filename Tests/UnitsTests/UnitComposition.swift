@@ -95,6 +95,32 @@ struct UnitCompositionTests {
 		}
 	}
 
+/// Illuminance composition tests.
+///
+	@Suite("Illuminance")
+	struct illuminanceTests {
+	/// Tests computing an illuminance from a luminous flux and an area.
+	///
+		@Test("Illuminance from luminous flux and area")
+		func testIlluminanceFromLuminousFluxAndArea() async throws {
+			let illuminance = Illuminance(luminousFlux: LuminousFlux(lumens: 800.0), area: Area(squareMeters: 4.0))
+			#expect(illuminance.lux.isApproximatelyEqual(to: 200.0))
+		}
+	}
+
+/// LuminousFlux composition tests.
+///
+	@Suite("LuminousFlux")
+	struct luminousFluxTests {
+	/// Tests computing a luminous flux from an illuminance and an area.
+	///
+		@Test("Luminous flux from illuminance and area")
+		func testLuminousFluxFromIlluminanceAndArea() async throws {
+			let luminousFlux = LuminousFlux(illuminance: Illuminance(lux: 200.0), area: Area(squareMeters: 4.0))
+			#expect(luminousFlux.lumens.isApproximatelyEqual(to: 800.0))
+		}
+	}
+
 /// Mass composition tests.
 ///
 	@Suite("Mass")
