@@ -106,6 +106,15 @@ struct UnitCompositionTests {
 			let illuminance = Illuminance(luminousFlux: LuminousFlux(lumens: 800.0), area: Area(squareMeters: 4.0))
 			#expect(illuminance.lux.isApproximatelyEqual(to: 200.0))
 		}
+
+	/// Tests computing an illuminance from a luminous intensity and a
+	/// distance.
+	///
+		@Test("Illuminance from luminous intensity and distance")
+		func testIlluminanceFromLuminousIntensityAndDistance() async throws {
+			let illuminance = Illuminance(luminousIntensity: LuminousIntensity(candela: 1000.0), distance: Distance(meters: 2.0))
+			#expect(illuminance.lux.isApproximatelyEqual(to: 250.0))
+		}
 	}
 
 /// LuminousFlux composition tests.
@@ -118,6 +127,20 @@ struct UnitCompositionTests {
 		func testLuminousFluxFromIlluminanceAndArea() async throws {
 			let luminousFlux = LuminousFlux(illuminance: Illuminance(lux: 200.0), area: Area(squareMeters: 4.0))
 			#expect(luminousFlux.lumens.isApproximatelyEqual(to: 800.0))
+		}
+	}
+
+/// LuminousIntensity composition tests.
+///
+	@Suite("LuminousIntensity")
+	struct luminousIntensityTests {
+	/// Tests computing a luminous intensity from an illuminance and a
+	/// distance.
+	///
+		@Test("Luminous intensity from illuminance and distance")
+		func testLuminousIntensityFromIlluminanceAndDistance() async throws {
+			let luminousIntensity = LuminousIntensity(illuminance: Illuminance(lux: 250.0), distance: Distance(meters: 2.0))
+			#expect(luminousIntensity.candela.isApproximatelyEqual(to: 1000.0))
 		}
 	}
 

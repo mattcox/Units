@@ -137,6 +137,26 @@ extension Illuminance {
 	public init(luminousFlux: LuminousFlux<Value>, area: Area<Value>) {
 		self = Illuminance(lux: luminousFlux.lumens / area.squareMeters)
 	}
+
+/// Initialize the illuminance from a luminous intensity at a distance.
+///
+/// `illuminance = luminousIntensity ÷ distance²`
+///
+/// This is the inverse square law, and it holds for a source small enough
+/// relative to the distance to be treated as a point. The light a source
+/// throws in a direction does not diminish, but it is spread over an area
+/// growing with the square of the distance, so what lands on a surface does.
+///
+/// - Parameters:
+///   - luminousIntensity: The luminous intensity of the source, in the
+///     direction of the surface being measured.
+///   - distance: The distance between the source and the surface.
+///
+/// - Returns: The measurement representing the computed illuminance.
+///
+	public init(luminousIntensity: LuminousIntensity<Value>, distance: Distance<Value>) {
+		self = Illuminance(lux: luminousIntensity.candela / (distance.meters * distance.meters))
+	}
 }
 
 extension LuminousFlux {
@@ -152,6 +172,27 @@ extension LuminousFlux {
 ///
 	public init(illuminance: Illuminance<Value>, area: Area<Value>) {
 		self = LuminousFlux(lumens: illuminance.lux * area.squareMeters)
+	}
+}
+
+extension LuminousIntensity {
+/// Initialize the luminous intensity from an illuminance at a distance.
+///
+/// `luminousIntensity = illuminance ⨯ distance²`
+///
+/// This is the inverse square law rearranged, and it holds for a source small
+/// enough relative to the distance to be treated as a point. It recovers how
+/// intense a source is in a direction from a reading taken at a known distance
+/// from it.
+///
+/// - Parameters:
+///   - illuminance: The illuminance measured at the surface.
+///   - distance: The distance between the source and the surface.
+///
+/// - Returns: The measurement representing the computed luminous intensity.
+///
+	public init(illuminance: Illuminance<Value>, distance: Distance<Value>) {
+		self = LuminousIntensity(candela: illuminance.lux * distance.meters * distance.meters)
 	}
 }
 
