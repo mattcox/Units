@@ -159,6 +159,27 @@ extension Illuminance {
 	}
 }
 
+extension Luminance {
+/// Initialize the luminance from a luminous intensity spread over an area.
+///
+/// `luminance = luminousIntensity ÷ area`
+///
+/// This describes how bright a surface appears, spreading the intensity
+/// emitted in a direction over the area it leaves from. The same intensity
+/// from a larger surface produces a lower luminance.
+///
+/// - Parameters:
+///   - luminousIntensity: The luminous intensity emitted in the direction
+///     being measured.
+///   - area: The area the luminous intensity is emitted from.
+///
+/// - Returns: The measurement representing the computed luminance.
+///
+	public init(luminousIntensity: LuminousIntensity<Value>, area: Area<Value>) {
+		self = Luminance(candelaPerSquareMeter: luminousIntensity.candela / area.squareMeters)
+	}
+}
+
 extension LuminousFlux {
 /// Initialize the luminous flux from an illuminance over an area.
 ///
@@ -193,6 +214,23 @@ extension LuminousIntensity {
 ///
 	public init(illuminance: Illuminance<Value>, distance: Distance<Value>) {
 		self = LuminousIntensity(candela: illuminance.lux * distance.meters * distance.meters)
+	}
+
+/// Initialize the luminous intensity from a luminance over an area.
+///
+/// `luminousIntensity = luminance ⨯ area`
+///
+/// This recovers the intensity emitted in a direction from how bright a
+/// surface of a known area appears.
+///
+/// - Parameters:
+///   - luminance: The luminance of the surface.
+///   - area: The area the luminance is emitted from.
+///
+/// - Returns: The measurement representing the computed luminous intensity.
+///
+	public init(luminance: Luminance<Value>, area: Area<Value>) {
+		self = LuminousIntensity(candela: luminance.candelaPerSquareMeter * area.squareMeters)
 	}
 }
 
