@@ -436,6 +436,10 @@ extension Duration: Equatable {
 	
 }
 
+extension Duration: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
+}
+
 extension Duration: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)

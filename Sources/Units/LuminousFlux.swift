@@ -102,6 +102,10 @@ extension LuminousFlux: Equatable {
 	
 }
 
+extension LuminousFlux: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
+}
+
 extension LuminousFlux: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)

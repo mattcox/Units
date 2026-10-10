@@ -113,6 +113,10 @@ extension Luminance: Equatable {
 
 }
 
+extension Luminance: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
+}
+
 extension Luminance: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)

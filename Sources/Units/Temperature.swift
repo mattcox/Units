@@ -221,6 +221,10 @@ extension Temperature: Equatable {
 	
 }
 
+extension Temperature: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
+}
+
 extension Temperature: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)

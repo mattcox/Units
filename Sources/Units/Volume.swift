@@ -154,7 +154,17 @@ public struct Volume<Value: BinaryFloatingPoint> {
 		public static var base: Self {
 			.liters
 		}
-		
+
+		public var isPreferredForSharedSymbol: Bool {
+			switch self {
+				case .fluidOunces, .gallons, .pints, .quarts, .tablespoons, .teaspoons:
+					true
+
+				default:
+					false
+			}
+		}
+
 		public func symbol(for value: Value) -> String {
 			switch self {
 				case .acreFeet:
@@ -1545,6 +1555,10 @@ extension Volume: Comparable where Value: Comparable {
 
 extension Volume: Equatable {
 	
+}
+
+extension Volume: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
 }
 
 extension Volume: MeasurementBinaryFloatingPoint {

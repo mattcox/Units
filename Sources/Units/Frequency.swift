@@ -504,6 +504,10 @@ extension Frequency: Equatable {
 	
 }
 
+extension Frequency: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
+}
+
 extension Frequency: MeasurementBinaryFloatingPoint {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)

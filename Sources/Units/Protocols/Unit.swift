@@ -36,4 +36,18 @@ public protocol Unit: CaseIterable, Sendable {
 /// - Returns: The converted value.
 ///
 	static func convert(value: Value, from: Self, to: Self) -> Value
+	
+/// Whether the unit is chosen when reading a symbol it shares with other
+/// units.
+///
+/// For example, US and imperial gallons share the symbol "gal", and the US
+/// gallon is preferred.
+///
+	var isPreferredForSharedSymbol: Bool { get }
+}
+
+extension Unit {
+	public var isPreferredForSharedSymbol: Bool {
+		false
+	}
 }
