@@ -57,10 +57,10 @@ public struct Speed<Value: BinaryFloatingPoint> {
 		public var coefficient: Value {
 			switch self {
 				case .kilometersPerHour:
-					0.277778
+					1.0 / 3.6
 
 				case .knots:
-					0.514444
+					1852.0 / 3600.0
 
 				case .metersPerSecond:
 					1.0
@@ -248,6 +248,10 @@ extension Speed: Comparable where Value: Comparable {
 
 extension Speed: Equatable {
 	
+}
+
+extension Speed: CustomStringConvertible, LosslessStringConvertible where Value: LosslessStringConvertible {
+
 }
 
 extension Speed: MeasurementBinaryFloatingPoint {

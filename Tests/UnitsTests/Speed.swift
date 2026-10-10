@@ -30,7 +30,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (1.00)")
 		func testStaticInitializer_1() async throws {
-			let unit = Speed.kilometersPerHour(3.5999971200023038)
+			let unit = Speed.kilometersPerHour(3.6)
 			#expect(unit.value.isApproximatelyEqual(to: 1.0))
 		}
 
@@ -39,7 +39,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (-1.00)")
 		func testStaticInitializer_2() async throws {
-			let unit = Speed.kilometersPerHour(-3.5999971200023038)
+			let unit = Speed.kilometersPerHour(-3.6)
 			#expect(unit.value.isApproximatelyEqual(to: -1.0))
 		}
 
@@ -48,7 +48,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (0.10)")
 		func testStaticInitializer_3() async throws {
-			let unit = Speed.kilometersPerHour(0.3599997120002304)
+			let unit = Speed.kilometersPerHour(0.36)
 			#expect(unit.value.isApproximatelyEqual(to: 0.1))
 		}
 
@@ -57,7 +57,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (50.00)")
 		func testStaticInitializer_4() async throws {
-			let unit = Speed.kilometersPerHour(179.9998560001152)
+			let unit = Speed.kilometersPerHour(180.0)
 			#expect(unit.value.isApproximatelyEqual(to: 50.0))
 		}
 
@@ -77,8 +77,8 @@ struct SpeedTests {
 		@Test("Get and Set (3.60)")
 		func testGetAndSet_1() async throws {
 			var unit = Speed<Double>.zero
-			unit.kilometersPerHour = 3.5999971200023038
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3.5999971200023038))
+			unit.kilometersPerHour = 3.6
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3.6))
 		}
 
 	/// Tests setting the type from a value in Kilometers Per Hour and checking
@@ -87,8 +87,8 @@ struct SpeedTests {
 		@Test("Get and Set (-3.60)")
 		func testGetAndSet_2() async throws {
 			var unit = Speed<Double>.zero
-			unit.kilometersPerHour = -3.5999971200023038
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: -3.5999971200023038))
+			unit.kilometersPerHour = -3.6
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: -3.6))
 		}
 
 	/// Tests setting the type from a value in Kilometers Per Hour and checking
@@ -97,8 +97,8 @@ struct SpeedTests {
 		@Test("Get and Set (0.36)")
 		func testGetAndSet_3() async throws {
 			var unit = Speed<Double>.zero
-			unit.kilometersPerHour = 0.3599997120002304
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 0.3599997120002304))
+			unit.kilometersPerHour = 0.36
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 0.36))
 		}
 
 	/// Tests setting the type from a value in Kilometers Per Hour and checking
@@ -107,8 +107,8 @@ struct SpeedTests {
 		@Test("Get and Set (180.00)")
 		func testGetAndSet_4() async throws {
 			var unit = Speed<Double>.zero
-			unit.kilometersPerHour = 179.9998560001152
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 179.9998560001152))
+			unit.kilometersPerHour = 180.0
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 180.0))
 		}
 
 	/// Tests initializing the type from a value in Kilometers Per Hour
@@ -125,7 +125,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (1.00)")
 		func testInitializer_1() async throws {
-			let unit = Speed(kilometersPerHour: 3.5999971200023038)
+			let unit = Speed(kilometersPerHour: 3.6)
 			#expect(unit.value.isApproximatelyEqual(to: 1.0))
 		}
 
@@ -134,7 +134,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (-1.00)")
 		func testInitializer_2() async throws {
-			let unit = Speed(kilometersPerHour: -3.5999971200023038)
+			let unit = Speed(kilometersPerHour: -3.6)
 			#expect(unit.value.isApproximatelyEqual(to: -1.0))
 		}
 
@@ -143,7 +143,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (0.25)")
 		func testInitializer_3() async throws {
-			let unit = Speed(kilometersPerHour: 0.8999992800005759)
+			let unit = Speed(kilometersPerHour: 0.9)
 			#expect(unit.value.isApproximatelyEqual(to: 0.25))
 		}
 
@@ -152,7 +152,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (1000.00)")
 		func testInitializer_4() async throws {
-			let unit = Speed(kilometersPerHour: 3599.9971200023037)
+			let unit = Speed(kilometersPerHour: 3600.0)
 			#expect(unit.value.isApproximatelyEqual(to: 1000.0))
 		}
 
@@ -170,8 +170,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (3.60)")
 		func testRoundTrip_1() async throws {
-			let unit = Speed.kilometersPerHour(3.5999971200023038)
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3.5999971200023038))
+			let unit = Speed.kilometersPerHour(3.6)
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3.6))
 		}
 
 	/// Tests initializing the type from a value in Kilometers Per Hour and checking
@@ -179,8 +179,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (-3.60)")
 		func testRoundTrip_2() async throws {
-			let unit = Speed.kilometersPerHour(-3.5999971200023038)
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: -3.5999971200023038))
+			let unit = Speed.kilometersPerHour(-3.6)
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: -3.6))
 		}
 
 	/// Tests initializing the type from a value in Kilometers Per Hour and checking
@@ -188,8 +188,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (0.00)")
 		func testRoundTrip_3() async throws {
-			let unit = Speed.kilometersPerHour(0.003599997120002304)
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 0.003599997120002304))
+			let unit = Speed.kilometersPerHour(0.0036)
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 0.0036))
 		}
 
 	/// Tests initializing the type from a value in Kilometers Per Hour and checking
@@ -197,8 +197,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (3599997.12)")
 		func testRoundTrip_4() async throws {
-			let unit = Speed.kilometersPerHour(3599997.1200023037)
-			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3599997.1200023037))
+			let unit = Speed.kilometersPerHour(3600000.0)
+			#expect(unit.kilometersPerHour.isApproximatelyEqual(to: 3600000.0))
 		}
 	}
 /// Knots unit tests.
@@ -219,7 +219,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (1.00)")
 		func testStaticInitializer_1() async throws {
-			let unit = Speed.knots(1.9438461717893492)
+			let unit = Speed.knots(1.9438444924406)
 			#expect(unit.value.isApproximatelyEqual(to: 1.0))
 		}
 
@@ -228,7 +228,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (-1.00)")
 		func testStaticInitializer_2() async throws {
-			let unit = Speed.knots(-1.9438461717893492)
+			let unit = Speed.knots(-1.9438444924406)
 			#expect(unit.value.isApproximatelyEqual(to: -1.0))
 		}
 
@@ -237,7 +237,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (0.10)")
 		func testStaticInitializer_3() async throws {
-			let unit = Speed.knots(0.19438461717893493)
+			let unit = Speed.knots(0.19438444924406)
 			#expect(unit.value.isApproximatelyEqual(to: 0.1))
 		}
 
@@ -246,7 +246,7 @@ struct SpeedTests {
 	///
 		@Test("Static Initializer (50.00)")
 		func testStaticInitializer_4() async throws {
-			let unit = Speed.knots(97.19230858946746)
+			let unit = Speed.knots(97.1922246220302)
 			#expect(unit.value.isApproximatelyEqual(to: 50.0))
 		}
 
@@ -266,8 +266,8 @@ struct SpeedTests {
 		@Test("Get and Set (1.94)")
 		func testGetAndSet_1() async throws {
 			var unit = Speed<Double>.zero
-			unit.knots = 1.9438461717893492
-			#expect(unit.knots.isApproximatelyEqual(to: 1.9438461717893492))
+			unit.knots = 1.9438444924406
+			#expect(unit.knots.isApproximatelyEqual(to: 1.9438444924406))
 		}
 
 	/// Tests setting the type from a value in Knots and checking
@@ -276,8 +276,8 @@ struct SpeedTests {
 		@Test("Get and Set (-1.94)")
 		func testGetAndSet_2() async throws {
 			var unit = Speed<Double>.zero
-			unit.knots = -1.9438461717893492
-			#expect(unit.knots.isApproximatelyEqual(to: -1.9438461717893492))
+			unit.knots = -1.9438444924406
+			#expect(unit.knots.isApproximatelyEqual(to: -1.9438444924406))
 		}
 
 	/// Tests setting the type from a value in Knots and checking
@@ -286,8 +286,8 @@ struct SpeedTests {
 		@Test("Get and Set (0.19)")
 		func testGetAndSet_3() async throws {
 			var unit = Speed<Double>.zero
-			unit.knots = 0.19438461717893493
-			#expect(unit.knots.isApproximatelyEqual(to: 0.19438461717893493))
+			unit.knots = 0.19438444924406
+			#expect(unit.knots.isApproximatelyEqual(to: 0.19438444924406))
 		}
 
 	/// Tests setting the type from a value in Knots and checking
@@ -296,8 +296,8 @@ struct SpeedTests {
 		@Test("Get and Set (97.19)")
 		func testGetAndSet_4() async throws {
 			var unit = Speed<Double>.zero
-			unit.knots = 97.19230858946746
-			#expect(unit.knots.isApproximatelyEqual(to: 97.19230858946746))
+			unit.knots = 97.1922246220302
+			#expect(unit.knots.isApproximatelyEqual(to: 97.1922246220302))
 		}
 
 	/// Tests initializing the type from a value in Knots
@@ -314,7 +314,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (1.00)")
 		func testInitializer_1() async throws {
-			let unit = Speed(knots: 1.9438461717893492)
+			let unit = Speed(knots: 1.9438444924406)
 			#expect(unit.value.isApproximatelyEqual(to: 1.0))
 		}
 
@@ -323,7 +323,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (-1.00)")
 		func testInitializer_2() async throws {
-			let unit = Speed(knots: -1.9438461717893492)
+			let unit = Speed(knots: -1.9438444924406)
 			#expect(unit.value.isApproximatelyEqual(to: -1.0))
 		}
 
@@ -332,7 +332,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (0.25)")
 		func testInitializer_3() async throws {
-			let unit = Speed(knots: 0.4859615429473373)
+			let unit = Speed(knots: 0.485961123110151)
 			#expect(unit.value.isApproximatelyEqual(to: 0.25))
 		}
 
@@ -341,7 +341,7 @@ struct SpeedTests {
 	///
 		@Test("Initialize (1000.00)")
 		func testInitializer_4() async throws {
-			let unit = Speed(knots: 1943.8461717893492)
+			let unit = Speed(knots: 1943.8444924406)
 			#expect(unit.value.isApproximatelyEqual(to: 1000.0))
 		}
 
@@ -359,8 +359,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (1.94)")
 		func testRoundTrip_1() async throws {
-			let unit = Speed.knots(1.9438461717893492)
-			#expect(unit.knots.isApproximatelyEqual(to: 1.9438461717893492))
+			let unit = Speed.knots(1.9438444924406)
+			#expect(unit.knots.isApproximatelyEqual(to: 1.9438444924406))
 		}
 
 	/// Tests initializing the type from a value in Knots and checking
@@ -368,8 +368,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (-1.94)")
 		func testRoundTrip_2() async throws {
-			let unit = Speed.knots(-1.9438461717893492)
-			#expect(unit.knots.isApproximatelyEqual(to: -1.9438461717893492))
+			let unit = Speed.knots(-1.9438444924406)
+			#expect(unit.knots.isApproximatelyEqual(to: -1.9438444924406))
 		}
 
 	/// Tests initializing the type from a value in Knots and checking
@@ -377,8 +377,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (0.00)")
 		func testRoundTrip_3() async throws {
-			let unit = Speed.knots(0.0019438461717893492)
-			#expect(unit.knots.isApproximatelyEqual(to: 0.0019438461717893492))
+			let unit = Speed.knots(0.0019438444924406)
+			#expect(unit.knots.isApproximatelyEqual(to: 0.0019438444924406))
 		}
 
 	/// Tests initializing the type from a value in Knots and checking
@@ -386,8 +386,8 @@ struct SpeedTests {
 	///
 		@Test("Round Trip (1943846.17)")
 		func testRoundTrip_4() async throws {
-			let unit = Speed.knots(1943846.1717893493)
-			#expect(unit.knots.isApproximatelyEqual(to: 1943846.1717893493))
+			let unit = Speed.knots(1943844.4924406)
+			#expect(unit.knots.isApproximatelyEqual(to: 1943844.4924406))
 		}
 	}
 /// Meters Per Second unit tests.
