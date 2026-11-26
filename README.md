@@ -56,6 +56,53 @@ let speed = Speed(distance: Distance<Double>(10.0, unit: .meters), duration: Dur
 let metersPerSecond = speed.metersPerSecond  // 0.33333333333
 ```
 
+### Arithmetic
+Measurements of the same kind can be added, subtracted, compared and scaled, whatever units they were made in:
+```swift
+let total = Distance(kilometers: 2.0) + Distance(meters: 500.0)  // 2.5 km
+let half = Power(kilowatts: 3.0) * 0.5                           // 1.5 kW
+let output = Power(kilowatts: 3.0) * .percent(50.0)              // 1.5 kW
+```
+
+Dividing one measurement by another of the same kind gives a plain number:
+```swift
+let laps = Distance(kilometers: 5.0) / Distance(meters: 400.0)  // 12.5
+```
+
+Only arithmetic that makes sense physically is available. Multiplying two distances does not give a distance, it gives an area, so that is what it returns:
+```swift
+let area = Distance(meters: 2.0) * Distance(meters: 3.0)  // Area, 6 m²
+let energy = Power(kilowatts: 3.0) * Duration(hours: 2.0)  // Energy, 6 kWh
+let current = Power(watts: 2300.0) / Voltage(volts: 230.0)  // ElectricCurrent, 10 A
+```
+
+Rounding happens in the unit you ask for:
+```swift
+let rounded = Distance(meters: 1499.0).rounded(in: .kilometers)  // 1 km
+```
+
+### Temperatures and Differences
+A temperature is measured from an arbitrary zero, so two temperatures can't be added together: 20 °C and 20 °C don't make 40 °C. What does make sense is the difference between two temperatures, which is its own type, `TemperatureDifference`:
+```swift
+let rise = Temperature(celsius: 21.0) - Temperature(celsius: 18.0)  // TemperatureDifference, 3 K
+let target = Temperature(celsius: 18.0) + rise                      // Temperature, 21 °C
+```
+
+A difference converts without the offset a temperature has, so a difference of 10 °C is 18 °F, where a temperature of 10 °C is 50 °F.
+
+### Encoding
+Measurements are `Codable`, and encode as their value in the base unit under the key `value`, for example `{"value":1500}` for 1.5 km. The format is stable, and is covered by tests.
+
+### Migrating from 1.x
+Version 2 removes measurements' conformance to `BinaryFloatingPoint`, which allowed arithmetic that didn't make sense physically. In particular:
+
+- `Temperature` no longer supports adding two temperatures, or multiplying and dividing them. Subtracting two temperatures gives a `TemperatureDifference`, which can be added to or subtracted from a temperature.
+- Multiplying two measurements of the same kind is no longer possible. Where the product means something, it returns the measurement it actually is, such as `Distance * Distance` returning an `Area`.
+- Dividing two measurements of the same kind returns a plain number rather than a measurement.
+- Measurements can no longer be made from number literals, such as `let distance: Distance<Double> = 5.0`. Use a unit, such as `Distance(meters: 5.0)`, or `Distance(5.0)` for the base unit.
+- Floating point details such as `ulp`, `nextUp`, `squareRoot()` and the remainder functions are no longer available. Read the value in a unit, such as `distance.meters`, to use them.
+- `rounded()` takes the unit to round in, and defaults to the base unit.
+
 ## Installation
 
 Units is distributed using the [Swift Package Manager](https://swift.org/package-manager). To install it within another Swift package, add it as a dependency within your `Package.swift` manifest:
