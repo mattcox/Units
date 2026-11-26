@@ -225,7 +225,9 @@ extension Temperature: CustomStringConvertible, LosslessStringConvertible where 
 
 }
 
-extension Temperature: MeasurementBinaryFloatingPoint {
+extension Temperature: MeasurementAffine {
+	public typealias Difference = TemperatureDifference<Value>
+
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

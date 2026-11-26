@@ -195,20 +195,20 @@ extension Angle {
 /// The type or classification of the angle.
 ///
 	public var classification: Classification {
-		let angle = self.normalized
-		
+		let angle = self.normalized.radians
+
 		if angle < .pi / 2 {
 			return .acute
 		}
-		
+
 		if angle == .pi / 2 {
 			return .right
 		}
-		
+
 		if angle < .pi {
 			return .obtuse
 		}
-		
+
 		if angle == .pi {
 			return .straight
 		}
@@ -397,7 +397,7 @@ extension Angle: CustomStringConvertible, LosslessStringConvertible where Value:
 
 }
 
-extension Angle: MeasurementBinaryFloatingPoint {
+extension Angle: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

@@ -671,7 +671,7 @@ extension Area: CustomStringConvertible, LosslessStringConvertible where Value: 
 
 }
 
-extension Area: MeasurementBinaryFloatingPoint {
+extension Area: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

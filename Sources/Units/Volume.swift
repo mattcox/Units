@@ -1561,7 +1561,7 @@ extension Volume: CustomStringConvertible, LosslessStringConvertible where Value
 
 }
 
-extension Volume: MeasurementBinaryFloatingPoint {
+extension Volume: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

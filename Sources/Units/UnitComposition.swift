@@ -106,6 +106,52 @@ extension Duration {
 	public init(onceEvery frequency: Frequency<Value>) {
 		self = Duration(seconds: 1.0 / frequency.hertz)
 	}
+
+/// Initialize the duration from an energy and the power it is transferred at.
+///
+/// `duration = energy ÷ power`
+///
+/// - Parameters:
+///   - energy: The energy transferred.
+///   - power: The power the energy is transferred at.
+///
+/// - Returns: The measurement representing the computed duration.
+///
+	public init(energy: Energy<Value>, power: Power<Value>) {
+		self = Duration(seconds: energy.joules / power.watts)
+	}
+}
+
+extension ElectricCurrent {
+/// Initialize the current from a power and the voltage it is delivered at.
+///
+/// `current = power ÷ voltage`
+///
+/// - Parameters:
+///   - power: The power delivered.
+///   - voltage: The voltage the power is delivered at.
+///
+/// - Returns: The measurement representing the computed current.
+///
+	public init(power: Power<Value>, voltage: Voltage<Value>) {
+		self = ElectricCurrent(amperes: power.watts / voltage.volts)
+	}
+}
+
+extension Energy {
+/// Initialize the energy from a power sustained over a duration.
+///
+/// `energy = power ⨯ duration`
+///
+/// - Parameters:
+///   - power: The power transferred.
+///   - duration: The duration the power is sustained for.
+///
+/// - Returns: The measurement representing the computed energy.
+///
+	public init(power: Power<Value>, duration: Duration<Value>) {
+		self = Energy(joules: power.watts * duration.seconds)
+	}
 }
 
 extension Frequency {
@@ -250,6 +296,36 @@ extension Mass {
 	}
 }
 
+extension Power {
+/// Initialize the power from an energy transferred over a duration.
+///
+/// `power = energy ÷ duration`
+///
+/// - Parameters:
+///   - energy: The energy transferred.
+///   - duration: The duration the energy is transferred over.
+///
+/// - Returns: The measurement representing the computed power.
+///
+	public init(energy: Energy<Value>, duration: Duration<Value>) {
+		self = Power(watts: energy.joules / duration.seconds)
+	}
+
+/// Initialize the power from a voltage and the current flowing at it.
+///
+/// `power = voltage ⨯ current`
+///
+/// - Parameters:
+///   - voltage: The voltage the current flows at.
+///   - current: The current flowing.
+///
+/// - Returns: The measurement representing the computed power.
+///
+	public init(voltage: Voltage<Value>, current: ElectricCurrent<Value>) {
+		self = Power(watts: voltage.volts * current.amperes)
+	}
+}
+
 extension Speed {
 /// Initialize the speed from a distance travelled over time.
 ///
@@ -263,6 +339,22 @@ extension Speed {
 ///
 	public init(distance: Distance<Value>, duration: Duration<Value>) {
 		self = Speed(metersPerSecond: distance.meters / duration.seconds)
+	}
+}
+
+extension Voltage {
+/// Initialize the voltage from a power and the current it is delivered by.
+///
+/// `voltage = power ÷ current`
+///
+/// - Parameters:
+///   - power: The power delivered.
+///   - current: The current the power is delivered by.
+///
+/// - Returns: The measurement representing the computed voltage.
+///
+	public init(power: Power<Value>, current: ElectricCurrent<Value>) {
+		self = Voltage(volts: power.watts / current.amperes)
 	}
 }
 

@@ -106,7 +106,7 @@ extension Illuminance: CustomStringConvertible, LosslessStringConvertible where 
 
 }
 
-extension Illuminance: MeasurementBinaryFloatingPoint {
+extension Illuminance: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

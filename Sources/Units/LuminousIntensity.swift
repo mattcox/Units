@@ -112,7 +112,7 @@ extension LuminousIntensity: CustomStringConvertible, LosslessStringConvertible 
 
 }
 
-extension LuminousIntensity: MeasurementBinaryFloatingPoint {
+extension LuminousIntensity: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

@@ -254,7 +254,7 @@ extension Speed: CustomStringConvertible, LosslessStringConvertible where Value:
 
 }
 
-extension Speed: MeasurementBinaryFloatingPoint {
+extension Speed: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

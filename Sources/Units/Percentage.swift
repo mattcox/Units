@@ -144,7 +144,7 @@ extension Percentage: CustomStringConvertible, LosslessStringConvertible where V
 
 }
 
-extension Percentage: MeasurementBinaryFloatingPoint {
+extension Percentage: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}
