@@ -211,4 +211,140 @@ struct UnitCompositionTests {
 			#expect(volume.cubicMeters.isApproximatelyEqual(to: 12.0))
 		}
 	}
+
+/// Energy and electrical composition tests.
+///
+	@Suite("Energy and Electricity")
+	struct energyTests {
+	/// Tests computing an energy from a power sustained over a duration.
+	///
+		@Test("Energy from power and duration")
+		func testEnergyFromPowerAndDuration() async throws {
+			let energy = Energy(power: Power(kilowatts: 3.0), duration: Duration(hours: 2.0))
+			#expect(energy.kilowattHours.isApproximatelyEqual(to: 6.0))
+		}
+
+	/// Tests computing a power from an energy transferred over a duration.
+	///
+		@Test("Power from energy and duration")
+		func testPowerFromEnergyAndDuration() async throws {
+			let power = Power(energy: Energy(kilowattHours: 6.0), duration: Duration(hours: 2.0))
+			#expect(power.kilowatts.isApproximatelyEqual(to: 3.0))
+		}
+
+	/// Tests computing a duration from an energy and a power.
+	///
+		@Test("Duration from energy and power")
+		func testDurationFromEnergyAndPower() async throws {
+			let duration = Duration(energy: Energy(kilowattHours: 6.0), power: Power(kilowatts: 3.0))
+			#expect(duration.hours.isApproximatelyEqual(to: 2.0))
+		}
+
+	/// Tests computing a power from a voltage and a current.
+	///
+		@Test("Power from voltage and current")
+		func testPowerFromVoltageAndCurrent() async throws {
+			let power = Power(voltage: Voltage(volts: 230.0), current: ElectricCurrent(amperes: 10.0))
+			#expect(power.watts.isApproximatelyEqual(to: 2300.0))
+		}
+
+	/// Tests computing a current from a power and a voltage.
+	///
+		@Test("Current from power and voltage")
+		func testCurrentFromPowerAndVoltage() async throws {
+			let current = ElectricCurrent(power: Power(watts: 2300.0), voltage: Voltage(volts: 230.0))
+			#expect(current.amperes.isApproximatelyEqual(to: 10.0))
+		}
+
+	/// Tests computing a voltage from a power and a current.
+	///
+		@Test("Voltage from power and current")
+		func testVoltageFromPowerAndCurrent() async throws {
+			let voltage = Voltage(power: Power(watts: 2300.0), current: ElectricCurrent(amperes: 10.0))
+			#expect(voltage.volts.isApproximatelyEqual(to: 230.0))
+		}
+	}
+
+/// Composition operator tests.
+///
+	@Suite("Operators")
+	struct operatorTests {
+	/// Tests the operators that produce a different kind of measurement
+	/// from distances, durations and speeds.
+	///
+		@Test("Distance, duration and speed")
+		func testDistanceDurationAndSpeed() async throws {
+			let area: Area<Double> = Distance(meters: 2.0) * Distance(meters: 3.0)
+			#expect(area.squareMeters.isApproximatelyEqual(to: 6.0))
+
+			let speed: Speed<Double> = Distance(meters: 100.0) / Duration(seconds: 10.0)
+			#expect(speed.metersPerSecond.isApproximatelyEqual(to: 10.0))
+
+			let duration: Duration<Double> = Distance(meters: 100.0) / Speed(metersPerSecond: 10.0)
+			#expect(duration.seconds.isApproximatelyEqual(to: 10.0))
+
+			let distance: Distance<Double> = Speed(metersPerSecond: 10.0) * Duration(seconds: 5.0)
+			#expect(distance.meters.isApproximatelyEqual(to: 50.0))
+			#expect((Duration(seconds: 5.0) * Speed(metersPerSecond: 10.0)).meters.isApproximatelyEqual(to: 50.0))
+		}
+
+	/// Tests the operators that produce volumes, masses and densities.
+	///
+		@Test("Volume, mass and density")
+		func testVolumeMassAndDensity() async throws {
+			let volume: Volume<Double> = Area(squareMeters: 2.0) * Distance(meters: 3.0)
+			#expect(volume.cubicMeters.isApproximatelyEqual(to: 6.0))
+			#expect((Distance(meters: 3.0) * Area(squareMeters: 2.0)).cubicMeters.isApproximatelyEqual(to: 6.0))
+
+			let mass: Mass<Double> = Volume(cubicMeters: 2.0) * Density(kilogramsPerCubicMeter: 5.0)
+			#expect(mass.kilograms.isApproximatelyEqual(to: 10.0))
+			#expect((Density(kilogramsPerCubicMeter: 5.0) * Volume(cubicMeters: 2.0)).kilograms.isApproximatelyEqual(to: 10.0))
+
+			let density: Density<Double> = Mass(kilograms: 10.0) / Volume(cubicMeters: 2.0)
+			#expect(density.kilogramsPerCubicMeter.isApproximatelyEqual(to: 5.0))
+		}
+
+	/// Tests the operators between light measurements and areas.
+	///
+		@Test("Light")
+		func testLight() async throws {
+			let illuminance: Illuminance<Double> = LuminousFlux(lumens: 100.0) / Area(squareMeters: 4.0)
+			#expect(illuminance.lux.isApproximatelyEqual(to: 25.0))
+
+			let flux: LuminousFlux<Double> = Illuminance(lux: 25.0) * Area(squareMeters: 4.0)
+			#expect(flux.lumens.isApproximatelyEqual(to: 100.0))
+
+			let luminance: Luminance<Double> = LuminousIntensity(candela: 100.0) / Area(squareMeters: 4.0)
+			#expect(luminance.candelaPerSquareMeter.isApproximatelyEqual(to: 25.0))
+
+			let intensity: LuminousIntensity<Double> = Luminance(candelaPerSquareMeter: 25.0) * Area(squareMeters: 4.0)
+			#expect(intensity.candela.isApproximatelyEqual(to: 100.0))
+		}
+
+	/// Tests the operators between energy, power, duration, voltage and
+	/// current.
+	///
+		@Test("Energy and electricity")
+		func testEnergyAndElectricity() async throws {
+			let energy: Energy<Double> = Power(kilowatts: 3.0) * Duration(hours: 2.0)
+			#expect(energy.kilowattHours.isApproximatelyEqual(to: 6.0))
+			#expect((Duration(hours: 2.0) * Power(kilowatts: 3.0)).kilowattHours.isApproximatelyEqual(to: 6.0))
+
+			let power: Power<Double> = Energy(kilowattHours: 6.0) / Duration(hours: 2.0)
+			#expect(power.kilowatts.isApproximatelyEqual(to: 3.0))
+
+			let duration: Duration<Double> = Energy(kilowattHours: 6.0) / Power(kilowatts: 3.0)
+			#expect(duration.hours.isApproximatelyEqual(to: 2.0))
+
+			let delivered: Power<Double> = Voltage(volts: 230.0) * ElectricCurrent(amperes: 10.0)
+			#expect(delivered.watts.isApproximatelyEqual(to: 2300.0))
+			#expect((ElectricCurrent(amperes: 10.0) * Voltage(volts: 230.0)).watts.isApproximatelyEqual(to: 2300.0))
+
+			let current: ElectricCurrent<Double> = Power(watts: 2300.0) / Voltage(volts: 230.0)
+			#expect(current.amperes.isApproximatelyEqual(to: 10.0))
+
+			let voltage: Voltage<Double> = Power(watts: 2300.0) / ElectricCurrent(amperes: 10.0)
+			#expect(voltage.volts.isApproximatelyEqual(to: 230.0))
+		}
+	}
 }
