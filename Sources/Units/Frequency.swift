@@ -508,7 +508,7 @@ extension Frequency: CustomStringConvertible, LosslessStringConvertible where Va
 
 }
 
-extension Frequency: MeasurementBinaryFloatingPoint {
+extension Frequency: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

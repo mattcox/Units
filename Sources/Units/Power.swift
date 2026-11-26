@@ -592,7 +592,7 @@ extension Power: CustomStringConvertible, LosslessStringConvertible where Value:
 
 }
 
-extension Power: MeasurementBinaryFloatingPoint {
+extension Power: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

@@ -1107,7 +1107,7 @@ extension Distance: CustomStringConvertible, LosslessStringConvertible where Val
 
 }
 
-extension Distance: MeasurementBinaryFloatingPoint {
+extension Distance: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

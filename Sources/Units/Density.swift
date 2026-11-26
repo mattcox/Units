@@ -107,7 +107,7 @@ extension Density: CustomStringConvertible, LosslessStringConvertible where Valu
 
 }
 
-extension Density: MeasurementBinaryFloatingPoint {
+extension Density: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

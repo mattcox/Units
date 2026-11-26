@@ -440,7 +440,7 @@ extension Duration: CustomStringConvertible, LosslessStringConvertible where Val
 
 }
 
-extension Duration: MeasurementBinaryFloatingPoint {
+extension Duration: MeasurementArithmetic {
 	public init(_ value: Value, unit: MeasurementUnit = .base) {
 		self.value = MeasurementUnit.convert(value: value, from: unit, to: .base)
 	}

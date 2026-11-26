@@ -90,8 +90,8 @@ struct StringConversionTests {
 		#expect(try #require(Distance<Double>("-inf m")).value == -.infinity)
 		
 		#expect(try #require(Distance<Double>(Distance<Double>(.nan).description)).value.isNaN)
-		#expect(Distance<Double>(Distance<Double>.infinity.description) == .infinity)
-		#expect(Distance<Double>((-Distance<Double>.infinity).description) == -.infinity)
+		#expect(Distance<Double>(Distance<Double>(.infinity).description) == Distance(.infinity))
+		#expect(Distance<Double>(Distance<Double>(-.infinity).description) == Distance(-.infinity))
 	}
 
 /// Tests the description is the value in the base unit followed by the base
